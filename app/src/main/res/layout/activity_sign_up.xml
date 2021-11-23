@@ -8,13 +8,13 @@
 
     <Button
         android:id="@+id/continueButton"
-        android:layout_width="351dp"
-        android:layout_height="48dp"
+        android:layout_width="310dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="#00BCD4"
-        android:enabled="false"
+        android:enabled="true"
         android:text="Continue"
         android:textColor="#FFFFFF"
         android:textStyle="bold"

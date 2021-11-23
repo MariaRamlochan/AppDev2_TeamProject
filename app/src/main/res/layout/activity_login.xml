@@ -92,10 +92,10 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="313dp"
+        android:layout_width="310dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:layout_marginStart="49dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="#EDF31D3D"
         android:enabled="false"
@@ -107,10 +107,10 @@
 
     <Button
         android:id="@+id/signUpButton"
-        android:layout_width="309dp"
+        android:layout_width="310dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:layout_marginStart="53dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="#00BCD4"
         android:enabled="true"
