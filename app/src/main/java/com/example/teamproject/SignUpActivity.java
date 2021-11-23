@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -34,6 +35,10 @@ public class SignUpActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                User myUser = new User(SignUpActivity.this);
+                String type = dropdown.getSelectedItem().toString();
+                myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
+                Toast.makeText(SignUpActivity.this, "values saved", Toast.LENGTH_LONG).show();
 
             }
         });

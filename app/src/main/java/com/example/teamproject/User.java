@@ -14,25 +14,22 @@ public class User extends SQLiteOpenHelper {
     private Context context;
     private static final String DATABASE_NAME = "teamProject.db";
     private static final String TABLE_NAME = "User";
-    private static final String COL_1 = "user_id";
-    private static final String COL_2 = "user_type";
-    private static final String COL_3 = "user_email";
-    private static final String COL_4 = "password_hash";
+    private static final String COL_ID = "user_id";
+    private static final String COL_TYPE = "user_type";
+    private static final String COL_EMAIL = "user_email";
+    private static final String COL_PASSWORD = "password_hash";
     private SQLiteDatabase sqLiteDatabase;
 
-    public User(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public User(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, 1);
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String query = "CREATE TABLE " + TABLE_NAME +  " ("
-                + COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ""
-                + COL_2 + " ENUM, "
-                + COL_3 + " INTEGER, "
-                + COL_4 + " INTEGER);";
-
+        String query = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "%s ENUM ('Donor', 'Food Bank'), %s VARCHAR, %s VARCHAR);",
+                TABLE_NAME, COL_ID, COL_TYPE, COL_EMAIL, COL_PASSWORD);
         sqLiteDatabase.execSQL(query);
     }
 
@@ -42,12 +39,12 @@ public class User extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    void addData(String name, int age, int phone) {
+    void addData(String type, String email, String password_hash) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COL_2,name);
-        cv.put(COL_3,age);
-        cv.put(COL_4,phone);
+        cv.put(COL_TYPE,type);
+        cv.put(COL_EMAIL,email);
+        cv.put(COL_PASSWORD,password_hash);
 
         long result = db.insert(TABLE_NAME, null,cv);
         if (result == -1) {
@@ -72,7 +69,7 @@ public class User extends SQLiteOpenHelper {
 
     public Integer deleteData(int id){
         sqLiteDatabase = this.getWritableDatabase();
-        return sqLiteDatabase.delete(TABLE_NAME, COL_1 + " = ? ", new String[]
+        return sqLiteDatabase.delete(TABLE_NAME, COL_ID + " = ? ", new String[]
                 {String.valueOf(id)});
     }
 }
