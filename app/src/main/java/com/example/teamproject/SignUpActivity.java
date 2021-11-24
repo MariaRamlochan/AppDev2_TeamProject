@@ -48,7 +48,6 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 else if(type.equals("Food Bank")){
                     myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
-                    Toast.makeText(SignUpActivity.this, "values saved", Toast.LENGTH_LONG).show();
                     intent = new Intent(SignUpActivity.this, SetUpActivityBank.class);
                     startActivity(intent);
                 }
