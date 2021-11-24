@@ -43,7 +43,6 @@ public class SignUpActivity extends AppCompatActivity {
 
                 if(type.equals("Donor")){
                    myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
-                    Toast.makeText(SignUpActivity.this, "values saved" + myUser.toString(), Toast.LENGTH_LONG).show();
                     intent = new Intent(SignUpActivity.this, SetUpActivityDonor.class);
                     startActivity(intent);
                 }
