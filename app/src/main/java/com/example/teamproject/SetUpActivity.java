@@ -20,9 +20,9 @@ public class SetUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_up);
+        setContentView(R.layout.activity_setup_donor);
 
-        dropdown = findViewById(R.id.spinner);
+        dropdown = findViewById(R.id.spinner2);
         business = findViewById(R.id.editTextBusiness);
         phone = findViewById(R.id.editTextPhone);
         address = findViewById(R.id.editTextAddress);
