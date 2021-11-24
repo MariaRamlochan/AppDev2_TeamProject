@@ -28,7 +28,7 @@ public class User extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String query = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "%s ENUM ('Donor', 'Food Bank'), %s VARCHAR, %s VARCHAR);",
+                "%s VARCHAR, %s VARCHAR, %s VARCHAR);",
                 TABLE_NAME, COL_ID, COL_TYPE, COL_EMAIL, COL_PASSWORD);
         sqLiteDatabase.execSQL(query);
     }
