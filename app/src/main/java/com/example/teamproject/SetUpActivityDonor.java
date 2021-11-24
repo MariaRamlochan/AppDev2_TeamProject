@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class SetUpActivity extends AppCompatActivity {
+public class SetUpActivityDonor extends AppCompatActivity {
 
     EditText business, phone, address, zip, city, province, country;
     Button confirm;
@@ -20,19 +20,19 @@ public class SetUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_up);
+        setContentView(R.layout.activity_setup_donor);
 
-        dropdown = findViewById(R.id.spinner);
-        business = findViewById(R.id.editTextBusiness);
-        phone = findViewById(R.id.editTextPhone);
-        address = findViewById(R.id.editTextAddress);
-        zip = findViewById(R.id.editTextZipCode);
-        city = findViewById(R.id.editTextCity);
-        province = findViewById(R.id.editTextProvince);
-        country = findViewById(R.id.editTextCountry);
-        confirm = findViewById(R.id.buttonConfirm);
+        dropdown = findViewById(R.id.spinner2);
+        business = findViewById(R.id.editTextBusinessD);
+        phone = findViewById(R.id.editTextPhoneD);
+        address = findViewById(R.id.editTextAddressD);
+        zip = findViewById(R.id.editTextZipD);
+        city = findViewById(R.id.editTextCityD);
+        province = findViewById(R.id.editTextProvinceD);
+        country = findViewById(R.id.editTextCountryD);
+        confirm = findViewById(R.id.buttonConfirmD);
 
-        String[] items = new String[]{"1", "2", "3"};
+        String[] items = new String[]{"Select your business type", "2", "3"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 

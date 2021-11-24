@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -37,18 +36,21 @@ public class SignUpActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                User myUser = new User(SignUpActivity.this);
+                User myUser = new User(SignUpActivity.this);
                 String type = dropdown.getSelectedItem().toString().trim();
-//                myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
-//                Toast.makeText(SignUpActivity.this, "values saved", Toast.LENGTH_LONG).show();
+
 
 
                 if(type.equals("Donor")){
-                    intent = new Intent(SignUpActivity.this, SetUpActivity.class);
+                   myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
+                    intent = new Intent(SignUpActivity.this, SetUpActivityDonor.class);
                     startActivity(intent);
                 }
                 else if(type.equals("Food Bank")){
-                    Toast.makeText(SignUpActivity.this, "I am food Bank", Toast.LENGTH_LONG).show();
+                    myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
+                    Toast.makeText(SignUpActivity.this, "values saved", Toast.LENGTH_LONG).show();
+                    intent = new Intent(SignUpActivity.this, SetUpActivityBank.class);
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(SignUpActivity.this, "Please choose a type", Toast.LENGTH_LONG).show();

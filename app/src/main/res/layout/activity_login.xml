@@ -28,6 +28,7 @@
         android:imeActionLabel="login"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
+        android:password="true"
         android:selectAllOnFocus="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
