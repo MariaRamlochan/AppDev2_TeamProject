@@ -42,14 +42,28 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                 if(type.equals("Donor")){
-                   myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
-                    intent = new Intent(SignUpActivity.this, SetUpActivityDonor.class);
-                    startActivity(intent);
+                    if(password.getText().toString().equals(confirmPassword.getText().toString())) {
+                        myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
+                        intent = new Intent(SignUpActivity.this, SetUpActivityDonor.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(SignUpActivity.this,
+                                "Password and Confirm Password does not match",
+                                Toast.LENGTH_LONG).show();
+                    }
+
                 }
                 else if(type.equals("Food Bank")){
-                    myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
-                    intent = new Intent(SignUpActivity.this, SetUpActivityBank.class);
-                    startActivity(intent);
+                    if(password.getText().toString().equals(confirmPassword.getText().toString())) {
+                        myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
+                        intent = new Intent(SignUpActivity.this, SetUpActivityBank.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(SignUpActivity.this,
+                                "Password and Confirm Password does not match",
+                                Toast.LENGTH_LONG).show();
+                    }
+
                 }
                 else{
                     Toast.makeText(SignUpActivity.this, "Please choose a type", Toast.LENGTH_LONG).show();
