@@ -36,17 +36,20 @@ public class SignUpActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                User myUser = new User(SignUpActivity.this);
+                User myUser = new User(SignUpActivity.this);
                 String type = dropdown.getSelectedItem().toString().trim();
-//                myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
-//                Toast.makeText(SignUpActivity.this, "values saved", Toast.LENGTH_LONG).show();
+
 
 
                 if(type.equals("Donor")){
+                   myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
+                    Toast.makeText(SignUpActivity.this, "values saved" + myUser.toString(), Toast.LENGTH_LONG).show();
                     intent = new Intent(SignUpActivity.this, SetUpActivityDonor.class);
                     startActivity(intent);
                 }
                 else if(type.equals("Food Bank")){
+                    myUser.addData(type, email.getText().toString().trim(), password.getText().toString().trim());
+                    Toast.makeText(SignUpActivity.this, "values saved", Toast.LENGTH_LONG).show();
                     intent = new Intent(SignUpActivity.this, SetUpActivityBank.class);
                     startActivity(intent);
                 }
