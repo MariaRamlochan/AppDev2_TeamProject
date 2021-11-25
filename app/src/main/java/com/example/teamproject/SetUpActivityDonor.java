@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class SetUpActivityDonor extends AppCompatActivity {
 
@@ -39,6 +40,30 @@ public class SetUpActivityDonor extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DonorProfile myDonor = new DonorProfile(SetUpActivityDonor.this);
+                String type = dropdown.getSelectedItem().toString().trim();
+
+
+                if(type.equals("2")){
+                    myDonor.addData(type, business.getText().toString().trim(),
+                            phone.getText().toString().trim(), address.getText().toString().trim(),
+                            zip.getText().toString().trim(), city.getText().toString().trim(),
+                            province.getText().toString().trim(), country.getText().toString().trim());
+                    intent = new Intent(SetUpActivityDonor.this, SetUpActivityDonor.class);
+                    startActivity(intent);
+
+                }
+                else if(type.equals("3")){
+                    myDonor.addData(type, business.getText().toString().trim(),
+                            phone.getText().toString().trim(), address.getText().toString().trim(),
+                            zip.getText().toString().trim(), city.getText().toString().trim(),
+                            province.getText().toString().trim(), country.getText().toString().trim());
+                    intent = new Intent(SetUpActivityDonor.this, SetUpActivityDonor.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(SetUpActivityDonor.this, "Please choose a type", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
