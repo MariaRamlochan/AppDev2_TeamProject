@@ -2,10 +2,12 @@ package com.example.teamproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SetUpActivityBank extends AppCompatActivity {
 
@@ -29,7 +31,13 @@ public class SetUpActivityBank extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                BankProfile myBank = new BankProfile(SetUpActivityBank.this);
+                myBank.addData(businessName.getText().toString().trim(),
+                        phone.getText().toString().trim(), address.getText().toString().trim(),
+                        zip.getText().toString().trim(), city.getText().toString().trim(),
+                        province.getText().toString().trim(), country.getText().toString().trim());
+                Intent intent = new Intent(SetUpActivityBank.this, SetUpActivityDonor.class);
+                startActivity(intent);
             }
         });
     }
