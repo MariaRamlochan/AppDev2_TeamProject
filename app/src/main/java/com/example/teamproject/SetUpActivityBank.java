@@ -31,12 +31,12 @@ public class SetUpActivityBank extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BankProfile myBank = new BankProfile(SetUpActivityBank.this);
-                myBank.addData(businessName.getText().toString().trim(),
-                        phone.getText().toString().trim(), address.getText().toString().trim(),
-                        zip.getText().toString().trim(), city.getText().toString().trim(),
-                        province.getText().toString().trim(), country.getText().toString().trim());
-                Intent intent = new Intent(SetUpActivityBank.this, SetUpActivityDonor.class);
+//                BankProfile myBank = new BankProfile(SetUpActivityBank.this);
+//                myBank.addData(businessName.getText().toString().trim(),
+//                        phone.getText().toString().trim(), address.getText().toString().trim(),
+//                        zip.getText().toString().trim(), city.getText().toString().trim(),
+//                        province.getText().toString().trim(), country.getText().toString().trim());
+                Intent intent = new Intent(SetUpActivityBank.this, ProfileSetUpActivity.class);
                 startActivity(intent);
             }
         });

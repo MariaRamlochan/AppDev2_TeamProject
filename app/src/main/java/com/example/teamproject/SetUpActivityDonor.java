@@ -49,7 +49,7 @@ public class SetUpActivityDonor extends AppCompatActivity {
                             phone.getText().toString().trim(), address.getText().toString().trim(),
                             zip.getText().toString().trim(), city.getText().toString().trim(),
                             province.getText().toString().trim(), country.getText().toString().trim());
-                    intent = new Intent(SetUpActivityDonor.this, SetUpActivityDonor.class);
+                    intent = new Intent(SetUpActivityDonor.this, ProfileSetUpActivity.class);
                     startActivity(intent);
 
                 }
