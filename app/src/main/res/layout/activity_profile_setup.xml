@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarThumbHorizontal="@color/cardview_shadow_end_color"
-    tools:context=".ProfileSetUpActivity">
+    tools:context=".ProfileSetupActivity">
 
     <Button
         android:id="@+id/buttonConfirmSetPic"
@@ -13,17 +13,17 @@
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="220dp"
         android:backgroundTint="#FF0000"
         android:enabled="true"
         android:text="Set Profile Pictture"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/urlPicture"
