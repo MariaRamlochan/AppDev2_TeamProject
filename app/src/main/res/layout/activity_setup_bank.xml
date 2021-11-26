@@ -91,7 +91,6 @@
                 android:ems="10"
                 android:hint="Your province"
                 android:inputType="textPersonName"
-                android:password="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextCityB" />
 
@@ -115,7 +114,6 @@
                 android:ems="10"
                 android:hint="Your country"
                 android:inputType="textPersonName"
-                android:password="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextProvinceB" />
 
@@ -139,7 +137,6 @@
                 android:ems="10"
                 android:hint="Your zip code"
                 android:inputType="textPersonName"
-                android:password="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextAddressB" />
 
@@ -163,7 +160,6 @@
                 android:ems="10"
                 android:hint="Your address"
                 android:inputType="textPersonName"
-                android:password="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPhoneB" />
 
