@@ -12,9 +12,9 @@
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
+        android:ems="10"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -25,11 +25,9 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:hint="Password"
-        android:imeActionLabel="login"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
+        android:ems="10"
+        android:inputType="textPersonName"
         android:password="true"
-        android:selectAllOnFocus="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 

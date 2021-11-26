@@ -11,33 +11,49 @@ import android.widget.Toast;
 
 public class SetUpActivityBank extends AppCompatActivity {
 
-    EditText businessName, phone, address, zip, city, province, country;
+    EditText businessB, phoneB, addressB, zipB, cityB, provinceB, countryB;
     Button confirm;
+    BankProfile myBank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_bank);
 
-        businessName = findViewById(R.id.editTextBusinessB);
-        phone = findViewById(R.id.editTextPhoneB);
-        address = findViewById(R.id.editTextAddressB);
-        zip = findViewById(R.id.editTextZipB);
-        city = findViewById(R.id.editTextCityB);
-        province = findViewById(R.id.editTextProvinceB);
-        country = findViewById(R.id.editTextCountryB);
+        businessB = findViewById(R.id.editTextBusinessB);
+        phoneB = findViewById(R.id.editTextPhoneB);
+        addressB = findViewById(R.id.editTextAddressB);
+        zipB = findViewById(R.id.editTextZipB);
+        cityB = findViewById(R.id.editTextCityB);
+        provinceB = findViewById(R.id.editTextProvinceB);
+        countryB = findViewById(R.id.editTextCountryB);
         confirm = findViewById(R.id.buttonConfirmB);
+        myBank = new BankProfile(this);
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                BankProfile myBank = new BankProfile(SetUpActivityBank.this);
-//                myBank.addData(businessName.getText().toString().trim(),
-//                        phone.getText().toString().trim(), address.getText().toString().trim(),
-//                        zip.getText().toString().trim(), city.getText().toString().trim(),
-//                        province.getText().toString().trim(), country.getText().toString().trim());
-                Intent intent = new Intent(SetUpActivityBank.this, ProfileSetupActivity.class);
-                startActivity(intent);
+                String business = businessB.getText().toString().trim();
+                String phone = phoneB.getText().toString().trim();
+                String address = addressB.getText().toString().trim();
+                String zip = zipB.getText().toString().trim();
+                String city = cityB.getText().toString().trim();
+                String province = provinceB.getText().toString().trim();
+                String country = countryB.getText().toString().trim();
+
+                if (business.equals("") || phone.equals("") || address.equals("") || zip.equals("")
+                        || city.equals("") || province.equals("") || country.equals("")) {
+                    Toast.makeText(SetUpActivityBank.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Boolean insert = myBank.insertData(business, phone, address, zip, city, province, country);
+                    if (insert) {
+                        Toast.makeText(SetUpActivityBank.this, "Registration completed", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SetUpActivityBank.this, TestingPage.class);
+                        startActivity(intent);
+                    }
+
+                }
             }
         });
     }

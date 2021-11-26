@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Sign in was clicked", Toast.LENGTH_SHORT).show();
                 String user = email.getText().toString().trim();
                 String pass = password.getText().toString().trim();
 
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
                     Boolean checkUserPass = myUser.checkEmailPassword(user, pass);
                     if (checkUserPass) {
                         Toast.makeText(MainActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, TestingPage.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
