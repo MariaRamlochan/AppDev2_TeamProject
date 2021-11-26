@@ -56,6 +56,12 @@ public class User extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor getAllData() {
+        SQLiteDatabase  db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * from " + TABLE_NAME, null);
+        return res;
+    }
+
     public Boolean checkEmail(String email){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM User WHERE user_email = ? ", new String[] {email});

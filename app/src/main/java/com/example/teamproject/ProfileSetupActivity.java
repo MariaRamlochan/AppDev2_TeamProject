@@ -28,7 +28,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
     public static final int GALLERY_PICK_CODE = 1003;
     ImageView selectedImage;
     ImageButton camera;
-    Button gallery;
+    Button gallery, setPic;
     Uri image_uri;
 
     @Override
@@ -38,7 +38,16 @@ public class ProfileSetupActivity extends AppCompatActivity {
 
         camera = findViewById(R.id.imageButton);
         gallery = findViewById(R.id.galleryButton);
+        setPic = findViewById(R.id.buttonConfirmSetPic);
         selectedImage = findViewById(R.id.urlPictureBusiness);
+
+        setPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileSetupActivity.this, TestingPage.class);
+                startActivity(intent);
+            }
+        });
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
