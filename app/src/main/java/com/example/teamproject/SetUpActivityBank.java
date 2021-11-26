@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class SetUpActivityBank extends AppCompatActivity {
 
     EditText businessB, phoneB, addressB, zipB, cityB, provinceB, countryB;
-    Button confirm;
+    Button confirmB;
     BankProfile myBank;
 
     @Override
@@ -27,10 +27,10 @@ public class SetUpActivityBank extends AppCompatActivity {
         cityB = findViewById(R.id.editTextCityB);
         provinceB = findViewById(R.id.editTextProvinceB);
         countryB = findViewById(R.id.editTextCountryB);
-        confirm = findViewById(R.id.buttonConfirmB);
+        confirmB = findViewById(R.id.buttonConfirmB);
         myBank = new BankProfile(this);
 
-        confirm.setOnClickListener(new View.OnClickListener() {
+        confirmB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String business = businessB.getText().toString().trim();
@@ -46,10 +46,10 @@ public class SetUpActivityBank extends AppCompatActivity {
                     Toast.makeText(SetUpActivityBank.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Boolean insert = myBank.insertData(business, phone, address, zip, city, province, country);
-                    if (insert) {
+                    Boolean insert = myBank.insertDataBank(business, phone, address, zip, city, province, country);
+                    if (!insert) {
                         Toast.makeText(SetUpActivityBank.this, "Registration completed", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SetUpActivityBank.this, TestingPage.class);
+                        Intent intent = new Intent(SetUpActivityBank.this, ProfileSetupActivity.class);
                         startActivity(intent);
                     }
 

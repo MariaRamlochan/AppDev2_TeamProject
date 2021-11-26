@@ -13,7 +13,7 @@ public class DonorProfile extends SQLiteOpenHelper {
     private Context context;
     private static final String DATABASE_NAME = "teamProject.db";
     private static final String TABLE_NAME = "DonorProfile";
-    private static final String COL_ID = "profile_id";
+    private static final String COL_ID = "donor_id";
     private static final String COL_TYPE = "profile_type";
     private static final String COL_BUSINESS_NAME = "business_name";
     private static final String COL_PHONE_NUM = "phone_num";
@@ -21,7 +21,7 @@ public class DonorProfile extends SQLiteOpenHelper {
     private static final String COL_ZIP_CODE = "zip_code";
     private static final String COL_CITY = "city";
     private static final String COL_PROVINCE = "province";
-    private static final String COL_COUNTRY = "county";
+    private static final String COL_COUNTRY = "country";
 
     public DonorProfile(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -43,7 +43,7 @@ public class DonorProfile extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public Boolean insertData(String type, String business, String phone, String address, String zip, String city,
+    public Boolean insertDataDonor(String type, String business, String phone, String address, String zip, String city,
                               String province, String country) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -57,12 +57,18 @@ public class DonorProfile extends SQLiteOpenHelper {
         contentValues.put(COL_COUNTRY, country);
         long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         if (result == -1) {
-            Toast.makeText(context,"Failed",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Added",Toast.LENGTH_SHORT).show();
             return false;
         }
         else {
             Toast.makeText(context,"Added Successfully",Toast.LENGTH_SHORT).show();
             return true;
         }
+    }
+
+    public Cursor getAllDataDonor() {
+        SQLiteDatabase  db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * from " + TABLE_NAME, null);
+        return res;
     }
 }

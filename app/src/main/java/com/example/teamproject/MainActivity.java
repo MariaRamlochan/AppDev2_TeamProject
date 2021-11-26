@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         viewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, ChildView.class);
+//                startActivity(intent);
                 Cursor res = myUser.getAllData();
                 if(res.getCount() == 0) {
                     showMessage ("error", "Nothing found");
@@ -88,4 +90,5 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
 
     }
+
 }

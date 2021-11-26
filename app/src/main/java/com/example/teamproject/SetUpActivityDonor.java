@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class SetUpActivityDonor extends AppCompatActivity {
 
     EditText businessD, phoneD, addressD, zipD, cityD, provinceD, countryD;
-    Button confirm;
+    Button confirmD;
     Spinner dropdown;
     DonorProfile myDonor;
 
@@ -31,14 +31,14 @@ public class SetUpActivityDonor extends AppCompatActivity {
         cityD = findViewById(R.id.editTextCityD);
         provinceD = findViewById(R.id.editTextProvinceD);
         countryD = findViewById(R.id.editTextCountryD);
-        confirm = findViewById(R.id.buttonConfirmD);
+        confirmD = findViewById(R.id.buttonConfirmD);
         myDonor = new DonorProfile(SetUpActivityDonor.this);
 
         String[] items = new String[]{"Select your business type", "Restaurant", "Bakery"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
-        confirm.setOnClickListener(new View.OnClickListener() {
+        confirmD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String type = dropdown.getSelectedItem().toString().trim();
@@ -56,10 +56,10 @@ public class SetUpActivityDonor extends AppCompatActivity {
                     Toast.makeText(SetUpActivityDonor.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Boolean insert = myDonor.insertData(type, business, phone, address, zip, city, province, country);
-                    if (insert) {
+                    Boolean insert = myDonor.insertDataDonor(type, business, phone, address, zip, city, province, country);
+                    if (!insert) {
                         Toast.makeText(SetUpActivityDonor.this, "Registration completed", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SetUpActivityDonor.this, TestingPage.class);
+                        Intent intent = new Intent(SetUpActivityDonor.this, ProfileSetupActivity.class);
                         startActivity(intent);
                     }
 

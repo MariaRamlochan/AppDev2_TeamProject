@@ -20,7 +20,7 @@ public class BankProfile extends SQLiteOpenHelper {
     private static final String COL_ZIP_CODE = "zip_code";
     private static final String COL_CITY = "city";
     private static final String COL_PROVINCE = "province";
-    private static final String COL_COUNTRY = "county";
+    private static final String COL_COUNTRY = "country";
 
     public BankProfile(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -42,7 +42,7 @@ public class BankProfile extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public Boolean insertData(String business, String phone, String address, String zip, String city,
+    public Boolean insertDataBank(String business, String phone, String address, String zip, String city,
                               String province, String country) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -55,12 +55,18 @@ public class BankProfile extends SQLiteOpenHelper {
         contentValues.put(COL_COUNTRY, country);
         long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         if (result == -1) {
-            Toast.makeText(context,"Failed",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Added ",Toast.LENGTH_SHORT).show();
             return false;
         }
         else {
             Toast.makeText(context,"Added Successfully",Toast.LENGTH_SHORT).show();
             return true;
         }
+    }
+
+    public Cursor getAllDataBank() {
+        SQLiteDatabase  db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * from " + TABLE_NAME, null);
+        return res;
     }
 }
