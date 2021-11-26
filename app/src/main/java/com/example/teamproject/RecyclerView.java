@@ -45,10 +45,10 @@ public class RecyclerView extends androidx.recyclerview.widget.RecyclerView.Adap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Glide.with(mycontext)
-                .asBitmap()
-                .load(images.get(position))
-                .into(holder.image);
+//        Glide.with(mycontext)
+//                .asBitmap()
+//                .load(images.get(position))
+//                .into(holder.image);
         holder.bName.setText(businessName.get(position));
         holder.bAddress.setText(businessAddress.get(position));
         holder.bPhone.setText(businessPhone.get(position));
