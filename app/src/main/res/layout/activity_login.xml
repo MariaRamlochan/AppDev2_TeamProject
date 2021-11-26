@@ -95,7 +95,7 @@
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="51dp"
         android:backgroundTint="#EDF31D3D"
         android:enabled="true"
@@ -103,6 +103,7 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
@@ -111,8 +112,8 @@
         android:layout_width="310dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#00BCD4"
         android:enabled="true"
         android:text="Sign Up"
@@ -125,8 +126,8 @@
         android:id="@+id/viewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="20dp"
         android:text="View Database"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
