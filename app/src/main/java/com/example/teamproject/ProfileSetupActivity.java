@@ -3,34 +3,22 @@ package com.example.teamproject;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ProfileSetupActivity extends AppCompatActivity {
 
@@ -50,7 +38,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
 
         camera = findViewById(R.id.imageButton);
         gallery = findViewById(R.id.galleryButton);
-        selectedImage = findViewById(R.id.urlPicture);
+        selectedImage = findViewById(R.id.urlPictureBusiness);
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
