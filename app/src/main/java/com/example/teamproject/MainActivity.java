@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginButton);
         signUpBtn = findViewById(R.id.signUpButton);
         viewBtn = findViewById(R.id.viewButton);
-        email = findViewById(R.id.emailEditText);
-        password = findViewById(R.id.passwordEditText);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
         myUser = new User(this);
 
         viewBtn.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Sign in was clicked", Toast.LENGTH_SHORT).show();
                 String user = email.getText().toString().trim();
                 String pass = password.getText().toString().trim();
 
