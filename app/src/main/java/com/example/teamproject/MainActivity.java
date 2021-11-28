@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button loginBtn, signUpBtn, viewBtn;
     EditText email, password;
-    User myUser;
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,27 +27,13 @@ public class MainActivity extends AppCompatActivity {
         viewBtn = findViewById(R.id.viewButton);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        myUser = new User(this);
+        databaseHelper = new DatabaseHelper(this);
 
         viewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, ChildView.class);
-//                startActivity(intent);
-                Cursor res = myUser.getAllData();
-                if(res.getCount() == 0) {
-                    showMessage ("error", "Nothing found");
-                    return;
-                }
-
-                StringBuffer buffer = new StringBuffer();
-                while(res.moveToNext()) {
-                    buffer.append("ID : " + res.getString(0) + "\n");
-                    buffer.append( "Type : " + res.getString(1) + "\n");
-                    buffer.append("Email : " + res.getString(2) + "\n");
-                    buffer.append( "Password : " + res.getString(3) + "\n");
-                }
-                showMessage ("Data ", buffer.toString());
+                Intent intent = new Intent(MainActivity.this, ChildView.class);
+                startActivity(intent);
             }
         });
 
@@ -60,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 if (user.equals("") || pass.equals("")) {
                     Toast.makeText(MainActivity.this, "All Fields must be filled", Toast.LENGTH_SHORT).show();
                 } else {
-                    Boolean checkUserPass = myUser.checkEmailPassword(user, pass);
+                    Boolean checkUserPass = databaseHelper.checkEmailPassword(user, pass);
                     if (checkUserPass) {
                         Toast.makeText(MainActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, TestingPage.class);
@@ -79,16 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    private void showMessage(String title, String message) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
-
     }
 
 }
