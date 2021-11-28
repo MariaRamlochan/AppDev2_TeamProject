@@ -20,7 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class ProfileSetupActivity extends AppCompatActivity {
+public class PictureSetupActivity extends AppCompatActivity {
 
     public static final int PERMISSION_CODE_GALLERY = 1000;
     public static final int PERMISSION_CODE_CAMERA = 1001;
@@ -35,7 +35,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_setup);
+        setContentView(R.layout.activity_picture_setup);
 
         camera = findViewById(R.id.imageButton);
         gallery = findViewById(R.id.galleryButton);
@@ -63,8 +63,8 @@ public class ProfileSetupActivity extends AppCompatActivity {
                 Boolean insert = databaseHelper.insertDataUser(userType, email, password, business,
                         phone, address, zip, city, province, country, selectedImage.toString());
                 if (insert) {
-                    Toast.makeText(ProfileSetupActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ProfileSetupActivity.this, TestingPage.class);
+                    Toast.makeText(PictureSetupActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PictureSetupActivity.this, TestingPage.class);
                     startActivity(intent);
                 }
             }

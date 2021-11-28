@@ -28,7 +28,7 @@
             android:name=".TestingPage"
             android:exported="true" />
         <activity
-            android:name=".ProfileSetupActivity"
+            android:name=".PictureSetupActivity"
             android:exported="true" />
         <activity
             android:name=".SignUpActivity"
