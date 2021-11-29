@@ -21,7 +21,7 @@ public class DonorProfile extends SQLiteOpenHelper {
     private static final String COL_ZIP_CODE = "zip_code";
     private static final String COL_CITY = "city";
     private static final String COL_PROVINCE = "province";
-    private static final String COL_COUNTRY = "county";
+    private static final String COL_COUNTRY = "country";
 
     public DonorProfile(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
