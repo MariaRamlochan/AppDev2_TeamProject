@@ -20,12 +20,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class ProfileSetupActivity extends AppCompatActivity {
+public class PictureSetupActivity extends AppCompatActivity {
 
     public static final int PERMISSION_CODE_GALLERY = 1000;
     public static final int PERMISSION_CODE_CAMERA = 1001;
     public static final int CAMERA_PICK_CODE = 1002;
     public static final int GALLERY_PICK_CODE = 1003;
+    DatabaseHelper databaseHelper;
     ImageView selectedImage;
     ImageButton camera;
     Button gallery, setPic;
@@ -34,18 +35,38 @@ public class ProfileSetupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_setup);
+        setContentView(R.layout.activity_picture_setup);
 
         camera = findViewById(R.id.imageButton);
         gallery = findViewById(R.id.galleryButton);
         setPic = findViewById(R.id.buttonConfirmSetPic);
         selectedImage = findViewById(R.id.urlPictureBusiness);
+        databaseHelper = new DatabaseHelper(this);
 
         setPic.setOnClickListener(new View.OnClickListener() {
+
+            final Bundle bundle = getIntent().getExtras();
+            final String userType = bundle.getString("userType");
+            final String email = bundle.getString("email");
+            final String password = bundle.getString("password");
+            final String business = bundle.getString("businessName");
+            final String phone = bundle.getString("phone");
+            final String address = bundle.getString("address");
+            final String zip = bundle.getString("zip");
+            final String city = bundle.getString("city");
+            final String province = bundle.getString("province");
+            final String country = bundle.getString("country");
+
+
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileSetupActivity.this, TestingPage.class);
-                startActivity(intent);
+                Boolean insert = databaseHelper.insertDataUser(userType, email, password, business,
+                        phone, address, zip, city, province, country, selectedImage.toString());
+                if (insert) {
+                    Toast.makeText(PictureSetupActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PictureSetupActivity.this, TestingPage.class);
+                    startActivity(intent);
+                }
             }
         });
 
