@@ -241,15 +241,22 @@
           android:layout_marginStart="50dp"
           android:layout_marginTop="40dp"
           android:layout_marginEnd="50dp"
-          android:layout_marginBottom="40dp"
           android:backgroundTint="#00BCD4"
           android:enabled="true"
           android:text="Confirm"
           android:textColor="#FFFFFF"
           android:textStyle="bold"
-          app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/editTextCountryD" />
+
+      <fragment
+          android:id="@+id/autocomplete_fragment"
+          android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="7dp"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/editTextCountryD" />
     </androidx.constraintlayout.widget.ConstraintLayout>

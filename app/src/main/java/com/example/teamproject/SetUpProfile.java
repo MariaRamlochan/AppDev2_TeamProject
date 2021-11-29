@@ -5,9 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 
 public class SetUpProfile extends AppCompatActivity {
 
@@ -29,6 +35,12 @@ public class SetUpProfile extends AppCompatActivity {
         countryD = findViewById(R.id.editTextCountryD);
         confirmD = findViewById(R.id.buttonConfirmD);
         databaseHelper = new DatabaseHelper(this);
+
+        Places.initialize(getApplicationContext(), "AIzaSyAeeieaaUPcSz9r3HCUOWWW0GY9tWusSqs");
+        PlacesClient placesClient = Places.createClient(this);
+
+
+
 
 
         confirmD.setOnClickListener(new View.OnClickListener() {
