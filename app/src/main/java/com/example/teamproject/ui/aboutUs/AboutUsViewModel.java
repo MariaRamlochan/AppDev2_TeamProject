@@ -1,16 +1,16 @@
-package com.example.teamproject.ui.slideshow;
+package com.example.teamproject.ui.aboutUs;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class AboutUsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public AboutUsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("This is About Us fragment");
     }
 
     public LiveData<String> getText() {

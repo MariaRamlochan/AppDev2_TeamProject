@@ -1,16 +1,16 @@
-package com.example.teamproject.ui.gallery;
+package com.example.teamproject.ui.donation;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class DonationViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public DonationViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is the Donation fragment");
     }
 
     public LiveData<String> getText() {

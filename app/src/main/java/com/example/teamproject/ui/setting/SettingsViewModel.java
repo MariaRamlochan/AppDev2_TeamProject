@@ -1,19 +1,20 @@
-package com.example.teamproject.ui.home;
+package com.example.teamproject.ui.setting;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class SettingsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public SettingsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is the Settings fragment");
     }
 
     public LiveData<String> getText() {
         return mText;
     }
 }
+
