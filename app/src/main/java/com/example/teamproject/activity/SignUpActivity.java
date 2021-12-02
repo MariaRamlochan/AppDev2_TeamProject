@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.teamproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.teamproject.database.DatabaseHelper;
+import com.example.teamproject.R;
 
 public class SignUpActivity extends AppCompatActivity {
 

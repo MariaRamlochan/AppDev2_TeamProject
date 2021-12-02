@@ -5,7 +5,7 @@
     android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ChildView">
+    tools:context=".activity.ChildView">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/urlPictureBusiness"

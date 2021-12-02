@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.teamproject.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +19,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.teamproject.database.DatabaseHelper;
+import com.example.teamproject.R;
 
 public class PictureSetupActivity extends AppCompatActivity {
 

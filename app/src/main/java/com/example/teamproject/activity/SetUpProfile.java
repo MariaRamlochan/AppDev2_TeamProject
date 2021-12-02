@@ -1,15 +1,16 @@
-package com.example.teamproject;
+package com.example.teamproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.teamproject.database.DatabaseHelper;
+import com.example.teamproject.R;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.TypeFilter;
 import com.google.android.libraries.places.api.net.PlacesClient;
