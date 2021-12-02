@@ -31,7 +31,7 @@
         android:layout_width="236dp"
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
@@ -49,6 +49,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="4dp"
+        android:layout_height="58dp"
+        android:background="#B8B8B8"
+        android:backgroundTint="#B5B5B5"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="36dp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="4dp"
+        android:layout_height="58dp"
+        android:background="#B8B8B8"
+        android:backgroundTint="#B5B5B5"
+        tools:layout_editor_absoluteX="393dp"
+        tools:layout_editor_absoluteY="36dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="236dp"
+        android:layout_height="4dp"
+        android:background="#B8B8B8"
+        android:backgroundTint="#B5B5B5"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="35dp" />
 
     <TextView
         android:id="@+id/textView15"
