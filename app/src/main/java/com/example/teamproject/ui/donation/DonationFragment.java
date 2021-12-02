@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teamproject.databinding.FragmentDonationsBinding;
 
@@ -27,7 +28,12 @@ public class DonationFragment extends Fragment {
         binding = FragmentDonationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDonations;
+
+
+        //final RecyclerView recyclerView = binding.recyclerViewDonation;
+
+        //final TextView textView = binding.textDonations;
+        final TextView textView = binding.textView8;
         donationViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

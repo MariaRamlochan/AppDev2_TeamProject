@@ -57,7 +57,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profilePicImageView"
         android:layout_width="102dp"
         android:layout_height="95dp"
         android:layout_marginTop="20dp"
@@ -75,7 +75,7 @@
         android:hint="App Name"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/profilePicImageView" />
 
     <TextView
         android:id="@+id/textView4"
