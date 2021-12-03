@@ -20,9 +20,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.teamproject.NavigationDrawer;
-import com.example.teamproject.database.DatabaseHelper;
 import com.example.teamproject.R;
+import com.example.teamproject.database.DatabaseHelper;
 
 public class PictureSetupActivity extends AppCompatActivity {
 
@@ -68,7 +67,7 @@ public class PictureSetupActivity extends AppCompatActivity {
                         phone, address, zip, city, province, country, selectedImage.toString());
                 if (insert) {
                     Toast.makeText(PictureSetupActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(PictureSetupActivity.this, NavigationDrawer.class);
+                    Intent intent = new Intent(PictureSetupActivity.this, TestingPage.class);
                     startActivity(intent);
                 }
             }

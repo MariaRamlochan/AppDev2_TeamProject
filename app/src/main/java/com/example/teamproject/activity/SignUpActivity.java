@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.teamproject.database.DatabaseHelper;
 import com.example.teamproject.R;
+import com.example.teamproject.database.DatabaseHelper;
 
 public class SignUpActivity extends AppCompatActivity {
 

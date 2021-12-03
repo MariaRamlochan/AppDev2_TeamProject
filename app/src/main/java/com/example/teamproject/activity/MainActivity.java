@@ -9,9 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.teamproject.NavigationDrawer;
-import com.example.teamproject.database.DatabaseHelper;
 import com.example.teamproject.R;
+import com.example.teamproject.database.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     Boolean checkUserPass = databaseHelper.checkEmailPassword(user, pass);
                     if (checkUserPass) {
                         Toast.makeText(MainActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, NavigationDrawer.class);
+                        Intent intent = new Intent(MainActivity.this, TestingPage.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
