@@ -19,11 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
         <activity
-            android:name=".NavigationDrawer"
-            android:exported="true"
-            android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/Theme.TeamProject.NoActionBar" />
-        <activity
             android:name=".activity.SetUpProfile"
             android:exported="true" />
         <activity

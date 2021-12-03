@@ -9,11 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.teamproject.NavigationDrawer;
 import com.example.teamproject.database.DatabaseHelper;
 import com.example.teamproject.R;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.net.PlacesClient;
 
 public class MainActivity extends AppCompatActivity {
 
