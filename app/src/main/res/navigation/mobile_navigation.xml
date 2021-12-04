@@ -14,18 +14,24 @@
     <fragment
         android:id="@+id/nav_donations"
         android:name="com.example.teamproject.ui.Donation.DonationFragment"
-        android:label="@string/menu_donations"
+        android:label="Donation"
         tools:layout="@layout/fragment_donations" />
 
     <fragment
         android:id="@+id/nav_aboutUs"
         android:name="com.example.teamproject.ui.aboutUs.AboutUsFragment"
-        android:label="@string/menu_about_us"
+        android:label="About Us"
         tools:layout="@layout/fragment_about_us" />
+
+    <fragment
+        android:id="@+id/nav_list"
+        android:name="com.example.teamproject.ui.Lists.ListFragment"
+        android:label="List of Donors"
+        tools:layout="@layout/fragment_list" />
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.teamproject.ui.setting.SettingsFragment"
-        android:label="@string/menu_settings"
+        android:label="Settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

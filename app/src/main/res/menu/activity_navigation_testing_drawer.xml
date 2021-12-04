@@ -14,11 +14,15 @@
             android:title="Donations" />
         <item
             android:id="@+id/nav_aboutUs"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_gallery"
             android:title="About Us" />
         <item
+            android:id="@+id/nav_list"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="List of Donors" />
+        <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_gallery"
             android:title="Settings" />
     </group>
 </menu>
