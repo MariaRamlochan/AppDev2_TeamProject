@@ -13,19 +13,81 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.teamproject.databinding.FragmentDonationsBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class DonationFragment extends Fragment {
     private FragmentDonationsBinding binding;
+    FloatingActionButton post, past, present, open;
+    TextView postD, pastD, presentD, donationTextView;
+    Boolean isFabvisible;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         binding = FragmentDonationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textViewDonation = binding.textDonations;
+        post = binding.postFab;
+        past = binding.pastFab;
+        present = binding.donationFab;
+        open = binding.openFab;
+        postD = binding.textViewPost;
+        pastD = binding.textViewPast;
+        presentD = binding.textViewDonationList;
+        donationTextView = binding.donationTextView;
 
-        textViewDonation.setText("Testing completed");
+        isFabvisible = false;
+
+        post.setVisibility(View.GONE);
+        past.setVisibility(View.GONE);
+        present.setVisibility(View.GONE);
+        postD.setVisibility(View.GONE);
+        pastD.setVisibility(View.GONE);
+        presentD.setVisibility(View.GONE);
+
+        open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isFabvisible){
+                    post.setVisibility(View.VISIBLE);
+                    past.setVisibility(View.VISIBLE);
+                    present.setVisibility(View.VISIBLE);
+                    postD.setVisibility(View.VISIBLE);
+                    pastD.setVisibility(View.VISIBLE);
+                    presentD.setVisibility(View.VISIBLE);
+                    isFabvisible = true;
+                } else {
+                    post.setVisibility(View.GONE);
+                    past.setVisibility(View.GONE);
+                    present.setVisibility(View.GONE);
+                    postD.setVisibility(View.GONE);
+                    pastD.setVisibility(View.GONE);
+                    presentD.setVisibility(View.GONE);
+                    isFabvisible = false;
+                }
+            }
+        });
+
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                donationTextView.setText("Post Donation");
+            }
+        });
+
+        past.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                donationTextView.setText("Past Donation");
+            }
+        });
+
+        present.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                donationTextView.setText("Donations");
+            }
+        });
+
 
         return root;
     }

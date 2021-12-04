@@ -6,19 +6,109 @@
     android:layout_height="match_parent"
     tools:context=".ui.Donation.DonationFragment">
 
-    <TextView
-        android:id="@+id/text_donations"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="410dp"
+        android:layout_height="646dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/donationTextView"
+        android:layout_width="242dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Donations"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/openFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
+        app:fabCustomSize="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pastFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
+        app:fabCustomSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/openFab"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/postFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
+        app:fabCustomSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/pastFab"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/donationFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
+        app:fabCustomSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/postFab"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="113dp"
+        android:text="Past Donation"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/pastFab" />
+
+    <TextView
+        android:id="@+id/textViewPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="44dp"
+        android:text="Post Donation"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPast"
+        app:layout_constraintEnd_toStartOf="@+id/postFab" />
+
+    <TextView
+        android:id="@+id/textViewDonationList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="43dp"
+        android:text="Donation List"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPost"
+        app:layout_constraintEnd_toStartOf="@+id/donationFab" />
 </androidx.constraintlayout.widget.ConstraintLayout>

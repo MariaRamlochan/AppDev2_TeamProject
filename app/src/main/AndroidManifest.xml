@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
         <activity
+            android:name=".RecyclerViewAdapter"
+            android:exported="true" />
+        <activity
             android:name=".NavigationMenu"
             android:exported="true"
             android:label="@string/title_activity_navigation_menu"
