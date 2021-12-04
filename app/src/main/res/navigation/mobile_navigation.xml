@@ -34,4 +34,10 @@
         android:name="com.example.teamproject.ui.setting.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_post_donation"
+        android:name="com.example.teamproject.ui.PostDonation.PostDonationFragment"
+        android:label="Post Donation"
+        tools:layout="@layout/fragment_post_donation" />
 </navigation>

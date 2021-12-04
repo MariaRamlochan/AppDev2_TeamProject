@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
         <activity
+            android:name=".ui.PostDonation.PostDonationFragment"
+            android:exported="true" />
+        <activity
             android:name=".RecyclerViewAdapter"
             android:exported="true" />
         <activity
