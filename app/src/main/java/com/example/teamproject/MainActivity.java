@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     Boolean checkUserPass = databaseHelper.checkEmailPassword(user, pass);
                     if (checkUserPass) {
                         Toast.makeText(MainActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, DatabaseViewActivity.class);
+                        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                         intent.putExtra("email", user);
                         startActivity(intent);
                     } else {

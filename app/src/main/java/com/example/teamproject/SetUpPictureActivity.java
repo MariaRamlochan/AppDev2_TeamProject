@@ -63,7 +63,7 @@ public class SetUpPictureActivity extends AppCompatActivity {
                         phone, address, zip, city, province, country, selectedImage.toString());
                 if (insert) {
                     Toast.makeText(SetUpPictureActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SetUpPictureActivity.this, DatabaseViewActivity.class);
+                    Intent intent = new Intent(SetUpPictureActivity.this, ProfileActivity.class);
                     intent.putExtra("email", email);
                     startActivity(intent);
                 }
