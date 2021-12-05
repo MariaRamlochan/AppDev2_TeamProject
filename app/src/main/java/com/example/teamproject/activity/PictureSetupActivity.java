@@ -21,8 +21,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.teamproject.R;
-import com.example.teamproject.database.DatabaseHelper;
-import com.example.teamproject.ui.Donation.DonationFragment;
 
 public class PictureSetupActivity extends AppCompatActivity {
 
