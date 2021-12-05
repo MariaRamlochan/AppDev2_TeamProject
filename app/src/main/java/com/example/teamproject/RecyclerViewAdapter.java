@@ -31,7 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = minflator.from(parent.getContext()).inflate(R.layout.child_view,parent,false);
+        View view = minflator.from(parent.getContext()).inflate(R.layout.activity_testing_page,parent,false);
         return  new ViewHolder(view);
     }
 

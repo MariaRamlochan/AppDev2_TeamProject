@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.teamproject.R;
+import com.example.teamproject.database.DatabaseHelper;
 
 public class PictureSetupActivity extends AppCompatActivity {
 
@@ -64,12 +65,6 @@ public class PictureSetupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Boolean insert = databaseHelper.insertDataUser(userType, email, password, business,
                         phone, address, zip, city, province, country, selectedImage.toString());
-                if (insert) {
-                    Toast.makeText(PictureSetupActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(PictureSetupActivity.this, DonationFragment.class);
-                    intent.putExtra("email", email);
-                    startActivity(intent);
-                }
             }
         });
 

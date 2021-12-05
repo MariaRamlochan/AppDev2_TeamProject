@@ -19,17 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
         <activity
-            android:name=".ui.PostDonation.PostDonationFragment"
-            android:exported="true" />
-        <activity
-            android:name=".RecyclerViewAdapter"
-            android:exported="true" />
-        <activity
-            android:name=".NavigationMenu"
-            android:exported="true"
-            android:label="@string/title_activity_navigation_menu"
-            android:theme="@style/Theme.TeamProject.NoActionBar" />
-        <activity
             android:name=".activity.SetUpProfile"
             android:exported="true" />
         <activity
