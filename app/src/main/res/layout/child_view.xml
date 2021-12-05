@@ -5,7 +5,7 @@
     android:id="@+id/textviewDeco"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".RecyclerViewAdapter">
+    tools:context=".ui.Donation.DonationFragment">
 
     <ImageView
         android:id="@+id/imageView4"

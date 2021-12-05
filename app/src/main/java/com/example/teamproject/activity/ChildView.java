@@ -15,7 +15,7 @@ import com.example.teamproject.database.DatabaseHelper;
 public class ChildView extends AppCompatActivity {
 
     TextView deleteId;
-    Button userDbBtn, deleteDbBtn;
+    Button userDbBtn, deleteDbBtn, postDbBtn;
     DatabaseHelper databaseHelper;
 
     @Override
@@ -26,6 +26,7 @@ public class ChildView extends AppCompatActivity {
         deleteId = findViewById(R.id.deleteIdEditText);
         userDbBtn = findViewById(R.id.userDbButton);
         deleteDbBtn = findViewById(R.id.deleteButton);
+        postDbBtn = findViewById(R.id.postDbButton);
         databaseHelper = new DatabaseHelper(this);
 
         userDbBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +62,24 @@ public class ChildView extends AppCompatActivity {
             public void onClick(View v) {
                 int id = Integer.parseInt(deleteId.getText().toString());
                 databaseHelper.deleteData(id);
+            }
+        });
+
+        postDbBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor res = databaseHelper.getAllDataPost();
+                if (res.getCount() == 0) {
+                    showMessage("error", "Nothing found");
+                    return;
+                }
+
+                StringBuffer buffer = new StringBuffer();
+                while (res.moveToNext()) {
+                    buffer.append("ID : " + res.getString(0) + "\n");
+                    buffer.append("Description : " + res.getString(1) + "\n");
+                }
+                showMessage("Data ", buffer.toString());
             }
         });
 

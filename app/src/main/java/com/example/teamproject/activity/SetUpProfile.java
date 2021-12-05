@@ -35,12 +35,6 @@ public class SetUpProfile extends AppCompatActivity {
         confirmD = findViewById(R.id.buttonConfirmD);
         databaseHelper = new DatabaseHelper(this);
 
-        Places.initialize(getApplicationContext(), "AIzaSyAeeieaaUPcSz9r3HCUOWWW0GY9tWusSqs");
-        PlacesClient placesClient = Places.createClient(this);
-
-
-
-
 
         confirmD.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.teamproject.R;
 import com.example.teamproject.database.DatabaseHelper;
+import com.example.teamproject.ui.Donation.DonationFragment;
 
 public class PictureSetupActivity extends AppCompatActivity {
 
@@ -67,7 +68,8 @@ public class PictureSetupActivity extends AppCompatActivity {
                         phone, address, zip, city, province, country, selectedImage.toString());
                 if (insert) {
                     Toast.makeText(PictureSetupActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(PictureSetupActivity.this, TestingPage.class);
+                    Intent intent = new Intent(PictureSetupActivity.this, DonationFragment.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                 }
             }

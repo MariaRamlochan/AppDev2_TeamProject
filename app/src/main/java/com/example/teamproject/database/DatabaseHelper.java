@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static DatabaseHelper synchronizedInstance;
-    private static final String DATABASE_NAME = "test3.db";
+    private static final String DATABASE_NAME = "test6.db";
 
     private static final String TABLE_USER = "User";
     private static final String TABLE_POST = "Post";
@@ -30,6 +30,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_PROVINCE = "province";
     private static final String COL_COUNTRY = "country";
     private static final String COL_USER_PIC = "user_pic";
+
+    private static final String COL_POST_ID = "post_id";
+    private static final String COL_POST_DESC = "post_desc";
+    private static final String COL_POST_PIC = "post_pic";
+    private static final String COL_USER_ID = "user_id";
     Context context;
 
     // Use the application context, which will ensure that we don't leak an Activity's context.
@@ -59,7 +64,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "%s TEXT, %s TEXT, %s TEXT);", TABLE_USER, COL_ID, COL_USER_TYPE,
                 COL_EMAIL, COL_PASSWORD, COL_BUSINESS_NAME, COL_PHONE_NUM, COL_ADDRESS, COL_ZIP_CODE,
                 COL_CITY, COL_PROVINCE, COL_COUNTRY, COL_USER_PIC);
+
+        String post_table = "CREATE TABLE "
+                + TABLE_POST + " ("
+                + COL_POST_ID + " integer primary key autoincrement, "
+                + COL_POST_DESC + " text not null, "
+                + COL_USER_ID + " integer,"
+                + " FOREIGN KEY ("+COL_USER_ID+") REFERENCES "+TABLE_USER+"("+COL_ID+"));";
+
         sqLiteDatabase.execSQL(user_table);
+        sqLiteDatabase.execSQL(post_table);
     }
 
     @Override
@@ -114,10 +128,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
+    public Cursor getUserId(String email) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select user_id from User Where email = ? ", new String[] {email});
+        return res;
+    }
+
 
     public Integer deleteData(int id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.delete(TABLE_USER, COL_ID + " = ? ", new String[]
+                {String.valueOf(id)});
+    }
+
+    public Boolean insertDataPost(String postDesc, int user_id) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_POST_DESC, postDesc);
+        contentValues.put(COL_USER_PIC, user_id);
+        //contentValues.put(COL_POST_PIC, postPic);
+        long result = sqLiteDatabase.insert(TABLE_POST, null, contentValues);
+        if (result == -1) {
+            Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            Toast.makeText(context, "Added Successfully", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+    }
+
+    public Cursor getAllDataPost() {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select * from " + TABLE_POST, null);
+        return res;
+    }
+
+    public Cursor getAllDataUserPost(int user_id) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select * from " + TABLE_POST
+                + " Where " + user_id + " = " + COL_ID, null);
+        return res;
+    }
+
+
+    public Integer deleteDataPost(int id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        return sqLiteDatabase.delete(TABLE_POST, COL_POST_ID + " = ? ", new String[]
                 {String.valueOf(id)});
     }
 }

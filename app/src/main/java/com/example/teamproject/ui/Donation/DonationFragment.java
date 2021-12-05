@@ -5,17 +5,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.teamproject.activity.MainActivity;
-import com.example.teamproject.activity.SignUpActivity;
+import com.example.teamproject.R;
 import com.example.teamproject.databinding.FragmentDonationsBinding;
 import com.example.teamproject.ui.PostDonation.PostDonationFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,7 +24,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class DonationFragment extends Fragment {
     private FragmentDonationsBinding binding;
     FloatingActionButton post, past, present, open;
+    ImageButton postButtonImage;
     TextView postD, pastD, presentD, donationTextView;
+    FragmentManager manager;
+
+
     Boolean isFabvisible;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,6 +44,7 @@ public class DonationFragment extends Fragment {
         pastD = binding.textViewPast;
         presentD = binding.textViewDonationList;
         donationTextView = binding.donationTextView;
+
 
         isFabvisible = false;
 
@@ -77,6 +83,12 @@ public class DonationFragment extends Fragment {
             public void onClick(View view) {
 
                 donationTextView.setText("Post Donation");
+                manager = getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                PostDonationFragment postDonationFragment = new PostDonationFragment();
+                transaction.add(R.id.donationFrameLayout, postDonationFragment, null);
+                transaction.commit();
+
             }
         });
 

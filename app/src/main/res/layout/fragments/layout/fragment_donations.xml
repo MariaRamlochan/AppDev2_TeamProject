@@ -6,14 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.Donation.DonationFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="410dp"
-        android:layout_height="646dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/donationTextView"
         android:layout_width="242dp"
@@ -27,6 +19,15 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/donationFrameLayout"
+        android:name="com.example.teamproject.ui.Donation.DonationFragment"
+        android:layout_width="413dp"
+        android:layout_height="655dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/openFab"
@@ -111,4 +112,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewPost"
         app:layout_constraintEnd_toStartOf="@+id/donationFab" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

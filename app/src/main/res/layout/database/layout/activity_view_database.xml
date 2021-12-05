@@ -22,15 +22,15 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="35dp"
         android:text="Delete a User"
-        app:layout_constraintStart_toStartOf="@+id/bankDbButton"
+        app:layout_constraintStart_toStartOf="@+id/postDbButton"
         app:layout_constraintTop_toBottomOf="@+id/deleteIdEditText" />
 
     <Button
-        android:id="@+id/bankDbButton"
+        android:id="@+id/postDbButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="81dp"
-        android:text="Food Bank Database"
+        android:text="Post Database"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deleteButton" />
