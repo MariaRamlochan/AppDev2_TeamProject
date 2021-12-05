@@ -44,26 +44,42 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        Bundle args = new Bundle();
+        Bundle bundle = getIntent().getExtras();
+        String type = bundle.getString("userType");
+        String email = bundle.getString("email");
+
         switch (item.getItemId()) {
             case R.id.nav_home:
+                HomeFragment homeFragment = new HomeFragment();
+                args.putString("email", email);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HomeFragment()).commit();
+                        homeFragment).commit();
                 break;
             case R.id.nav_donations:
+                DonationsFragment donationsFragment = new DonationsFragment();
+                args.putString("email", email);
+                args.putString("userType", type);
+                donationsFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new DonationsFragment()).commit();
+                        donationsFragment).commit();
                 break;
             case R.id.nav_list:
+                ListFragment listFragment = new ListFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ListFragment()).commit();
+                        listFragment).commit();
                 break;
             case R.id.nav_about:
+                AboutFragment aboutFragment = new AboutFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new AboutFragment()).commit();
+                        aboutFragment).commit();
                 break;
             case R.id.nav_settings:
+                SettingsFragment settingsFragment = new SettingsFragment();
+                args.putString("email", email);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SettingsFragment()).commit();
+                        settingsFragment).commit();
                 break;
             case R.id.nav_logout:
                 Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
@@ -83,17 +99,4 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         }
     }
 
-    // override the onOptionsItemSelected()
-    // function to implement
-    // the item click listener callback
-    // to open and close the navigation
-    // drawer when the icon is clicked
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//
-//        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 }

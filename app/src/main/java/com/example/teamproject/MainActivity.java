@@ -3,6 +3,7 @@ package com.example.teamproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String user = email.getText().toString().trim();
                 String pass = password.getText().toString().trim();
+                String userType = "";
 
                 if (user.equals("") || pass.equals("")) {
                     Toast.makeText(MainActivity.this, "All Fields must be filled", Toast.LENGTH_SHORT).show();
@@ -47,8 +49,14 @@ public class MainActivity extends AppCompatActivity {
                     Boolean checkUserPass = databaseHelper.checkEmailPassword(user, pass);
                     if (checkUserPass) {
                         Toast.makeText(MainActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
+                        Cursor cursor = databaseHelper.getUserType(user);
+                        if (cursor.moveToNext()) {
+                            int userTypeColumn = cursor.getColumnIndex("user_type");
+                            userType = cursor.getString(userTypeColumn);
+                        }
                         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                         intent.putExtra("email", user);
+                        intent.putExtra("userType", userType);
                         startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();

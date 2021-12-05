@@ -125,6 +125,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getUserType(String email) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select user_type from User Where email = ? ", new String[] {email});
+        return res;
+    }
+
 
     public Integer deleteData(int id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
