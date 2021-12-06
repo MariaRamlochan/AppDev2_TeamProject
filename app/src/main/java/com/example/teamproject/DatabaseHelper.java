@@ -137,17 +137,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor getListDonors(String user_type) {
+    public Cursor getListDonors() {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
-        Cursor res = sqLiteDatabase.rawQuery("Select business_name, phone_num, user_pic from User " +
-                "Where user_type = 'Donor' ", new String[] {user_type});
+        Cursor res = sqLiteDatabase.rawQuery("Select * from User " +
+                "Where user_type = 'Donor' ", null);
         return res;
     }
 
-    public Cursor getListBanks(String user_type) {
+    public Cursor getListBanks() {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
-        Cursor res = sqLiteDatabase.rawQuery("Select business_name, phone_num, user_pic from User " +
-                "Where user_type = 'Food Bank' ", new String[] {user_type});
+        Cursor res = sqLiteDatabase.rawQuery("Select * from User " +
+                "Where user_type = 'Food Bank' ", null);
         return res;
     }
 

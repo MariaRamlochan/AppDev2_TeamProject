@@ -8,6 +8,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -20,6 +22,8 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
+    DatabaseHelper databaseHelper;
+    ArrayList<String> image, businessName, emails, phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,13 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                     new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
+
+        databaseHelper = new DatabaseHelper(this);
+        image = new ArrayList<>();
+        businessName = new ArrayList<>();
+        emails = new ArrayList<>();
+        phone = new ArrayList<>();
+
 
     }
 
@@ -70,8 +81,30 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                         donationsFragment).commit();
                 break;
             case R.id.nav_list:
+                Cursor cursor;
                 ListFragment listFragment = new ListFragment();
-                args.putString("userType", type);
+
+                if (type.equals("Donor")) {
+                    cursor = databaseHelper.getListBanks();
+                } else {
+                    cursor = databaseHelper.getListDonors();
+                }
+
+                if (cursor.getCount() == 0) {
+                    Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+                }
+
+                while (cursor.moveToNext()) {
+                    image.add(cursor.getString(11));
+                    businessName.add(cursor.getString(4));
+                    emails.add(cursor.getString(2));
+                    phone.add(cursor.getString(5));
+                }
+
+                args.putStringArrayList("images", image);
+                args.putStringArrayList("businessNames", businessName);
+                args.putStringArrayList("emails", emails);
+                args.putStringArrayList("phones", phone);
                 listFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         listFragment).commit();

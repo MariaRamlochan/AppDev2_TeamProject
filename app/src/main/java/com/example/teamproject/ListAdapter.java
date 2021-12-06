@@ -16,13 +16,15 @@ import java.util.ArrayList;
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
 
     Context context;
-    ArrayList<String> images, businessNames, phones;
+    ArrayList<String> images, businessNames, email, phones;
     DatabaseHelper databaseHelper;
 
-    public ListAdapter(Context context, ArrayList<String> images, ArrayList<String> businessNames, ArrayList<String> phones) {
+    public ListAdapter(Context context, ArrayList<String> images, ArrayList<String> businessNames,
+                       ArrayList<String> email, ArrayList<String> phones) {
         this.context = context;
         this.images = images;
         this.businessNames = businessNames;
+        this.email = email;
         this.phones = phones;
         databaseHelper = new DatabaseHelper(context);
     }
@@ -31,15 +33,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        ListViewHolder lvh = new ListViewHolder(view);
-        return lvh;
+        return new ListViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         holder.listImageView.setImageURI(Uri.parse(images.get(position)));
         holder.textView.setText(businessNames.get(position));
-        holder.textView.setText(phones.get(position));
+        holder.textView2.setText(email.get(position));
+        holder.textView3.setText(phones.get(position));
     }
 
     @Override
@@ -52,12 +54,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         public ImageView listImageView;
         public TextView textView;
         public TextView textView2;
+        public TextView textView3;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             listImageView = itemView.findViewById(R.id.listImageView);
             textView = itemView.findViewById(R.id.listTextView);
             textView2 = itemView.findViewById(R.id.listTextView2);
+            textView3 = itemView.findViewById(R.id.listTextView3);
         }
     }
 
