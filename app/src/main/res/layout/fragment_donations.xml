@@ -8,8 +8,8 @@
         android:id="@+id/donations_textView_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:text="Donation Fragment"
-        android:textSize="40sp"
-        android:layout_centerInParent="true"/>
+        android:textSize="40sp" />
 
 </RelativeLayout>

@@ -131,6 +131,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getUserPic(String email) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select user_pic from User Where email = ? ", new String[] {email});
+        return res;
+    }
+
+    public Cursor getListDonors(String user_type) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select business_name, phone_num, user_pic from User " +
+                "Where user_type = 'Donor' ", new String[] {user_type});
+        return res;
+    }
+
+    public Cursor getListBanks(String user_type) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select business_name, phone_num, user_pic from User " +
+                "Where user_type = 'Food Bank' ", new String[] {user_type});
+        return res;
+    }
+
 
     public Integer deleteData(int id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();

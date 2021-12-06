@@ -60,11 +60,12 @@ public class SetUpPictureActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Boolean insert = databaseHelper.insertDataUser(userType, email, password, business,
-                        phone, address, zip, city, province, country, selectedImage.toString());
+                        phone, address, zip, city, province, country, image_uri.toString());
                 if (insert) {
                     Toast.makeText(SetUpPictureActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SetUpPictureActivity.this, ProfileActivity.class);
                     intent.putExtra("email", email);
+                    intent.putExtra("userType", userType);
                     startActivity(intent);
                 }
             }
@@ -149,7 +150,8 @@ public class SetUpPictureActivity extends AppCompatActivity {
             selectedImage.setImageURI(image_uri);
 
         } else if (resultCode == RESULT_OK && requestCode == GALLERY_PICK_CODE) {
-            selectedImage.setImageURI(data.getData());
+            image_uri = data.getData();
+            selectedImage.setImageURI(image_uri);
         }
     }
 
