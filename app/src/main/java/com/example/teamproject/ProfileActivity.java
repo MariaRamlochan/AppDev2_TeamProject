@@ -67,7 +67,6 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         Bundle bundle = getIntent().getExtras();
         String type = bundle.getString("userType");
         String email = bundle.getString("email");
-        ListFragment listFragment = new ListFragment();
 
         switch (item.getItemId()) {
             case R.id.nav_home:
@@ -86,7 +85,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 break;
             case R.id.nav_list:
                 Cursor cursor;
-
+                ListFragment listFragment = new ListFragment();
 
                 if (type.equals("Donor")) {
                     cursor = databaseHelper.getListBanks();

@@ -17,7 +17,7 @@ public class DonationsFragment extends Fragment {
     private String email;
     private String userType;
     FloatingActionButton open, past, post, present;
-    TextView pastText, postText, presentText;
+    TextView pastText, postText, presentText, title;
     Boolean isFabVisible;
 
     @Nullable
@@ -32,7 +32,9 @@ public class DonationsFragment extends Fragment {
         pastText = view.findViewById(R.id.textViewPastD);
         postText = view.findViewById(R.id.textViewPostD);
         presentText = view.findViewById(R.id.textViewPresentD);
+        title = view.findViewById(R.id.donationTitle);
 
+        title.setText("Your Current Donations");
         past.setVisibility(View.GONE);
         post.setVisibility(View.GONE);
         present.setVisibility(View.GONE);

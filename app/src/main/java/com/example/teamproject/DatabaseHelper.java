@@ -60,6 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + TABLE_POST + " ("
                 + COL_POST_ID + " integer primary key autoincrement, "
                 + COL_POST_DESC + " text not null, "
+                + COL_POST_PIC + " text not null, "
                 + COL_USER_ID + " integer,"
                 + " FOREIGN KEY ("+COL_USER_ID+") REFERENCES "+TABLE_USER+"("+COL_ID+"));";
 
@@ -158,12 +159,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 {String.valueOf(id)});
     }
 
-    public Boolean insertDataPost(String postDesc, String user_id) {
+    public Boolean insertDataPost(String postDesc, String postPic, String user_id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_POST_DESC, postDesc);
         contentValues.put(COL_USER_ID, user_id);
-        //contentValues.put(COL_POST_PIC, postPic);
+        contentValues.put(COL_POST_PIC, postPic);
         long result = sqLiteDatabase.insert(TABLE_POST, null, contentValues);
         if (result == -1) {
             Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
