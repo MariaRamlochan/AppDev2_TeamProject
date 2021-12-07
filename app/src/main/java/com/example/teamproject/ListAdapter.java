@@ -32,16 +32,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_users, parent, false);
         return new ListViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         holder.listImageView.setImageURI(Uri.parse(images.get(position)));
-        holder.textView.setText(businessNames.get(position));
-        holder.textView2.setText(email.get(position));
-        holder.textView3.setText(phones.get(position));
+        holder.businessName.setText(businessNames.get(position));
+        holder.email.setText(email.get(position));
+        holder.phoneNum.setText(phones.get(position));
     }
 
     @Override
@@ -52,16 +52,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     public  static class ListViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView listImageView;
-        public TextView textView;
-        public TextView textView2;
-        public TextView textView3;
+        public TextView businessName;
+        public TextView email;
+        public TextView phoneNum;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             listImageView = itemView.findViewById(R.id.listImageView);
-            textView = itemView.findViewById(R.id.listTextView);
-            textView2 = itemView.findViewById(R.id.listTextView2);
-            textView3 = itemView.findViewById(R.id.listTextView3);
+            businessName = itemView.findViewById(R.id.listTextView);
+            email = itemView.findViewById(R.id.textViewEmail);
+            phoneNum = itemView.findViewById(R.id.textViewPhone);
         }
     }
 

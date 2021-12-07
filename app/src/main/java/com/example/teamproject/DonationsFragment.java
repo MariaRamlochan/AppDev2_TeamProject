@@ -10,23 +10,69 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class DonationsFragment extends Fragment {
 
     private String email;
     private String userType;
+    FloatingActionButton open, past, post, present;
+    TextView pastText, postText, presentText;
+    Boolean isFabVisible;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_donations, container, false);
-        TextView textView = view.findViewById(R.id.donations_textView_fragment);
+
+        open = view.findViewById(R.id.openFab);
+        past = view.findViewById(R.id.pastFab);
+        post = view.findViewById(R.id.postFab);
+        present = view.findViewById(R.id.presentFab);
+        pastText = view.findViewById(R.id.textViewPastD);
+        postText = view.findViewById(R.id.textViewPostD);
+        presentText = view.findViewById(R.id.textViewPresentD);
+
+        past.setVisibility(View.GONE);
+        post.setVisibility(View.GONE);
+        present.setVisibility(View.GONE);
+        pastText.setVisibility(View.GONE);
+        postText.setVisibility(View.GONE);
+        presentText.setVisibility(View.GONE);
+
+        isFabVisible = false;
+
+        open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isFabVisible){
+                    past.setVisibility(View.VISIBLE);
+                    post.setVisibility(View.VISIBLE);
+                    present.setVisibility(View.VISIBLE);
+                    pastText.setVisibility(View.VISIBLE);
+                    postText.setVisibility(View.VISIBLE);
+                    presentText.setVisibility(View.VISIBLE);
+
+                    isFabVisible = true;
+                } else {
+                    past.setVisibility(View.GONE);
+                    post.setVisibility(View.GONE);
+                    present.setVisibility(View.GONE);
+                    pastText.setVisibility(View.GONE);
+                    postText.setVisibility(View.GONE);
+                    presentText.setVisibility(View.GONE);
+
+                    isFabVisible = false;
+                }
+            }
+        });
+
 
         if (getArguments() != null) {
             email = getArguments().getString("email");
             userType = getArguments().getString("userType");
         }
 
-        textView.setText(email + "......." + userType);
 
         return view;
     }
