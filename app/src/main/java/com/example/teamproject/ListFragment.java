@@ -22,7 +22,6 @@ public class ListFragment extends Fragment {
     private ArrayList<String> phones;
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

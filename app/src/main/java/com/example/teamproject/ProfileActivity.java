@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -54,6 +55,8 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         phone = new ArrayList<>();
 
 
+
+
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -64,6 +67,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         Bundle bundle = getIntent().getExtras();
         String type = bundle.getString("userType");
         String email = bundle.getString("email");
+        ListFragment listFragment = new ListFragment();
 
         switch (item.getItemId()) {
             case R.id.nav_home:
@@ -82,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 break;
             case R.id.nav_list:
                 Cursor cursor;
-                ListFragment listFragment = new ListFragment();
+
 
                 if (type.equals("Donor")) {
                     cursor = databaseHelper.getListBanks();
@@ -121,7 +125,10 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                         settingsFragment).commit();
                 break;
             case R.id.nav_logout:
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+
+                Toast.makeText(this, "Logout successful", Toast.LENGTH_SHORT).show();
                 break;
 
         }
