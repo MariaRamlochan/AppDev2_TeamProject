@@ -11,8 +11,12 @@ import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -54,7 +58,18 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         emails = new ArrayList<>();
         phone = new ArrayList<>();
 
+        Bundle bundle = getIntent().getExtras();
+        String email = bundle.getString("email");
+        String businessName = bundle.getString("userBusinessName");
+        String pic = bundle.getString("userPic");
 
+        View headerView = navigationView.getHeaderView(0);
+        TextView navEmail = headerView.findViewById(R.id.navEmail);
+        TextView navBusinessName = headerView.findViewById(R.id.navName);
+        ImageView navPic = headerView.findViewById(R.id.navPic);
+        navEmail.setText(email);
+        navBusinessName.setText(businessName);
+        navPic.setImageURI(Uri.parse(pic));
 
 
     }
@@ -67,6 +82,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         Bundle bundle = getIntent().getExtras();
         String type = bundle.getString("userType");
         String email = bundle.getString("email");
+
 
         switch (item.getItemId()) {
             case R.id.nav_home:

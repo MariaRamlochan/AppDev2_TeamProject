@@ -138,6 +138,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getUserBusinessName(String email) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select business_name from User Where email = ? ", new String[] {email});
+        return res;
+    }
+
     public Cursor getListDonors() {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
         Cursor res = sqLiteDatabase.rawQuery("Select * from User " +

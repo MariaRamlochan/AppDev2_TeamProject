@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
                 String user = email.getText().toString().trim();
                 String pass = password.getText().toString().trim();
                 String userType = "";
+                String userPic = "";
+                String userBusinessName = "";
 
                 if (user.equals("") || pass.equals("")) {
                     Toast.makeText(MainActivity.this, "All Fields must be filled", Toast.LENGTH_SHORT).show();
@@ -51,13 +53,25 @@ public class MainActivity extends AppCompatActivity {
                     if (checkUserPass) {
                         Toast.makeText(MainActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
                         Cursor cursor = databaseHelper.getUserType(user);
+                        Cursor cursor2 = databaseHelper.getUserPic(user);
+                        Cursor cursor3 = databaseHelper.getUserBusinessName(user);
                         if (cursor.moveToNext()) {
                             int userTypeColumn = cursor.getColumnIndex("user_type");
                             userType = cursor.getString(userTypeColumn);
                         }
+                        if (cursor2.moveToNext()) {
+                            int userTypeColumn = cursor2.getColumnIndex("user_pic");
+                            userPic = cursor2.getString(userTypeColumn);
+                        }
+                        if (cursor3.moveToNext()) {
+                            int userTypeColumn = cursor3.getColumnIndex("business_name");
+                            userBusinessName = cursor3.getString(userTypeColumn);
+                        }
                         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                         intent.putExtra("email", user);
                         intent.putExtra("userType", userType);
+                        intent.putExtra("userPic", userPic);
+                        intent.putExtra("userBusinessName", userBusinessName);
                         startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();

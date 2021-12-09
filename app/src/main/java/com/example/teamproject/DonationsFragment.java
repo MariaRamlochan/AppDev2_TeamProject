@@ -14,8 +14,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class DonationsFragment extends Fragment {
 
-    private String email;
-    private String userType;
     FloatingActionButton open, past, post, present;
     TextView pastText, postText, presentText, title;
     Boolean isFabVisible;
@@ -71,8 +69,8 @@ public class DonationsFragment extends Fragment {
 
 
         if (getArguments() != null) {
-            email = getArguments().getString("email");
-            userType = getArguments().getString("userType");
+            String email = getArguments().getString("email");
+            String userType = getArguments().getString("userType");
         }
 
 

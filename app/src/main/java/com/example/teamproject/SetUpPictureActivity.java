@@ -66,6 +66,8 @@ public class SetUpPictureActivity extends AppCompatActivity {
                     Intent intent = new Intent(SetUpPictureActivity.this, ProfileActivity.class);
                     intent.putExtra("email", email);
                     intent.putExtra("userType", userType);
+                    intent.putExtra("userPic", image_uri.toString());
+                    intent.putExtra("userBusinessName", business);
                     startActivity(intent);
                 }
             }
