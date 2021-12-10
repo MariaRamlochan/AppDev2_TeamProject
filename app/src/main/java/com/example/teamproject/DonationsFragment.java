@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +35,7 @@ public class DonationsFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.donationRecyclerView);
         FragmentManager fragmentManager = getChildFragmentManager();
-        AddPostFragment addPostFragment = (AddPostFragment) fragmentManager.findFragmentById(R.id.donationFragmentLayout);
+
 
         open = view.findViewById(R.id.openFab);
         past = view.findViewById(R.id.pastFab);
@@ -52,7 +53,6 @@ public class DonationsFragment extends Fragment {
         pastText.setVisibility(View.GONE);
         postText.setVisibility(View.GONE);
         presentText.setVisibility(View.GONE);
-        addPostFragment.getView().setVisibility(View.GONE);
 
         isFabVisible = false;
 
@@ -84,10 +84,11 @@ public class DonationsFragment extends Fragment {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addPostFragment.getView().setVisibility(View.VISIBLE);
-                recyclerView.setVisibility(View.GONE);
+//                addPostFragment.getView().setVisibility(View.VISIBLE);
+//                recyclerView.setVisibility(View.GONE);
                 title.setText("Add A Food Donation");
-
+                Intent intent = new Intent(getContext(), DatabaseViewActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -95,7 +96,7 @@ public class DonationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 recyclerView.setVisibility(View.VISIBLE);
-                addPostFragment.getView().setVisibility(View.GONE);
+
 
 
             }
@@ -105,7 +106,6 @@ public class DonationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 recyclerView.setVisibility(View.VISIBLE);
-                addPostFragment.getView().setVisibility(View.GONE);
 
 //                ListAdapter adapter = new ListAdapter(context, images, businessNames, emails, phones);
 //                recyclerView.setAdapter(adapter);
