@@ -54,7 +54,6 @@ public class DonationsFragment extends Fragment {
             type = getArguments().getString("userType");
         }
 
-
         open = view.findViewById(R.id.openFab);
         past = view.findViewById(R.id.pastFab);
         post = view.findViewById(R.id.postFab);
@@ -82,16 +81,6 @@ public class DonationsFragment extends Fragment {
 
         if (type.equals("Donor")) {
             open.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (!isFabVisible){
-                        past.setVisibility(View.VISIBLE);
-                        post.setVisibility(View.VISIBLE);
-                        present.setVisibility(View.VISIBLE);
-                        pastText.setVisibility(View.VISIBLE);
-                        postText.setVisibility(View.VISIBLE);
-                        presentText.setVisibility(View.VISIBLE);
-        open.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isFabVisible){
@@ -122,50 +111,45 @@ public class DonationsFragment extends Fragment {
             }
         });
 
-            post.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    assert getArguments() != null;
-                    String email = getArguments().getString("email");
-                    title.setText("Add A Food Donation");
-                    Intent intent = new Intent(getContext(), AddPostActivity.class);
-                    intent.putExtra("email", email);
-                    startActivity(intent);
-                }
-            });
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                assert getArguments() != null;
+                String email = getArguments().getString("email");
+                title.setText("Add A Food Donation");
+                Intent intent = new Intent(getContext(), AddPostActivity.class);
+                intent.putExtra("email", email);
+                startActivity(intent);
+            }
+        });
 
-            past.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    recyclerView.setVisibility(View.VISIBLE);
+        past.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setVisibility(View.VISIBLE);
 
-                }
-            });
+            }
+        });
 
-            present.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    recyclerView.setVisibility(View.VISIBLE);
+        present.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setVisibility(View.VISIBLE);
 
-                    DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                }
-            });
+                DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            }
+        });
 
-            DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
-            recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        } else {
-            open.setVisibility(View.GONE);
-            recyclerView.setVisibility(View.VISIBLE);
+        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-
-        }
-
-
-
-
+    } else {
+        open.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
+    }
         return view;
     }
 }
