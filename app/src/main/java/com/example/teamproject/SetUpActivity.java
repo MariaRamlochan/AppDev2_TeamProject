@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class SetUpActivity extends AppCompatActivity {
 
-    EditText businessD, phoneD, addressD, zipD, cityD, provinceD, countryD;
+    EditText businessD, phoneD, addressD, cityD, countryD;
     Button confirmD;
     DatabaseHelper databaseHelper;
 
@@ -23,9 +23,7 @@ public class SetUpActivity extends AppCompatActivity {
         businessD = findViewById(R.id.editTextBusinessD);
         phoneD = findViewById(R.id.editTextPhoneD);
         addressD = findViewById(R.id.editTextAddressD);
-        zipD = findViewById(R.id.editTextZipD);
         cityD = findViewById(R.id.editTextCityD);
-        provinceD = findViewById(R.id.editTextProvinceD);
         countryD = findViewById(R.id.editTextCountryD);
         confirmD = findViewById(R.id.buttonConfirmD);
         databaseHelper = new DatabaseHelper(this);
@@ -37,9 +35,7 @@ public class SetUpActivity extends AppCompatActivity {
                 String businessName = businessD.getText().toString().trim();
                 String phone = phoneD.getText().toString().trim();
                 String address = addressD.getText().toString();
-                String zip = zipD.getText().toString().trim();
                 String city = cityD.getText().toString().trim();
-                String province = provinceD.getText().toString().trim();
                 String country = countryD.getText().toString().trim();
 
                 Bundle bundle = getIntent().getExtras();
@@ -48,8 +44,8 @@ public class SetUpActivity extends AppCompatActivity {
                 String password = bundle.getString("password");
 
 
-                if (businessName.equals("") || phone.equals("") || address.equals("") || zip.equals("")
-                        || city.equals("") || province.equals("") || country.equals("")) {
+                if (businessName.equals("") || phone.equals("") || address.equals("")
+                        || city.equals("") || country.equals("")) {
                     Toast.makeText(SetUpActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -60,9 +56,7 @@ public class SetUpActivity extends AppCompatActivity {
                     intent.putExtra("businessName", businessName);
                     intent.putExtra("phone", phone);
                     intent.putExtra("address", address);
-                    intent.putExtra("zip", zip);
                     intent.putExtra("city", city);
-                    intent.putExtra("province", province);
                     intent.putExtra("country", country);
                     Toast.makeText(SetUpActivity.this, "Continue...", Toast.LENGTH_SHORT).show();
                     startActivity(intent);

@@ -51,16 +51,14 @@ public class SetUpPictureActivity extends AppCompatActivity {
             final String business = bundle.getString("businessName");
             final String phone = bundle.getString("phone");
             final String address = bundle.getString("address");
-            final String zip = bundle.getString("zip");
             final String city = bundle.getString("city");
-            final String province = bundle.getString("province");
             final String country = bundle.getString("country");
 
 
             @Override
             public void onClick(View v) {
                 Boolean insert = databaseHelper.insertDataUser(userType, email, password, business,
-                        phone, address, zip, city, province, country, image_uri.toString());
+                        phone, address, city, country, image_uri.toString());
                 if (insert) {
                     Toast.makeText(SetUpPictureActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SetUpPictureActivity.this, ProfileActivity.class);
@@ -152,6 +150,7 @@ public class SetUpPictureActivity extends AppCompatActivity {
             selectedImage.setImageURI(image_uri);
 
         } else if (resultCode == RESULT_OK && requestCode == GALLERY_PICK_CODE) {
+            assert data != null;
             image_uri = data.getData();
             selectedImage.setImageURI(image_uri);
         }

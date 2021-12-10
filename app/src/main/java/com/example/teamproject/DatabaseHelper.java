@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "test7.db";
+    private static final String DATABASE_NAME = "test8.db";
 
     private static final String TABLE_USER = "User";
     private static final String TABLE_POST = "Post";
@@ -27,9 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_BUSINESS_NAME = "business_name";
     private static final String COL_PHONE_NUM = "phone_num";
     private static final String COL_ADDRESS = "address";
-    private static final String COL_ZIP_CODE = "zip_code";
     private static final String COL_CITY = "city";
-    private static final String COL_PROVINCE = "province";
     private static final String COL_COUNTRY = "country";
     private static final String COL_USER_PIC = "user_pic";
 
@@ -55,9 +53,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String user_table = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "%s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, " +
-                        "%s TEXT, %s TEXT, %s TEXT);", TABLE_USER, COL_ID, COL_USER_TYPE,
-                COL_EMAIL, COL_PASSWORD, COL_BUSINESS_NAME, COL_PHONE_NUM, COL_ADDRESS, COL_ZIP_CODE,
-                COL_CITY, COL_PROVINCE, COL_COUNTRY, COL_USER_PIC);
+                        "%s TEXT);", TABLE_USER, COL_ID, COL_USER_TYPE, COL_EMAIL, COL_PASSWORD,
+                COL_BUSINESS_NAME, COL_PHONE_NUM, COL_ADDRESS, COL_CITY, COL_COUNTRY, COL_USER_PIC);
 
         String post_table = "CREATE TABLE "
                 + TABLE_POST + " ("
@@ -80,8 +77,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public Boolean insertDataUser(String userType, String email, String password, String businessName,
-                                  String phoneNumber, String address, String zipCode, String city,
-                                  String province, String country, String userPic) {
+                                  String phoneNumber, String address, String city, String country,
+                                  String userPic) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_USER_TYPE, userType);
@@ -90,9 +87,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_BUSINESS_NAME, businessName);
         contentValues.put(COL_PHONE_NUM, phoneNumber);
         contentValues.put(COL_ADDRESS, address);
-        contentValues.put(COL_ZIP_CODE, zipCode);
         contentValues.put(COL_CITY, city);
-        contentValues.put(COL_PROVINCE, province);
         contentValues.put(COL_COUNTRY, country);
         contentValues.put(COL_USER_PIC, userPic);
         long result = sqLiteDatabase.insert(TABLE_USER, null, contentValues);
