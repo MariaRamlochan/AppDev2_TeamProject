@@ -171,11 +171,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public boolean updateDataUser (String id, String businessName, String phone, String address,
+                                   String city, String country, String pic) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_USER_ID, id);
+        contentValues.put(COL_BUSINESS_NAME, businessName);
+        contentValues.put(COL_PASSWORD, phone);
+        contentValues.put(COL_ADDRESS, address);
+        contentValues.put(COL_CITY, city);
+        contentValues.put(COL_COUNTRY, country);
+        contentValues.put(COL_USER_PIC, pic);
+        db.update(TABLE_USER, contentValues, "user_id = ? ", new String[] {id});
+        return  true;
+    }
 
-    public Integer deleteData(int id){
+    public Integer deleteData(String id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        return sqLiteDatabase.delete(TABLE_USER, COL_ID + " = ? ", new String[]
-                {String.valueOf(id)});
+        return sqLiteDatabase.delete(TABLE_USER, COL_ID + " = ? ", new String[] {id});
     }
 
     public Boolean insertDataPost(String postDesc, String postPic, String user_id) {
@@ -213,10 +226,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public Integer deleteDataPost(int id){
+    public boolean updateDataPost (String id, String desc, String pic, String userId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String strDate = sdf.format(new Date());
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_POST_ID, id);
+        contentValues.put(COL_POST_DESC, desc);
+        contentValues.put(COL_POST_PIC, pic);
+        contentValues.put(COL_POST_DATE, strDate);
+        contentValues.put(COL_USER_ID, userId);
+        db.update(TABLE_POST, contentValues, "post_id = ? ", new String[] {id});
+        return  true;
+    }
+
+    public Integer deleteDataPost(String id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        return sqLiteDatabase.delete(TABLE_POST, COL_POST_ID + " = ? ", new String[]
-                {String.valueOf(id)});
+        return sqLiteDatabase.delete(TABLE_POST, COL_POST_ID + " = ? ", new String[] {id});
     }
 
 }

@@ -55,7 +55,7 @@ public class DatabaseViewActivity extends AppCompatActivity {
         deleteDbBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int id = Integer.parseInt(deleteId.getText().toString());
+                String id = deleteId.getText().toString();
                 databaseHelper.deleteData(id);
             }
         });
