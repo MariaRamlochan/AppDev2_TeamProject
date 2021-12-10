@@ -20,6 +20,7 @@ public class SettingsFragment extends Fragment {
     Button saveChange, changePass, terminate;
     ImageButton addGallery, addCamera;
     ImageView settingProfile;
+    String userBusinessName, userPhone, userAddress, userCity, userCountry, userPic;
 
     @Nullable
     @Override
@@ -38,6 +39,15 @@ public class SettingsFragment extends Fragment {
         addCamera = view.findViewById(R.id.settingCamera);
         settingProfile = view.findViewById(R.id.settingsPic);
 
+        if (getArguments() != null) {
+            userBusinessName = getArguments().getString("userBusinessName");
+            userPhone = getArguments().getString("userPhone");
+            userAddress = getArguments().getString("userAddress");
+            userCity = getArguments().getString("userCity");
+            userCountry = getArguments().getString("userCountry");
+            userPic = getArguments().getString("userPic");
+        }
+
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +56,13 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        saveChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
 
         return view;
     }

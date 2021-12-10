@@ -157,6 +157,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getUserAddress(String email) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select address from User Where email = ? ", new String[] {email});
+        return res;
+    }
+
+    public Cursor getUserCity(String email) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select city from User Where email = ? ", new String[] {email});
+        return res;
+    }
+
+    public Cursor getUserCountry(String email) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select country from User Where email = ? ", new String[] {email});
+        return res;
+    }
+
     public Cursor getListDonors() {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
         Cursor res = sqLiteDatabase.rawQuery("Select * from User " +
@@ -177,7 +195,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_USER_ID, id);
         contentValues.put(COL_BUSINESS_NAME, businessName);
-        contentValues.put(COL_PASSWORD, phone);
+        contentValues.put(COL_PHONE_NUM, phone);
         contentValues.put(COL_ADDRESS, address);
         contentValues.put(COL_CITY, city);
         contentValues.put(COL_COUNTRY, country);
