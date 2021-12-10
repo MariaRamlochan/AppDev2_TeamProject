@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F6F6"
+    android:background="#ffff"
     tools:context=".MainActivity">
 
     <EditText
@@ -73,7 +73,7 @@
         android:layout_height="39dp"
         android:layout_marginEnd="152dp"
         android:gravity="center"
-        android:hint="App Name"
+        android:hint="FoodCycler"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -132,5 +132,16 @@
         android:text="View Database"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="637dp"
+        android:layout_height="375dp"
+        android:layout_marginTop="396dp"
+        android:background="#fff"
+        android:src="@drawable/salade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></pl.droidsonroids.gif.GifImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

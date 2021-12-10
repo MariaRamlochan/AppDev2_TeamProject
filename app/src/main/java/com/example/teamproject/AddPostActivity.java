@@ -29,7 +29,7 @@ public class AddPostActivity extends AppCompatActivity {
     public static final int GALLERY_PICK_CODE = 1003;
     EditText addPostDesc;
     ImageView addPostImage;
-    ImageButton addPostImageButton;
+    ImageButton addPostImageButton, back;
     Button addPostButton;
     DatabaseHelper databaseHelper;
     Uri image_uri;
@@ -44,7 +44,16 @@ public class AddPostActivity extends AppCompatActivity {
         addPostDesc = findViewById(R.id.addPostEditText);
         addPostImageButton = findViewById(R.id.addPostImageButton);
         addPostButton = findViewById(R.id.addPostButton);
+        back = findViewById(R.id.backImageButton);
         databaseHelper = new DatabaseHelper(this);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddPostActivity.this, DonationsFragment.class);
+                startActivity(intent);
+            }
+        });
 
 
         addPostButton.setOnClickListener(new View.OnClickListener() {

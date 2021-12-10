@@ -1,45 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ACEDAF"
     tools:context=".AddPostActivity">
 
 
     <ImageView
         android:id="@+id/addPostImageView"
-        android:layout_width="160dp"
-        android:layout_height="140dp"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="100dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/addPostImageButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="20dp"
         android:adjustViewBounds="true"
-        android:backgroundTint="@android:color/transparent"
+        android:background="@drawable/add_photo"
+        android:backgroundTint="@color/black"
         android:scaleType="fitCenter"
-        app:srcCompat="@android:drawable/ic_menu_camera"
-        app:tint="@color/black"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/addPostEditText"
-        android:layout_width="220dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="160dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        app:layout_constraintBottom_toTopOf="@+id/cardView4"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/addPostButton"
+        android:layout_width="205dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="103dp"
+        android:background="#40C6BA"
+        android:backgroundTint="#DD1919"
+        android:text="Post Donation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView4" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="325dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="43dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPostImageView">
+
+        <EditText
+            android:id="@+id/addPostEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="290dp"
-        android:layout_marginTop="150dp"
-        android:text="Post" />
-</FrameLayout>
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="69dp"
+        android:text="Create a Donation"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backImageButton"
+        android:layout_width="65dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="#0AFFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+</androidx.constraintlayout.widget.ConstraintLayout>
