@@ -16,13 +16,17 @@ import java.util.ArrayList;
 public class DonationAdapter  extends RecyclerView.Adapter<DonationAdapter.DonationViewHolder> {
 
     Context context;
-    ArrayList<String> images, desc, email, phone;
+    ArrayList<String> images, desc, email, phone, date;
     DatabaseHelper databaseHelper;
 
-    public DonationAdapter(Context context, ArrayList<String> images, ArrayList<String> desc) {
+    public DonationAdapter(Context context, ArrayList<String> images, ArrayList<String> desc,
+                           ArrayList<String> email, ArrayList<String> phone, ArrayList<String> date) {
         this.context = context;
         this.images = images;
         this.desc = desc;
+        this.email = email;
+        this.phone = phone;
+        this.date = date;
         databaseHelper = new DatabaseHelper(context);
     }
 
@@ -32,6 +36,7 @@ public class DonationAdapter  extends RecyclerView.Adapter<DonationAdapter.Donat
         holder.donationDescTextView.setText(desc.get(position));
         holder.donationListEmail.setText(email.get(position));
         holder.donationListPhone.setText(phone.get(position));
+        holder.donationDate.setText(date.get(position));
     }
 
     @NonNull
@@ -52,6 +57,7 @@ public class DonationAdapter  extends RecyclerView.Adapter<DonationAdapter.Donat
         public TextView donationDescTextView;
         public TextView donationListEmail;
         public TextView donationListPhone;
+        public TextView donationDate;
 
         public DonationViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +65,7 @@ public class DonationAdapter  extends RecyclerView.Adapter<DonationAdapter.Donat
             donationDescTextView = itemView.findViewById(R.id.donationDescTextView);
             donationListEmail = itemView.findViewById(R.id.donationListEmail);
             donationListPhone = itemView.findViewById(R.id.donationListPhone);
+            donationDate = itemView.findViewById(R.id.donationDate);
         }
     }
 }

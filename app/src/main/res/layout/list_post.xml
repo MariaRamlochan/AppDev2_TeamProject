@@ -64,7 +64,7 @@
             android:text="Phone: "
             android:textColor="#000000"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textViewPhone"
+            app:layout_constraintEnd_toStartOf="@+id/donationListPhone"
             app:layout_constraintStart_toEndOf="@+id/donationImageView"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -106,7 +106,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textViewDate"
+            android:id="@+id/donationDate"
             android:layout_width="224dp"
             android:layout_height="18dp"
             android:layout_marginStart="12dp"
