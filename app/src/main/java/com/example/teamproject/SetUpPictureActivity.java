@@ -67,6 +67,9 @@ public class SetUpPictureActivity extends AppCompatActivity {
                     intent.putExtra("userPic", image_uri.toString());
                     intent.putExtra("userBusinessName", business);
                     intent.putExtra("userPhone", phone);
+                    intent.putExtra("userAddress", address);
+                    intent.putExtra("userCity", city);
+                    intent.putExtra("userCountry", country);
                     startActivity(intent);
                 }
             }

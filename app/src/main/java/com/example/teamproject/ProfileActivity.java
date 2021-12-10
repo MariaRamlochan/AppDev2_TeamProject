@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     DatabaseHelper databaseHelper;
-    ArrayList<String> image, businessName, emails, phones, postDesc, postImage, postDate;
+    ArrayList<String> image, businessNames, emails, phones, postDesc, postImage, postDate;
 
 
     @Override
@@ -56,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
         databaseHelper = new DatabaseHelper(this);
         image = new ArrayList<>();
-        businessName = new ArrayList<>();
+        businessNames = new ArrayList<>();
         emails = new ArrayList<>();
         phones = new ArrayList<>();
         postImage = new ArrayList<>();
@@ -91,13 +91,18 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         String userId_user = "";
-        String userId_post = "";
+
 
         Bundle args = new Bundle();
         Bundle bundle = getIntent().getExtras();
         String type = bundle.getString("userType");
         String email = bundle.getString("email");
         String phone = bundle.getString("userPhone");
+        String businessName = bundle.getString("userBusinessName");
+        String address = bundle.getString("userAddress");
+        String city = bundle.getString("userCity");
+        String country = bundle.getString("userCountry");
+        String pic = bundle.getString("userPic");
 
         Cursor cursor3 = databaseHelper.getUserId(email);
         if (cursor3.moveToNext()) {
@@ -157,13 +162,13 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
                 while (cursor.moveToNext()) {
                     image.add(cursor.getString(9));
-                    businessName.add(cursor.getString(4));
+                    businessNames.add(cursor.getString(4));
                     emails.add(cursor.getString(2));
                     phones.add(cursor.getString(5));
                 }
 
                 args.putStringArrayList("images", image);
-                args.putStringArrayList("businessNames", businessName);
+                args.putStringArrayList("businessNames", businessNames);
                 args.putStringArrayList("emails", emails);
                 args.putStringArrayList("phones", phones);
                 listFragment.setArguments(args);
@@ -178,6 +183,12 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
             case R.id.nav_settings:
                 SettingsFragment settingsFragment = new SettingsFragment();
                 args.putString("email", email);
+                args.putString("userBusinessName", businessName);
+                args.putString("userPhone", phone);
+                args.putString("userAddress", address);
+                args.putString("userCity", city);
+                args.putString("userCountry", country);
+                args.putString("userPic", pic);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         settingsFragment).commit();
                 break;
