@@ -1,5 +1,6 @@
 package com.example.teamproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,14 @@ public class HomeFragment extends Fragment {
         descOne = view.findViewById(R.id.multiLineDesc1);
         descTwo = view.findViewById(R.id.multiLineDesc2);
         stopWasting = view.findViewById(R.id.textViewStopWasting);
+
+        stopWasting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), VideoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

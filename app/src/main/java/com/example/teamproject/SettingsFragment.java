@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,8 +60,12 @@ public class SettingsFragment extends Fragment {
         saveChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+            businessName.setText(userBusinessName);
+            phoneNumber.setText(userPhone);
+            address.setText(userAddress);
+            city.setText(userCity);
+            country.setText(userCountry);
+            settingProfile.setImageURI(Uri.parse(userPic));
             }
         });
 

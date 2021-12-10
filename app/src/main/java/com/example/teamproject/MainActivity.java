@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         if (cursor6.moveToNext()) {
                             int userTypeColumn = cursor.getColumnIndex("city");
-                            userCity = cursor6.getString(userTypeColumn);
+                            //userCity = cursor6.getString(userTypeColumn);
                         }
                         if (cursor7.moveToNext()) {
                             int userTypeColumn = cursor7.getColumnIndex("country");
