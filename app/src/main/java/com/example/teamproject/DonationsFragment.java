@@ -29,7 +29,7 @@ public class DonationsFragment extends Fragment {
 
     private ArrayList<String> images;
     private ArrayList<String> descs;
-    private ArrayList<String> date;
+    private ArrayList<String> dates;
     private ArrayList<String> emails;
     private ArrayList<String> phones;
 
@@ -46,7 +46,7 @@ public class DonationsFragment extends Fragment {
         if (getArguments() != null) {
             images = getArguments().getStringArrayList("images");
             descs = getArguments().getStringArrayList("descs");
-            date = getArguments().getStringArrayList("dates");
+            dates = getArguments().getStringArrayList("dates");
             emails = getArguments().getStringArrayList("emails");
             phones = getArguments().getStringArrayList("phones");
         }
@@ -121,11 +121,15 @@ public class DonationsFragment extends Fragment {
             public void onClick(View v) {
                 recyclerView.setVisibility(View.VISIBLE);
 
-                DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, date);
+                DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             }
         });
+
+        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         return view;
     }

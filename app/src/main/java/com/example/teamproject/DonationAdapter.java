@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class DonationAdapter  extends RecyclerView.Adapter<DonationAdapter.DonationViewHolder> {
+public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.DonationViewHolder> {
 
     Context context;
     ArrayList<String> images, desc, email, phone, date;
@@ -43,7 +43,7 @@ public class DonationAdapter  extends RecyclerView.Adapter<DonationAdapter.Donat
     @Override
     public DonationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_post, parent, false);
-        return new DonationAdapter.DonationViewHolder(view);
+        return new DonationViewHolder(view);
     }
 
     @Override

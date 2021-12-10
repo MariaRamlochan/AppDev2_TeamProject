@@ -33,7 +33,6 @@ public class AddPostActivity extends AppCompatActivity {
     Button addPostButton;
     DatabaseHelper databaseHelper;
     Uri image_uri;
-    String userId, userEmail;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,16 +63,25 @@ public class AddPostActivity extends AppCompatActivity {
                 Cursor cursor = databaseHelper.getUserId(email);
                 String desc = addPostDesc.getText().toString();
                 String userId = "";
+                String postUserId = "";
 
                 if (cursor.moveToNext()) {
                     int userTypeColumn = cursor.getColumnIndex("user_id");
                     userId = cursor.getString(userTypeColumn);
                 }
                 Boolean insert = databaseHelper.insertDataPost(desc, image_uri.toString(), userId);
+
+                Cursor cursor1 = databaseHelper.getAllDataUserPost(userId);
+                if (cursor1.moveToNext()) {
+                    int userIdColumn = cursor1.getColumnIndex("user_id");
+                    postUserId = cursor1.getString(userIdColumn);
+                }
+
                 if (insert) {
-                    Toast.makeText(AddPostActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPostActivity.this, "Post Added", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AddPostActivity.this, ProfileActivity.class);
-                    intent.putExtra("userPic", image_uri.toString());
+                    intent.putExtra("postPic", image_uri.toString());
+                    intent.putExtra("postUserID", postUserId);
                     startActivity(intent);
                 }
             }
