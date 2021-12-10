@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SetUpActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
             <TextView
                 android:id="@+id/textViewCountryD"
                 android:layout_width="wrap_content"
@@ -28,7 +15,7 @@
                 android:text="Country"
                 android:textColor="#FF0000"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextProvinceD" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextCityD" />
 
             <TextView
                 android:id="@+id/textViewPhoneD"
@@ -66,31 +53,8 @@
                 android:hint="Your country"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextProvinceD" />
-
-
-            <EditText
-                android:id="@+id/editTextProvinceD"
-                android:layout_width="350dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="40dp"
-                android:ems="10"
-                android:hint="Your province"
-                android:inputType="textPersonName"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextCityD" />
 
-            <TextView
-                android:id="@+id/textViewProvinceD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:text="Province"
-                android:textColor="#FF0000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextCityD" />
 
             <EditText
                 android:id="@+id/editTextCityD"
@@ -102,7 +66,7 @@
                 android:hint="Your city"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextZipD" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextAddressD" />
 
             <TextView
                 android:id="@+id/textViewCityD"
@@ -112,18 +76,6 @@
                 android:layout_marginTop="20dp"
                 android:text="City"
                 android:textColor="#FF0000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextZipD" />
-
-            <EditText
-                android:id="@+id/editTextZipD"
-                android:layout_width="350dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="40dp"
-                android:ems="10"
-                android:hint="Your zip code"
-                android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextAddressD" />
 
@@ -137,17 +89,6 @@
                 android:textColor="#FF0000"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPhoneD" />
-
-            <TextView
-                android:id="@+id/textViewZipD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:text="Zip code"
-                android:textColor="#FF0000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextAddressD" />
 
             <EditText
                 android:id="@+id/editTextBusinessD"
@@ -196,27 +137,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPhoneD" />
 
-            <Button
-                android:id="@+id/buttonConfirmD"
-                android:layout_width="310dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="#00BCD4"
-                android:enabled="true"
-                android:text="Confirm"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextCountryD" />
+    <Button
+        android:id="@+id/buttonConfirmD"
+        android:layout_width="310dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#00BCD4"
+        android:enabled="true"
+        android:text="Confirm"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCountryD"
+        app:layout_constraintVertical_bias="0.153" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
