@@ -73,6 +73,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="19dp"
+        app:cardBackgroundColor="#FBE1E1"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toStartOf="@+id/cardView3"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +89,8 @@
                 android:layout_height="140dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@drawable/food"
+                tools:srcCompat="@drawable/food" />
 
             <TextView
                 android:id="@+id/textViewBName1"
@@ -96,7 +98,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:gravity="center"
-                android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/donationImage1" />
 
@@ -109,6 +110,7 @@
                 android:enabled="true"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
+                android:text="   SHARE THE FOOD"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewBName1" />
@@ -122,6 +124,7 @@
         android:layout_height="250dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#FBE1E1"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
@@ -136,7 +139,8 @@
                 android:layout_height="140dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@drawable/veggie"
+                tools:srcCompat="@drawable/veggie" />
 
             <TextView
                 android:id="@+id/textViewBName2"
@@ -144,7 +148,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:gravity="center"
-                android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/donationImage2" />
 
@@ -157,6 +160,7 @@
                 android:enabled="true"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
+                android:text="   SHARE THE LOVE"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewBName2" />
