@@ -44,11 +44,9 @@ public class DatabaseViewActivity extends AppCompatActivity {
                     buffer.append("Business Name : " + res.getString(4) + "\n");
                     buffer.append("Phone Number : " + res.getString(5) + "\n");
                     buffer.append("Address : " + res.getString(6) + "\n");
-                    buffer.append("Zip Code : " + res.getString(7) + "\n");
-                    buffer.append("City : " + res.getString(8) + "\n");
-                    buffer.append("Province : " + res.getString(9) + "\n");
-                    buffer.append("Country : " + res.getString(10) + "\n");
-                    buffer.append("Image URL : " + res.getString(11) + "\n");
+                    buffer.append("City : " + res.getString(7) + "\n");
+                    buffer.append("Country : " + res.getString(8) + "\n");
+                    buffer.append("Image URL : " + res.getString(9) + "\n");
                 }
                 showMessage("Data ", buffer.toString());
             }
