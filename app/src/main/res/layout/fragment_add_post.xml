@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPostFragment">
+
+
+    <ImageView
+        android:id="@+id/addPostImageView"
+        android:layout_width="160dp"
+        android:layout_height="140dp"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <ImageButton
+        android:id="@+id/addPostImageButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="85dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        app:tint="@color/black"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/addPostEditText"
+        android:layout_width="220dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="160dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/addPostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="150dp"
+        android:text="Post" />
+</FrameLayout>

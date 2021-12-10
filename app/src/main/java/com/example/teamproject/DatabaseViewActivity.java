@@ -75,6 +75,9 @@ public class DatabaseViewActivity extends AppCompatActivity {
                 while (res.moveToNext()) {
                     buffer.append("ID : " + res.getString(0) + "\n");
                     buffer.append("Description : " + res.getString(1) + "\n");
+                    buffer.append("Pic URL : " + res.getString(2) + "\n");
+                    buffer.append("Date : " + res.getString(3) + "\n");
+                    buffer.append("User Id : " + res.getString(4) + "\n");
                 }
                 showMessage("Data ", buffer.toString());
             }
