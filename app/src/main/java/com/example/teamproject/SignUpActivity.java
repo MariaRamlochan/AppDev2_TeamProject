@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,31 +36,39 @@ public class SignUpActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
+
+
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String type = dropdown.getSelectedItem().toString().trim();
-                String user = email.getText().toString().trim();
                 String pass = password.getText().toString().trim();
                 String confPass = confirmPassword.getText().toString().trim();
+                String emailPatern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                String user = email.getText().toString().trim();
 
-                if (user.equals("") || pass.equals("") || confPass.equals("") || type.equals("Choose a type")) {
-                    Toast.makeText(SignUpActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (pass.equals(confPass)) {
-                        Boolean checkUser = databaseHelper.checkEmail(user);
-                        if (!checkUser) {
-                            Toast.makeText(SignUpActivity.this, "Continue Setup", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SignUpActivity.this, SetUpActivity.class);
-                            intent.putExtra("userType", type);
-                            intent.putExtra("email", user);
-                            intent.putExtra("password", pass);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(SignUpActivity.this, "Email Already Exist", Toast.LENGTH_SHORT).show();
-                        }
+                if (!user.matches(emailPatern)){
+                    Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    if (user.equals("") || pass.equals("") || confPass.equals("") || type.equals("Choose a type")) {
+                        Toast.makeText(SignUpActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(SignUpActivity.this, "Password and Confirm Password Does Not Match", Toast.LENGTH_SHORT).show();
+                        if (pass.equals(confPass)) {
+                            Boolean checkUser = databaseHelper.checkEmail(user);
+                            if (!checkUser) {
+                                Toast.makeText(SignUpActivity.this, "Continue Setup", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SignUpActivity.this, SetUpActivity.class);
+                                intent.putExtra("userType", type);
+                                intent.putExtra("email", user);
+                                intent.putExtra("password", pass);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(SignUpActivity.this, "Email Already Exist", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(SignUpActivity.this, "Password and Confirm Password Does Not Match", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }

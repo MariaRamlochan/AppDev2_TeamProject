@@ -37,6 +37,7 @@ public class SetUpActivity extends AppCompatActivity {
                 String address = addressD.getText().toString();
                 String city = cityD.getText().toString().trim();
                 String country = countryD.getText().toString().trim();
+                String validNumber = "^[+]?[0-9]{8,15}$";
 
                 Bundle bundle = getIntent().getExtras();
                 String type = bundle.getString("userType");
@@ -49,19 +50,22 @@ public class SetUpActivity extends AppCompatActivity {
                     Toast.makeText(SetUpActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Intent intent = new Intent(SetUpActivity.this, SetUpPictureActivity.class);
-                    intent.putExtra("userType", type);
-                    intent.putExtra("email", email);
-                    intent.putExtra("password", password);
-                    intent.putExtra("businessName", businessName);
-                    intent.putExtra("phone", phone);
-                    intent.putExtra("address", address);
-                    intent.putExtra("city", city);
-                    intent.putExtra("country", country);
-                    Toast.makeText(SetUpActivity.this, "Continue...", Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
+                    if (!phone.matches(validNumber)) {
+                        Toast.makeText(SetUpActivity.this, "Phone number not valide", Toast.LENGTH_SHORT).show();
+                }else {
+                        Intent intent = new Intent(SetUpActivity.this, SetUpPictureActivity.class);
+                        intent.putExtra("userType", type);
+                        intent.putExtra("email", email);
+                        intent.putExtra("password", password);
+                        intent.putExtra("businessName", businessName);
+                        intent.putExtra("phone", phone);
+                        intent.putExtra("address", address);
+                        intent.putExtra("city", city);
+                        intent.putExtra("country", country);
+                        Toast.makeText(SetUpActivity.this, "Continue...", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }
                 }
-
             }
         });
     }
