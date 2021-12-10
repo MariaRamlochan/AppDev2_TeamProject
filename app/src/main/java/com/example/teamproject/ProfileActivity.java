@@ -66,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         Bundle bundle = getIntent().getExtras();
         String email = bundle.getString("email");
         String businessName = bundle.getString("userBusinessName");
-        String pic = bundle.getString("userPic");
+        String userPic = bundle.getString("userPic");
         String type = bundle.getString("userType");
 
 
@@ -77,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         ImageView navPic = headerView.findViewById(R.id.navPic);
         navEmail.setText(email);
         navBusinessName.setText(businessName);
-        navPic.setImageURI(Uri.parse(pic));
+        navPic.setImageURI(Uri.parse(userPic));
 
         if (type.equals("Donor")) {
             Menu menu = navigationView.getMenu();
@@ -91,7 +91,6 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         String userId_user = "";
-
 
         Bundle args = new Bundle();
         Bundle bundle = getIntent().getExtras();
@@ -173,7 +172,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 args.putStringArrayList("phones", phones);
                 listFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        listFragment).commit();
+                        listFragment).detach(listFragment).attach(listFragment).commit();
                 break;
             case R.id.nav_about:
                 AboutFragment aboutFragment = new AboutFragment();
@@ -189,8 +188,9 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 args.putString("userCity", city);
                 args.putString("userCountry", country);
                 args.putString("userPic", pic);
+                settingsFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        settingsFragment).commit();
+                        settingsFragment).detach(settingsFragment).attach(settingsFragment).commit();
                 break;
             case R.id.nav_logout:
                 Intent intent = new Intent(this, MainActivity.class);
