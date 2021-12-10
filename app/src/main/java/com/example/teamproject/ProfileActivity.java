@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     DatabaseHelper databaseHelper;
-    ArrayList<String> image, businessName, emails, phone, postDesc, postImage, postDate;
+    ArrayList<String> image, businessName, emails, phones, postDesc, postImage, postDate;
 
 
     @Override
@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         image = new ArrayList<>();
         businessName = new ArrayList<>();
         emails = new ArrayList<>();
-        phone = new ArrayList<>();
+        phones = new ArrayList<>();
         postImage = new ArrayList<>();
         postDesc = new ArrayList<>();
         postDate = new ArrayList<>();
@@ -68,6 +68,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         String businessName = bundle.getString("userBusinessName");
         String pic = bundle.getString("userPic");
         String type = bundle.getString("userType");
+
 
 
         View headerView = navigationView.getHeaderView(0);
@@ -96,7 +97,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         Bundle bundle = getIntent().getExtras();
         String type = bundle.getString("userType");
         String email = bundle.getString("email");
-        String postUserId = bundle.getString("postUserId");
+        String phone = bundle.getString("userPhone");
 
         Cursor cursor3 = databaseHelper.getUserId(email);
         if (cursor3.moveToNext()) {
@@ -114,8 +115,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 break;
             case R.id.nav_donations:
                 DonationsFragment donationsFragment = new DonationsFragment();
-                Cursor cursor1 = databaseHelper.getAllDataUserPost(postUserId);
-                Cursor cursor2 = databaseHelper.getSpecificUser(userId_user);
+                Cursor cursor1 = databaseHelper.getAllDataUserPost(userId_user);
 
                 if (cursor1.getCount() == 0) {
                     Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
@@ -125,17 +125,15 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                     postImage.add(cursor1.getString(2));
                     postDesc.add(cursor1.getString(1));
                     postDate.add(cursor1.getString(3));
-//                    while (cursor2.moveToNext()) {
-//                        emails.add(cursor2.getString(2));
-//                        phone.add(cursor2.getString(5));
-//                    }
+                    emails.add(email);
+                    phones.add(phone);
                 }
 
                 args.putStringArrayList("images", postImage);
                 args.putStringArrayList("descs", postDesc);
                 args.putStringArrayList("dates", postDate);
                 args.putStringArrayList("emails", emails);
-                args.putStringArrayList("phones", phone);
+                args.putStringArrayList("phones", phones);
 
                 args.putString("email", email);
                 args.putString("userType", type);
@@ -161,13 +159,13 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                     image.add(cursor.getString(9));
                     businessName.add(cursor.getString(4));
                     emails.add(cursor.getString(2));
-                    phone.add(cursor.getString(5));
+                    phones.add(cursor.getString(5));
                 }
 
                 args.putStringArrayList("images", image);
                 args.putStringArrayList("businessNames", businessName);
                 args.putStringArrayList("emails", emails);
-                args.putStringArrayList("phones", phone);
+                args.putStringArrayList("phones", phones);
                 listFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         listFragment).commit();

@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 String userType = "";
                 String userPic = "";
                 String userBusinessName = "";
+                String userPhone = "";
 
                 if (user.equals("") || pass.equals("")) {
                     Toast.makeText(MainActivity.this, "All Fields must be filled", Toast.LENGTH_SHORT).show();
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                         Cursor cursor = databaseHelper.getUserType(user);
                         Cursor cursor2 = databaseHelper.getUserPic(user);
                         Cursor cursor3 = databaseHelper.getUserBusinessName(user);
+                        Cursor cursor4 = databaseHelper.getUserPhone(user);
                         if (cursor.moveToNext()) {
                             int userTypeColumn = cursor.getColumnIndex("user_type");
                             userType = cursor.getString(userTypeColumn);
@@ -67,11 +69,16 @@ public class MainActivity extends AppCompatActivity {
                             int userTypeColumn = cursor3.getColumnIndex("business_name");
                             userBusinessName = cursor3.getString(userTypeColumn);
                         }
+                        if (cursor4.moveToNext()) {
+                            int userTypeColumn = cursor4.getColumnIndex("phone_num");
+                            userPhone = cursor4.getString(userTypeColumn);
+                        }
                         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                         intent.putExtra("email", user);
                         intent.putExtra("userType", userType);
                         intent.putExtra("userPic", userPic);
                         intent.putExtra("userBusinessName", userBusinessName);
+                        intent.putExtra("userPhone", userPhone);
                         startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();

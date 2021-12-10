@@ -33,7 +33,6 @@ public class AddPostActivity extends AppCompatActivity {
     Button addPostButton;
     DatabaseHelper databaseHelper;
     Uri image_uri;
-    String userId, userEmail;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,7 +78,7 @@ public class AddPostActivity extends AppCompatActivity {
                 }
 
                 if (insert) {
-                    Toast.makeText(AddPostActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPostActivity.this, "Post Added", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AddPostActivity.this, ProfileActivity.class);
                     intent.putExtra("postPic", image_uri.toString());
                     intent.putExtra("postUserID", postUserId);
