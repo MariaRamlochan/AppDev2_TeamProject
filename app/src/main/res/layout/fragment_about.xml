@@ -48,15 +48,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
-        android:background="@android:color/transparent"
+        android:background="@android:color/white"
         android:ems="10"
         android:enabled="false"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:lines="15"
-        android:text="for now this is nothing more than a simple testing paragraph. I wanna be testing
-        whether this will work properly or not. and apparently it does work as I intended it to so I
-         am happy with this!"
+        android:lines="30"
+        android:text="This app has been developped by Computer Science Students. The two  students that are responsible for this project is Maria Ramlochan and Nafees Syed. The idea for this app came from realizing how much food is being wasted in our everyday lives. A whopping 1/3 of all food product is not being eaten and instead ebd up being piled up in landfills. This app  has been created in the hopes of helping the food shortage crisis and to combat food waste in targeted business. We envision a society where instead of throwing out perfectly good food, it will be given a second life and feed people that have a higher need in that food that if not would have been thrown away in the garbage bin. We hope that this app will give the ensentive to businesses to give and help  the problem instead of being part of it. We are a none profit team and hope to do our part."
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

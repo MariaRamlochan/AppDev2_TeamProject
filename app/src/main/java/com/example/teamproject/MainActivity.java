@@ -29,13 +29,15 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         databaseHelper = new DatabaseHelper(this);
 
-        viewBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DatabaseViewActivity.class);
-                startActivity(intent);
-            }
-        });
+        viewBtn.setVisibility(viewBtn.GONE);
+
+//        viewBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, DatabaseViewActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
