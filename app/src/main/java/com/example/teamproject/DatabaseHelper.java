@@ -138,6 +138,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getSpecificUser(int user_id) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select * from User Where user_id = ? ",
+                new String[] {String.valueOf(user_id)});
+        return res;
+    }
+
     public Cursor getUserBusinessName(String email) {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
         Cursor res = sqLiteDatabase.rawQuery("Select business_name from User Where email = ? ", new String[] {email});

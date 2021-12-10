@@ -18,12 +18,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class DonationsFragment extends Fragment {
 
     FloatingActionButton open, past, post, present;
     TextView pastText, postText, presentText, title;
     Boolean isFabVisible;
     String userId, email;
+
+    private ArrayList<String> images;
+    private ArrayList<String> descs;
+    private ArrayList<String> date;
+    private ArrayList<String> emails;
+    private ArrayList<String> phones;
 
 
     @Nullable
@@ -34,7 +42,14 @@ public class DonationsFragment extends Fragment {
         Context context = this.getActivity();
 
         RecyclerView recyclerView = view.findViewById(R.id.donationRecyclerView);
-        FragmentManager fragmentManager = getChildFragmentManager();
+
+        if (getArguments() != null) {
+            images = getArguments().getStringArrayList("images");
+            descs = getArguments().getStringArrayList("descs");
+            date = getArguments().getStringArrayList("dates");
+            emails = getArguments().getStringArrayList("emails");
+            phones = getArguments().getStringArrayList("phones");
+        }
 
 
         open = view.findViewById(R.id.openFab);
@@ -106,21 +121,11 @@ public class DonationsFragment extends Fragment {
             public void onClick(View v) {
                 recyclerView.setVisibility(View.VISIBLE);
 
-//                ListAdapter adapter = new ListAdapter(context, images, businessNames, emails, phones);
-//                recyclerView.setAdapter(adapter);
-//                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, date);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
             }
         });
-
-
-//        if (getArguments() != null) {
-//            images = getArguments().getStringArrayList("images");
-//            businessNames = getArguments().getStringArrayList("businessNames");
-//            emails = getArguments().getStringArrayList("emails");
-//            phones = getArguments().getStringArrayList("phones");
-//            String userType = getArguments().getString("userType");
-//        }
-
 
         return view;
     }
