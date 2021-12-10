@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
         <activity
+            android:name=".ChangePassword"
+            android:exported="true" />
+        <activity
             android:name=".AddPostActivity"
             android:exported="true" />
         <activity
