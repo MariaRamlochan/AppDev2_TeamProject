@@ -14,11 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
-
+        <activity
+            android:name=".AddPostActivity"
+            android:exported="true" />
         <activity
             android:name=".ProfileActivity"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".DatabaseViewActivity"
             android:exported="true" />

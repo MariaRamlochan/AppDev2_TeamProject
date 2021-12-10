@@ -1,5 +1,9 @@
 package com.example.teamproject;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -9,22 +13,13 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 
 public class AddPostActivity extends AppCompatActivity {
 
@@ -58,13 +53,14 @@ public class AddPostActivity extends AppCompatActivity {
                 Bundle bundle = getIntent().getExtras();
                 String email = bundle.getString("email");
                 Cursor cursor = databaseHelper.getUserId(email);
+                String desc = addPostDesc.getText().toString();
                 String userId = "";
 
                 if (cursor.moveToNext()) {
                     int userTypeColumn = cursor.getColumnIndex("user_id");
                     userId = cursor.getString(userTypeColumn);
                 }
-                Boolean insert = databaseHelper.insertDataPost(addPostDesc.toString(), image_uri.toString(), userId);
+                Boolean insert = databaseHelper.insertDataPost(desc, image_uri.toString(), userId);
                 if (insert) {
                     Toast.makeText(AddPostActivity.this, "Registration completed", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AddPostActivity.this, ProfileActivity.class);
@@ -92,22 +88,22 @@ public class AddPostActivity extends AppCompatActivity {
         });
     }
 
-        private void openCamera() {
-            ContentValues values = new ContentValues();
-            values.put(MediaStore.Images.Media.TITLE, "New Picture");
-            values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera");
-            image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+    private void openCamera() {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera");
+        image_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
 
-            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
-            startActivityForResult(cameraIntent, CAMERA_PICK_CODE);
-        }
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+        startActivityForResult(cameraIntent, CAMERA_PICK_CODE);
+    }
 
-        private void openGallery() {
-            Intent gallery = new Intent(Intent.ACTION_PICK);
-            gallery.setType("image/*");
-            startActivityForResult(gallery, GALLERY_PICK_CODE);
-        }
+    private void openGallery() {
+        Intent gallery = new Intent(Intent.ACTION_PICK);
+        gallery.setType("image/*");
+        startActivityForResult(gallery, GALLERY_PICK_CODE);
+    }
 
     @SuppressLint("MissingSuperCall")
     @Override
@@ -142,96 +138,3 @@ public class AddPostActivity extends AppCompatActivity {
     }
 
 }
-
-    //
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.activity_add_post, container, false);
-//    }
-//
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//
-//        addPostButton = getActivity().findViewById(R.id.addPostButton);
-//        addPostImageButton = getActivity().findViewById(R.id.addPostImageButton);
-//        addPostImage = getActivity().findViewById(R.id.addPostImageView);
-//        addPostDesc = getActivity().findViewById(R.id.addPostEditText);
-//
-//
-//    }
-//
-//    @Override
-//    public void onClick(View v) {
-//        addPostButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (getArguments() != null) {
-//                    userEmail = getArguments().getString("email");
-//                }
-//                Cursor cursor = databaseHelper.getUserId(userEmail);
-//                if (cursor.moveToNext()) {
-//                    int userTypeColumn = cursor.getColumnIndex("user_id");
-//                    userId = cursor.getString(userTypeColumn);
-//                }
-//                Boolean insert = databaseHelper.insertDataPost(addPostDesc.toString(), image_uri.toString(), userId);
-//                if (insert) {
-//                    Toast.makeText(getContext(), "Post Added", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//
-//        addPostImageButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ContentValues values = new ContentValues();
-//                values.put(MediaStore.Images.Media.TITLE, "New Picture");
-//                values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera");
-//                image_uri = getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-//
-//
-//                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
-//                startActivityForResult(cameraIntent, CAMERA_PICK_CODE);
-//            }
-//        });
-//    }
-//
-//
-////    private void openCamera() {
-////        ContentValues values = new ContentValues();
-////        values.put(MediaStore.Images.Media.TITLE, "New Picture");
-////        values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera");
-////        image_uri = getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-////
-////
-////        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-////        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
-////        startActivityForResult(cameraIntent, CAMERA_PICK_CODE);
-////    }
-//
-////    @SuppressLint("MissingSuperCall")
-////    @Override
-////    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-////        if (requestCode == PERMISSION_CODE_CAMERA) {
-////            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-////                openCamera();
-////            }
-////            else {
-////                Toast.makeText(getContext(), "Permission denied...", Toast.LENGTH_SHORT).show();
-////            }
-////        }
-////    }
-//
-//    @SuppressLint("MissingSuperCall")
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        if (requestCode == CAMERA_PICK_CODE) {
-//            addPostImage.setImageURI(image_uri);
-//
-//        }
-//    }
-

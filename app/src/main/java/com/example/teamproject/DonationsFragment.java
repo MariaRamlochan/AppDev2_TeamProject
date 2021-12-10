@@ -84,12 +84,10 @@ public class DonationsFragment extends Fragment {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                addPostFragment.getView().setVisibility(View.VISIBLE);
-//                recyclerView.setVisibility(View.GONE);
-                final Bundle args = new Bundle();
-                String email = args.getString("email");
+                assert getArguments() != null;
+                String email = getArguments().getString("email");
                 title.setText("Add A Food Donation");
-                Intent intent = new Intent(getContext(), DatabaseViewActivity.class);
+                Intent intent = new Intent(getContext(), AddPostActivity.class);
                 intent.putExtra("email", email);
                 startActivity(intent);
             }
@@ -99,8 +97,6 @@ public class DonationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 recyclerView.setVisibility(View.VISIBLE);
-
-
 
             }
         });
@@ -124,8 +120,6 @@ public class DonationsFragment extends Fragment {
 //            phones = getArguments().getStringArrayList("phones");
 //            String userType = getArguments().getString("userType");
 //        }
-
-
 
 
         return view;
