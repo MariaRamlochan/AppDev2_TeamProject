@@ -119,25 +119,48 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 break;
             case R.id.nav_donations:
                 DonationsFragment donationsFragment = new DonationsFragment();
-                Cursor cursor1 = databaseHelper.getAllDataUserPost(userId_user);
 
-                if (cursor1.getCount() == 0) {
-                    Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+                if (type.equals("Donor")) {
+                    Cursor cursor1 = databaseHelper.getAllDataUserPost(userId_user);
+
+                    if (cursor1.getCount() == 0) {
+                        Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+                    }
+
+                    while (cursor1.moveToNext()) {
+                        postImage.add(cursor1.getString(2));
+                        postDesc.add(cursor1.getString(1));
+                        postDate.add(cursor1.getString(3));
+                        emails.add(email);
+                        phones.add(phone);
+                    }
+
+                    args.putStringArrayList("images", postImage);
+                    args.putStringArrayList("descs", postDesc);
+                    args.putStringArrayList("dates", postDate);
+                    args.putStringArrayList("emails", emails);
+                    args.putStringArrayList("phones", phones);
+                } else {
+                    Cursor cursor2 = databaseHelper.getAllDataPost();
+
+                    if (cursor2.getCount() == 0) {
+                        Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+                    }
+
+                    while (cursor2.moveToNext()) {
+                        postImage.add(cursor2.getString(1));
+                        postDesc.add(cursor2.getString(2));
+                        postDate.add(cursor2.getString(3));
+                        emails.add(cursor2.getString(4));
+                        phones.add(cursor2.getString(5));
+                    }
+
+                    args.putStringArrayList("images", postImage);
+                    args.putStringArrayList("descs", postDesc);
+                    args.putStringArrayList("dates", postDate);
+                    args.putStringArrayList("emails", emails);
+                    args.putStringArrayList("phones", phones);
                 }
-
-                while (cursor1.moveToNext()) {
-                    postImage.add(cursor1.getString(2));
-                    postDesc.add(cursor1.getString(1));
-                    postDate.add(cursor1.getString(3));
-                    emails.add(email);
-                    phones.add(phone);
-                }
-
-                args.putStringArrayList("images", postImage);
-                args.putStringArrayList("descs", postDesc);
-                args.putStringArrayList("dates", postDate);
-                args.putStringArrayList("emails", emails);
-                args.putStringArrayList("phones", phones);
 
                 args.putString("email", email);
                 args.putString("userType", type);

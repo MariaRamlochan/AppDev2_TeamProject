@@ -25,7 +25,7 @@ public class DonationsFragment extends Fragment {
     FloatingActionButton open, past, post, present;
     TextView pastText, postText, presentText, title;
     Boolean isFabVisible;
-    String userId, email;
+    String userId, email, type;
 
     private ArrayList<String> images;
     private ArrayList<String> descs;
@@ -49,6 +49,7 @@ public class DonationsFragment extends Fragment {
             dates = getArguments().getStringArrayList("dates");
             emails = getArguments().getStringArrayList("emails");
             phones = getArguments().getStringArrayList("phones");
+            type = getArguments().getString("userType");
         }
 
 
@@ -71,65 +72,75 @@ public class DonationsFragment extends Fragment {
 
         isFabVisible = false;
 
-        open.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!isFabVisible){
-                    past.setVisibility(View.VISIBLE);
-                    post.setVisibility(View.VISIBLE);
-                    present.setVisibility(View.VISIBLE);
-                    pastText.setVisibility(View.VISIBLE);
-                    postText.setVisibility(View.VISIBLE);
-                    presentText.setVisibility(View.VISIBLE);
+        if (type.equals("Donor")) {
+            open.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!isFabVisible){
+                        past.setVisibility(View.VISIBLE);
+                        post.setVisibility(View.VISIBLE);
+                        present.setVisibility(View.VISIBLE);
+                        pastText.setVisibility(View.VISIBLE);
+                        postText.setVisibility(View.VISIBLE);
+                        presentText.setVisibility(View.VISIBLE);
 
-                    isFabVisible = true;
-                } else {
-                    past.setVisibility(View.GONE);
-                    post.setVisibility(View.GONE);
-                    present.setVisibility(View.GONE);
-                    pastText.setVisibility(View.GONE);
-                    postText.setVisibility(View.GONE);
-                    presentText.setVisibility(View.GONE);
+                        isFabVisible = true;
+                    } else {
+                        past.setVisibility(View.GONE);
+                        post.setVisibility(View.GONE);
+                        present.setVisibility(View.GONE);
+                        pastText.setVisibility(View.GONE);
+                        postText.setVisibility(View.GONE);
+                        presentText.setVisibility(View.GONE);
 
-                    isFabVisible = false;
+                        isFabVisible = false;
+                    }
                 }
-            }
-        });
+            });
 
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                assert getArguments() != null;
-                String email = getArguments().getString("email");
-                title.setText("Add A Food Donation");
-                Intent intent = new Intent(getContext(), AddPostActivity.class);
-                intent.putExtra("email", email);
-                startActivity(intent);
-            }
-        });
+            post.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    assert getArguments() != null;
+                    String email = getArguments().getString("email");
+                    title.setText("Add A Food Donation");
+                    Intent intent = new Intent(getContext(), AddPostActivity.class);
+                    intent.putExtra("email", email);
+                    startActivity(intent);
+                }
+            });
 
-        past.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recyclerView.setVisibility(View.VISIBLE);
+            past.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    recyclerView.setVisibility(View.VISIBLE);
 
-            }
-        });
+                }
+            });
 
-        present.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recyclerView.setVisibility(View.VISIBLE);
+            present.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    recyclerView.setVisibility(View.VISIBLE);
 
-                DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
-                recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            }
-        });
+                    DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                }
+            });
 
-        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        } else {
+            open.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+
+
+        }
+
+
+
 
         return view;
     }

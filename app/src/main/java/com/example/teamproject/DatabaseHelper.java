@@ -232,9 +232,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllDataPost() {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
-        Cursor res = sqLiteDatabase.rawQuery("Select * from " + TABLE_POST, null);
+        Cursor res = sqLiteDatabase.rawQuery("Select post_pic, post_desc, post_date, email, phone_num " +
+                "from User inner join Post on User.user_id = Post.user_id", null);
         return res;
     }
+
+
 
 
     public Cursor getAllDataUserPost(String user_id) {
