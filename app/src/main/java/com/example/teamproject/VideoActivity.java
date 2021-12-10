@@ -14,14 +14,13 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videa);
 
-        VideoView videoView = findViewById(R.id.videoView);
-        String videoPath = "anddroid.resource://" + getPackageName() + "/" + R.raw.foodwaste;
-        Uri uri = Uri.parse(videoPath);
-        videoView.setVideoURI(uri);
-
-        MediaController mediaController = new MediaController(this);
-        videoView.setMediaController(mediaController);
-        mediaController.setAnchorView(videoView);
-        videoView.start();
+//        VideoView videoView = findViewById(R.id.videoView);
+//        String videoPath = "anddroid.resource://" + getPackageName() + "/" + R.raw.foodwaste;
+//        Uri uri = Uri.parse(videoPath);
+//        videoView.setVideoURI(uri);
+//
+//        MediaController mediaController = new MediaController(this);
+//        videoView.setMediaController(mediaController);
+//        mediaController.setAnchorView(videoView);
     }
 }

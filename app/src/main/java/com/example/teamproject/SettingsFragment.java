@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +23,8 @@ public class SettingsFragment extends Fragment {
     Button saveChange, changePass, terminate;
     ImageButton addGallery, addCamera;
     ImageView settingProfile;
-    String userBusinessName, userPhone, userAddress, userCity, userCountry, userPic;
+    String userBusinessName, userPhone, userAddress, userCity, userCountry, userPic, userEmail;
+    DatabaseHelper databaseHelper;
 
     @Nullable
     @Override
@@ -39,6 +42,7 @@ public class SettingsFragment extends Fragment {
         addGallery = view.findViewById(R.id.settingGallery);
         addCamera = view.findViewById(R.id.settingCamera);
         settingProfile = view.findViewById(R.id.settingsPic);
+        databaseHelper = new DatabaseHelper(getContext());
 
         if (getArguments() != null) {
             userBusinessName = getArguments().getString("userBusinessName");
@@ -47,7 +51,15 @@ public class SettingsFragment extends Fragment {
             userCity = getArguments().getString("userCity");
             userCountry = getArguments().getString("userCountry");
             userPic = getArguments().getString("userPic");
+            userEmail = getArguments().getString("email");
         }
+
+        businessName.setText(userBusinessName);
+        phoneNumber.setText(userPhone);
+        address.setText(userAddress);
+        city.setText(userCity);
+        country.setText(userCountry);
+        settingProfile.setImageURI(Uri.parse(userPic));
 
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,12 +72,25 @@ public class SettingsFragment extends Fragment {
         saveChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            businessName.setText(userBusinessName);
-            phoneNumber.setText(userPhone);
-            address.setText(userAddress);
-            city.setText(userCity);
-            country.setText(userCountry);
-            settingProfile.setImageURI(Uri.parse(userPic));
+                String userId = "";
+                Cursor cursor = databaseHelper.getUserId(userEmail);
+                if (cursor.moveToNext()) {
+                    int userTypeColumn = cursor.getColumnIndex("user_id");
+                    userId = cursor.getString(userTypeColumn);
+                }
+
+                if (businessName.getText().equals("") || phoneNumber.getText().equals("")
+                        || address.getText().equals("") || city.getText().equals("")
+                        || country.getText().equals("")) {
+                    Toast.makeText(getContext(), " All Fields must be filled", Toast.LENGTH_SHORT).show();
+                } else {
+                    boolean isUpdated = databaseHelper.updateDataUser(userId, businessName.getText().toString(),
+                            phoneNumber.getText().toString(), address.getText().toString(),
+                            city.getText().toString(), country.getText().toString(), userPic);
+                    if(isUpdated) {
+                        Toast.makeText(getContext(), "Update successful", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
