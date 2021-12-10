@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
@@ -24,6 +25,7 @@ public class DonationsFragment extends Fragment {
 
     FloatingActionButton open, past, post, present;
     TextView pastText, postText, presentText, title;
+    CardView presentView, pastView, postView;
     Boolean isFabVisible;
     String userId, email, type;
 
@@ -61,6 +63,9 @@ public class DonationsFragment extends Fragment {
         postText = view.findViewById(R.id.textViewPostD);
         presentText = view.findViewById(R.id.textViewPresentD);
         title = view.findViewById(R.id.donationTitle);
+        pastView = view.findViewById(R.id.cardViewPast);
+        presentView = view.findViewById(R.id.cardViewPresent);
+        postView = view.findViewById(R.id.cardViewPost);
 
         title.setText("Your Current Donations");
         past.setVisibility(View.GONE);
@@ -69,6 +74,9 @@ public class DonationsFragment extends Fragment {
         pastText.setVisibility(View.GONE);
         postText.setVisibility(View.GONE);
         presentText.setVisibility(View.GONE);
+        pastView.setVisibility(View.GONE);
+        presentView.setVisibility(View.GONE);
+        postView.setVisibility(View.GONE);
 
         isFabVisible = false;
 
@@ -83,20 +91,36 @@ public class DonationsFragment extends Fragment {
                         pastText.setVisibility(View.VISIBLE);
                         postText.setVisibility(View.VISIBLE);
                         presentText.setVisibility(View.VISIBLE);
+        open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isFabVisible){
+                    past.setVisibility(View.VISIBLE);
+                    post.setVisibility(View.VISIBLE);
+                    present.setVisibility(View.VISIBLE);
+                    pastText.setVisibility(View.VISIBLE);
+                    postText.setVisibility(View.VISIBLE);
+                    presentText.setVisibility(View.VISIBLE);
+                    pastView.setVisibility(View.VISIBLE);
+                    presentView.setVisibility(View.VISIBLE);
+                    postView.setVisibility(View.VISIBLE);
 
-                        isFabVisible = true;
-                    } else {
-                        past.setVisibility(View.GONE);
-                        post.setVisibility(View.GONE);
-                        present.setVisibility(View.GONE);
-                        pastText.setVisibility(View.GONE);
-                        postText.setVisibility(View.GONE);
-                        presentText.setVisibility(View.GONE);
+                    isFabVisible = true;
+                } else {
+                    past.setVisibility(View.GONE);
+                    post.setVisibility(View.GONE);
+                    present.setVisibility(View.GONE);
+                    pastText.setVisibility(View.GONE);
+                    postText.setVisibility(View.GONE);
+                    presentText.setVisibility(View.GONE);
+                    pastView.setVisibility(View.GONE);
+                    presentView.setVisibility(View.GONE);
+                    postView.setVisibility(View.GONE);
 
-                        isFabVisible = false;
-                    }
+                    isFabVisible = false;
                 }
-            });
+            }
+        });
 
             post.setOnClickListener(new View.OnClickListener() {
                 @Override
