@@ -117,7 +117,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView10" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/donationDeleteButton"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"

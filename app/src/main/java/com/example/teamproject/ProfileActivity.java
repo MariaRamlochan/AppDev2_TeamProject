@@ -148,11 +148,11 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                     }
 
                     while (cursor2.moveToNext()) {
-                        postImage.add(cursor2.getString(1));
-                        postDesc.add(cursor2.getString(2));
-                        postDate.add(cursor2.getString(3));
-                        emails.add(cursor2.getString(4));
-                        phones.add(cursor2.getString(5));
+                        postImage.add(cursor2.getString(0));
+                        postDesc.add(cursor2.getString(1));
+                        postDate.add(cursor2.getString(2));
+                        emails.add(cursor2.getString(3));
+                        phones.add(cursor2.getString(4));
                     }
 
                     args.putStringArrayList("images", postImage);

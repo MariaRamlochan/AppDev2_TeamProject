@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,7 +28,8 @@ public class DonationsFragment extends Fragment {
     TextView pastText, postText, presentText, title;
     CardView presentView, pastView, postView;
     Boolean isFabVisible;
-    String userId, email, type;
+    Button delete;
+    String type;
 
     private ArrayList<String> images;
     private ArrayList<String> descs;
@@ -54,30 +56,31 @@ public class DonationsFragment extends Fragment {
             type = getArguments().getString("userType");
         }
 
-        open = view.findViewById(R.id.openFab);
-        past = view.findViewById(R.id.pastFab);
-        post = view.findViewById(R.id.postFab);
-        present = view.findViewById(R.id.presentFab);
-        pastText = view.findViewById(R.id.textViewPastD);
-        postText = view.findViewById(R.id.textViewPostD);
-        presentText = view.findViewById(R.id.textViewPresentD);
-        title = view.findViewById(R.id.donationTitle);
-        pastView = view.findViewById(R.id.cardViewPast);
-        presentView = view.findViewById(R.id.cardViewPresent);
-        postView = view.findViewById(R.id.cardViewPost);
+            open = view.findViewById(R.id.openFab);
+            past = view.findViewById(R.id.pastFab);
+            post = view.findViewById(R.id.postFab);
+            present = view.findViewById(R.id.presentFab);
+            pastText = view.findViewById(R.id.textViewPastD);
+            postText = view.findViewById(R.id.textViewPostD);
+            presentText = view.findViewById(R.id.textViewPresentD);
+            title = view.findViewById(R.id.donationTitle);
+            pastView = view.findViewById(R.id.cardViewPast);
+            presentView = view.findViewById(R.id.cardViewPresent);
+            postView = view.findViewById(R.id.cardViewPost);
+            delete = view.findViewById(R.id.donationDeleteButton);
 
-        title.setText("Your Current Donations");
-        past.setVisibility(View.GONE);
-        post.setVisibility(View.GONE);
-        present.setVisibility(View.GONE);
-        pastText.setVisibility(View.GONE);
-        postText.setVisibility(View.GONE);
-        presentText.setVisibility(View.GONE);
-        pastView.setVisibility(View.GONE);
-        presentView.setVisibility(View.GONE);
-        postView.setVisibility(View.GONE);
+            title.setText("Your Current Donations");
+            past.setVisibility(View.GONE);
+            post.setVisibility(View.GONE);
+            present.setVisibility(View.GONE);
+            pastText.setVisibility(View.GONE);
+            postText.setVisibility(View.GONE);
+            presentText.setVisibility(View.GONE);
+            pastView.setVisibility(View.GONE);
+            presentView.setVisibility(View.GONE);
+            postView.setVisibility(View.GONE);
 
-        isFabVisible = false;
+            isFabVisible = false;
 
         if (type.equals("Donor")) {
             open.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +151,12 @@ public class DonationsFragment extends Fragment {
 
     } else {
         open.setVisibility(View.GONE);
+//        delete.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
+
+        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }
         return view;
     }
