@@ -86,8 +86,11 @@ public class DonationsFragment extends Fragment {
             public void onClick(View v) {
 //                addPostFragment.getView().setVisibility(View.VISIBLE);
 //                recyclerView.setVisibility(View.GONE);
+                final Bundle args = new Bundle();
+                String email = args.getString("email");
                 title.setText("Add A Food Donation");
                 Intent intent = new Intent(getContext(), DatabaseViewActivity.class);
+                intent.putExtra("email", email);
                 startActivity(intent);
             }
         });
