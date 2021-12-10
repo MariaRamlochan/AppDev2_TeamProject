@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -62,6 +63,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         String email = bundle.getString("email");
         String businessName = bundle.getString("userBusinessName");
         String pic = bundle.getString("userPic");
+        String type = bundle.getString("userType");
 
         View headerView = navigationView.getHeaderView(0);
         TextView navEmail = headerView.findViewById(R.id.navEmail);
@@ -71,7 +73,11 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         navBusinessName.setText(businessName);
         navPic.setImageURI(Uri.parse(pic));
 
-
+        if (type.equals("Donor")) {
+            Menu menu = navigationView.getMenu();
+            MenuItem itemList = menu.findItem(R.id.nav_list);
+            itemList.setTitle("List of Banks");
+        }
     }
 
     @SuppressLint("NonConstantResourceId")

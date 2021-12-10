@@ -14,7 +14,7 @@
         android:backgroundTint="#FFE8E8">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/listImageView"
+            android:id="@+id/donationImageView"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
@@ -27,7 +27,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/listTextView"
+            android:id="@+id/donationDescTextView"
             android:layout_width="275dp"
             android:layout_height="30dp"
             android:layout_marginStart="16dp"
@@ -38,8 +38,9 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/listImageView"
+            app:layout_constraintStart_toEndOf="@+id/donationImageView"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/textView6"
@@ -50,9 +51,9 @@
             android:text="Email: "
             android:textColor="#000000"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textViewEmail"
-            app:layout_constraintStart_toEndOf="@+id/listImageView"
-            app:layout_constraintTop_toBottomOf="@+id/listTextView" />
+            app:layout_constraintEnd_toStartOf="@+id/donationListEmail"
+            app:layout_constraintStart_toEndOf="@+id/donationImageView"
+            app:layout_constraintTop_toBottomOf="@+id/donationDescTextView" />
 
         <TextView
             android:id="@+id/textView7"
@@ -64,11 +65,11 @@
             android:textColor="#000000"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textViewPhone"
-            app:layout_constraintStart_toEndOf="@+id/listImageView"
+            app:layout_constraintStart_toEndOf="@+id/donationImageView"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
-            android:id="@+id/textViewEmail"
+            android:id="@+id/donationListEmail"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -78,10 +79,10 @@
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/listTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/donationDescTextView" />
 
         <TextView
-            android:id="@+id/textViewPhone"
+            android:id="@+id/donationListPhone"
             android:layout_width="226dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -91,7 +92,7 @@
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/donationListEmail" />
 
         <TextView
             android:id="@+id/textView10"

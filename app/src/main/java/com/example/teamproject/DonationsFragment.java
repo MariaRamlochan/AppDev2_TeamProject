@@ -1,5 +1,6 @@
 package com.example.teamproject;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -17,11 +22,19 @@ public class DonationsFragment extends Fragment {
     FloatingActionButton open, past, post, present;
     TextView pastText, postText, presentText, title;
     Boolean isFabVisible;
+    String userId, email;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_donations, container, false);
+
+        Context context = this.getActivity();
+
+        RecyclerView recyclerView = view.findViewById(R.id.donationRecyclerView);
+        FragmentManager fragmentManager = getChildFragmentManager();
+        AddPostFragment addPostFragment = (AddPostFragment) fragmentManager.findFragmentById(R.id.donationFragmentLayout);
 
         open = view.findViewById(R.id.openFab);
         past = view.findViewById(R.id.pastFab);
@@ -39,6 +52,7 @@ public class DonationsFragment extends Fragment {
         pastText.setVisibility(View.GONE);
         postText.setVisibility(View.GONE);
         presentText.setVisibility(View.GONE);
+        addPostFragment.getView().setVisibility(View.GONE);
 
         isFabVisible = false;
 
@@ -67,11 +81,48 @@ public class DonationsFragment extends Fragment {
             }
         });
 
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addPostFragment.getView().setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.GONE);
+                title.setText("Add A Food Donation");
 
-        if (getArguments() != null) {
-            String email = getArguments().getString("email");
-            String userType = getArguments().getString("userType");
-        }
+            }
+        });
+
+        past.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setVisibility(View.VISIBLE);
+                addPostFragment.getView().setVisibility(View.GONE);
+
+
+            }
+        });
+
+        present.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setVisibility(View.VISIBLE);
+                addPostFragment.getView().setVisibility(View.GONE);
+
+//                ListAdapter adapter = new ListAdapter(context, images, businessNames, emails, phones);
+//                recyclerView.setAdapter(adapter);
+//                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            }
+        });
+
+
+//        if (getArguments() != null) {
+//            images = getArguments().getStringArrayList("images");
+//            businessNames = getArguments().getStringArrayList("businessNames");
+//            emails = getArguments().getStringArrayList("emails");
+//            phones = getArguments().getStringArrayList("phones");
+//            String userType = getArguments().getString("userType");
+//        }
+
+
 
 
         return view;

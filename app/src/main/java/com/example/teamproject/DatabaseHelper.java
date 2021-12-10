@@ -10,10 +10,12 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static DatabaseHelper synchronizedInstance;
-    private static final String DATABASE_NAME = "test6.db";
+    private static final String DATABASE_NAME = "test7.db";
 
     private static final String TABLE_USER = "User";
     private static final String TABLE_POST = "Post";
@@ -34,6 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_POST_ID = "post_id";
     private static final String COL_POST_DESC = "post_desc";
     private static final String COL_POST_PIC = "post_pic";
+    private static final String COL_POST_DATE = "post_date";
     private static final String COL_USER_ID = "user_id";
     Context context;
 
@@ -61,6 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL_POST_ID + " integer primary key autoincrement, "
                 + COL_POST_DESC + " text not null, "
                 + COL_POST_PIC + " text not null, "
+                + COL_POST_DATE + " datetime default current_timestamp, "
                 + COL_USER_ID + " integer,"
                 + " FOREIGN KEY ("+COL_USER_ID+") REFERENCES "+TABLE_USER+"("+COL_ID+"));";
 
@@ -109,7 +113,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Boolean checkEmail(String email){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM User WHERE email = ? ", new String[] {email});
+        @SuppressLint("Recycle") Cursor cursor =
+                sqLiteDatabase.rawQuery("SELECT * FROM User WHERE email = ? ", new String[] {email});
         return cursor.getCount() > 0;
     }
 
@@ -168,9 +173,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Boolean insertDataPost(String postDesc, String postPic, String user_id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String strDate = sdf.format(new Date());
+
         contentValues.put(COL_POST_DESC, postDesc);
-        contentValues.put(COL_USER_ID, user_id);
+        contentValues.put(COL_POST_DATE, strDate);
         contentValues.put(COL_POST_PIC, postPic);
+        contentValues.put(COL_USER_ID, user_id);
         long result = sqLiteDatabase.insert(TABLE_POST, null, contentValues);
         if (result == -1) {
             Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
