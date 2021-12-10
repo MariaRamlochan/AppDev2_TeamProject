@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     public ActionBarDrawerToggle actionBarDrawerToggle;
     DatabaseHelper databaseHelper;
     ArrayList<String> image, businessName, emails, phone, postDesc, postImage, postDate;
-    String userId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,6 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         String pic = bundle.getString("userPic");
         String type = bundle.getString("userType");
 
-        Cursor cursorUserId = databaseHelper.getUserId(email);
-        if (cursorUserId.moveToNext()) {
-            int userTypeColumn = cursorUserId.getColumnIndex("user_id");
-            userId = cursorUserId.getString(userTypeColumn);
-        }
 
         View headerView = navigationView.getHeaderView(0);
         TextView navEmail = headerView.findViewById(R.id.navEmail);
@@ -94,10 +89,20 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+        String userId_user = "";
+        String userId_post = "";
+
         Bundle args = new Bundle();
         Bundle bundle = getIntent().getExtras();
         String type = bundle.getString("userType");
         String email = bundle.getString("email");
+        String postUserId = bundle.getString("postUserId");
+
+        Cursor cursor3 = databaseHelper.getUserId(email);
+        if (cursor3.moveToNext()) {
+            int userTypeColumn = cursor3.getColumnIndex("user_id");
+            userId_user = cursor3.getString(userTypeColumn);
+        }
 
 
         switch (item.getItemId()) {
@@ -109,8 +114,8 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 break;
             case R.id.nav_donations:
                 DonationsFragment donationsFragment = new DonationsFragment();
-                Cursor cursor1 = databaseHelper.getAllDataUserPost(Integer.parseInt(userId));
-                Cursor cursor2 = databaseHelper.getSpecificUser(Integer.parseInt(userId));
+                Cursor cursor1 = databaseHelper.getAllDataUserPost(postUserId);
+                Cursor cursor2 = databaseHelper.getSpecificUser(userId_user);
 
                 if (cursor1.getCount() == 0) {
                     Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
@@ -120,10 +125,10 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                     postImage.add(cursor1.getString(2));
                     postDesc.add(cursor1.getString(1));
                     postDate.add(cursor1.getString(3));
-                    while (cursor2.moveToNext()) {
-                        emails.add(cursor2.getString(2));
-                        phone.add(cursor2.getString(5));
-                    }
+//                    while (cursor2.moveToNext()) {
+//                        emails.add(cursor2.getString(2));
+//                        phone.add(cursor2.getString(5));
+//                    }
                 }
 
                 args.putStringArrayList("images", postImage);
@@ -131,7 +136,6 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 args.putStringArrayList("dates", postDate);
                 args.putStringArrayList("emails", emails);
                 args.putStringArrayList("phones", phone);
-                donationsFragment.setArguments(args);
 
                 args.putString("email", email);
                 args.putString("userType", type);

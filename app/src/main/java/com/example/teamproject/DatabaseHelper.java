@@ -138,10 +138,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor getSpecificUser(int user_id) {
+    public Cursor getSpecificUser(String user_id) {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
         Cursor res = sqLiteDatabase.rawQuery("Select * from User Where user_id = ? ",
-                new String[] {String.valueOf(user_id)});
+                new String[] {user_id});
         return res;
     }
 
@@ -199,10 +199,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor getAllDataUserPost(int user_id) {
+
+    public Cursor getAllDataUserPost(String user_id) {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
-        Cursor res = sqLiteDatabase.rawQuery("Select * from " + TABLE_POST
-                + " Where " + user_id + " = " + COL_ID, null);
+        Cursor res = sqLiteDatabase.rawQuery("Select * from  Post  Where user_id  = ?",  new String[]
+                {user_id});
         return res;
     }
 
