@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
         <activity
+            android:name=".NotificationView"
+            android:exported="true" />
+        <activity
             android:name=".VideoActivity"
             android:exported="true" />
         <activity

@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -118,6 +119,11 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                         homeFragment).commit();
                 break;
             case R.id.nav_donations:
+                postImage.clear();
+                postDesc.clear();
+                postDate.clear();
+                emails.clear();
+                phones.clear();
                 DonationsFragment donationsFragment = new DonationsFragment();
 
                 if (type.equals("Donor")) {
@@ -169,6 +175,10 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                         donationsFragment).commit();
                 break;
             case R.id.nav_list:
+                image.clear();
+                businessNames.clear();
+                emails.clear();
+                phones.clear();
                 ListFragment listFragment = new ListFragment();
                 Cursor cursor;
 
@@ -195,7 +205,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 args.putStringArrayList("phones", phones);
                 listFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        listFragment).detach(listFragment).attach(listFragment).commit();
+                        listFragment).commit();
                 break;
             case R.id.nav_about:
                 AboutFragment aboutFragment = new AboutFragment();

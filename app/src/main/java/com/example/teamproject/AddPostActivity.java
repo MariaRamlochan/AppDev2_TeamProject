@@ -3,10 +3,15 @@ package com.example.teamproject;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -46,6 +51,14 @@ public class AddPostActivity extends AppCompatActivity {
         back = findViewById(R.id.backImageButton);
         databaseHelper = new DatabaseHelper(this);
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification Channel",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+
+        }
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,6 +92,7 @@ public class AddPostActivity extends AppCompatActivity {
 
                 if (insert) {
                     Toast.makeText(AddPostActivity.this, "Post Added", Toast.LENGTH_SHORT).show();
+                    addNotification();
                     Intent intent = new Intent(AddPostActivity.this, ProfileActivity.class);
                     intent.putExtra("postPic", image_uri.toString());
                     intent.putExtra("postUserID", postUserId);
@@ -120,6 +134,25 @@ public class AddPostActivity extends AppCompatActivity {
         Intent gallery = new Intent(Intent.ACTION_PICK);
         gallery.setType("image/*");
         startActivityForResult(gallery, GALLERY_PICK_CODE);
+    }
+
+    private void addNotification() {
+
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(AddPostActivity.this, "My Notification");
+        builder.setContentTitle("New Donation Added!!!");
+        builder.setContentText("Come check out the new food that a donor added");
+        builder.setSmallIcon(R.drawable.ic_launcher_background);
+        builder.setAutoCancel(true);
+
+        Intent notificationIntent = new Intent(this, NotificationView.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this,0,notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0,builder.build());
     }
 
     @SuppressLint("MissingSuperCall")

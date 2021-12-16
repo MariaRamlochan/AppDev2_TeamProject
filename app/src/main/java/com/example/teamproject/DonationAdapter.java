@@ -1,10 +1,13 @@
 package com.example.teamproject;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,16 +20,20 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
 
     Context context;
     ArrayList<String> images, desc, email, phone, date;
+    String status, color;
     DatabaseHelper databaseHelper;
 
     public DonationAdapter(Context context, ArrayList<String> images, ArrayList<String> desc,
-                           ArrayList<String> email, ArrayList<String> phone, ArrayList<String> date) {
+                           ArrayList<String> email, ArrayList<String> phone, ArrayList<String> date,
+                           String status, String color) {
         this.context = context;
         this.images = images;
         this.desc = desc;
         this.email = email;
         this.phone = phone;
         this.date = date;
+        this.status = status;
+        this.color = color;
         databaseHelper = new DatabaseHelper(context);
     }
 
@@ -37,6 +44,8 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         holder.donationListEmail.setText(email.get(position));
         holder.donationListPhone.setText(phone.get(position));
         holder.donationDate.setText(date.get(position));
+        holder.donationDeleteButton.setText(status);
+        holder.donationDeleteButton.setBackgroundColor(Color.parseColor(color));
     }
 
     @NonNull
@@ -58,6 +67,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         public TextView donationListEmail;
         public TextView donationListPhone;
         public TextView donationDate;
+        public Button donationDeleteButton;
 
         public DonationViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +76,14 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
             donationListEmail = itemView.findViewById(R.id.donationListEmail);
             donationListPhone = itemView.findViewById(R.id.donationListPhone);
             donationDate = itemView.findViewById(R.id.donationDate);
+            donationDeleteButton = itemView.findViewById(R.id.donationDeleteButton);
+
+//            donationDeleteButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
         }
     }
 }

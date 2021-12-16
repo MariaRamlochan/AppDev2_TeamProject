@@ -139,22 +139,24 @@ public class DonationsFragment extends Fragment {
             public void onClick(View v) {
                 recyclerView.setVisibility(View.VISIBLE);
 
-                DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
+                DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones,
+                        dates, "Delete", "#ff0000");
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             }
         });
 
-        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
+        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates,
+                "Delete", "#ff0000");
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
     } else {
         open.setVisibility(View.GONE);
-//        delete.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
 
-        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates);
+        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates,
+                "Accept", "#4CAF50");
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }
