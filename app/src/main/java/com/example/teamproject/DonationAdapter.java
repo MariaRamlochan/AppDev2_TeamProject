@@ -63,6 +63,13 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
 //                }
 //            }
 //        });
+
+//        holder.donationListPhone.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
     @NonNull

@@ -238,7 +238,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res = sqLiteDatabase.rawQuery("Select Post.post_pic, Post.post_desc, " +
                 "Post.post_date, User.email, User.phone_num " +
                 "from User inner join Post on User.user_id = Post.user_id " +
-                "where Post.status = 'available' ", null);
+                "where Post.post_status = 'available' ", null);
         return res;
     }
 
@@ -246,7 +246,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllDataUserPost(String user_id) {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
         Cursor res = sqLiteDatabase.rawQuery("Select * from  Post  Where user_id  = ? " +
-                "and status = 'available' ",  new String[]
+                "and post_status = 'available' ",  new String[]
                 {user_id});
         return res;
     }

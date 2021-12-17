@@ -73,7 +73,7 @@ public class DonationsFragment extends Fragment {
             postView = view.findViewById(R.id.cardViewPost);
             delete = view.findViewById(R.id.donationDeleteButton);
 
-            title.setText("Your Current Donations");
+            title.setText("Current Donations");
             past.setVisibility(View.GONE);
             post.setVisibility(View.GONE);
             present.setVisibility(View.GONE);
@@ -136,6 +136,7 @@ public class DonationsFragment extends Fragment {
         past.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                title.setText("Past Donations");
                 recyclerView.setVisibility(View.VISIBLE);
 
             }
@@ -144,6 +145,7 @@ public class DonationsFragment extends Fragment {
         present.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                title.setText("Current Donations");
                 recyclerView.setVisibility(View.VISIBLE);
 
                 DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones,
@@ -159,22 +161,15 @@ public class DonationsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
     } else {
-        open.setVisibility(View.GONE);
-        recyclerView.setVisibility(View.VISIBLE);
+            title.setText("Available Donations");
+            open.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
 
-        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates,
-                "Accept", "#4CAF50");
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates,
+                    "Accept", "#4CAF50");
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }
-
-//        delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getContext(), "Attempt to delete", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
 
         return view;
     }
