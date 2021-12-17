@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     DatabaseHelper databaseHelper;
-    ArrayList<String> image, businessNames, emails, phones, postDesc, postImage, postDate;
+    ArrayList<String> image, businessNames, emails, phones, postDesc, postImage, postDate, postIds;
 
 
     @Override
@@ -56,6 +56,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         }
 
         databaseHelper = new DatabaseHelper(this);
+        postIds = new ArrayList<>();
         image = new ArrayList<>();
         businessNames = new ArrayList<>();
         emails = new ArrayList<>();
@@ -118,6 +119,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                         homeFragment).commit();
                 break;
             case R.id.nav_donations:
+                postIds.clear();
                 postImage.clear();
                 postDesc.clear();
                 postDate.clear();
@@ -133,6 +135,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                     }
 
                     while (cursor1.moveToNext()) {
+                        postIds.add(cursor1.getString(0));
                         postImage.add(cursor1.getString(2));
                         postDesc.add(cursor1.getString(1));
                         postDate.add(cursor1.getString(3));
@@ -140,6 +143,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                         phones.add(phone);
                     }
 
+                    args.putStringArrayList("ids", postIds);
                     args.putStringArrayList("images", postImage);
                     args.putStringArrayList("descs", postDesc);
                     args.putStringArrayList("dates", postDate);
@@ -153,13 +157,15 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                     }
 
                     while (cursor2.moveToNext()) {
-                        postImage.add(cursor2.getString(0));
-                        postDesc.add(cursor2.getString(1));
-                        postDate.add(cursor2.getString(2));
-                        emails.add(cursor2.getString(3));
-                        phones.add(cursor2.getString(4));
+                        postIds.add(cursor2.getString(0));
+                        postImage.add(cursor2.getString(1));
+                        postDesc.add(cursor2.getString(2));
+                        postDate.add(cursor2.getString(3));
+                        emails.add(cursor2.getString(4));
+                        phones.add(cursor2.getString(5));
                     }
 
+                    args.putStringArrayList("ids", postIds);
                     args.putStringArrayList("images", postImage);
                     args.putStringArrayList("descs", postDesc);
                     args.putStringArrayList("dates", postDate);
