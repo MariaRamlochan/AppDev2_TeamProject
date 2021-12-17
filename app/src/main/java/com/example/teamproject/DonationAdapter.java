@@ -104,6 +104,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         public TextView donationListEmail;
         public TextView donationListPhone;
         public TextView donationDate;
+        public TextView donationBusinessName;
         public TextView donationId;
         public Button donationDeleteButton;
 
@@ -116,6 +117,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
             donationDate = itemView.findViewById(R.id.donationDate);
             donationDeleteButton = itemView.findViewById(R.id.donationDeleteButton);
             donationId = itemView.findViewById(R.id.postIDTextView);
+            donationBusinessName = itemView.findViewById(R.id.textViewDonationBName);
 
         }
     }
