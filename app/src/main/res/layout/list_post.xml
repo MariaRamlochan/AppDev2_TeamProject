@@ -2,70 +2,77 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/deleteButtonPost"
+    android:id="@+id/textViewPostID"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="154dp"
+        android:layout_height="320dp"
         android:layout_margin="4dp"
         android:background="#EADADA"
         android:backgroundTint="#FFE8E8">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/donationImageView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:padding="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/donationDescTextView"
-            android:layout_width="275dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Description Here"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/donationImageView"
+        <ImageView
+            android:id="@+id/donationImageView"
+            android:layout_width="95dp"
+            android:layout_height="96dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="2dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <EditText
+            android:id="@+id/donationDescTextView"
+            android:layout_width="383dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:text="Description Here"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/donationImageView" />
+
+        <TextView
+            android:id="@+id/donationListPhone"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6dp"
+            android:text="(666)666-6666"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@+id/donationListEmail" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="63dp"
             android:text="Email: "
             android:textColor="#000000"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/donationListEmail"
             app:layout_constraintStart_toEndOf="@+id/donationImageView"
-            app:layout_constraintTop_toBottomOf="@+id/donationDescTextView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6dp"
             android:text="Phone: "
             android:textColor="#000000"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/donationListPhone"
             app:layout_constraintStart_toEndOf="@+id/donationImageView"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -73,60 +80,56 @@
             android:id="@+id/donationListEmail"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="63dp"
+            android:layout_marginEnd="11dp"
             android:text="testing@testing.com"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/donationDescTextView" />
-
-        <TextView
-            android:id="@+id/donationListPhone"
-            android:layout_width="226dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:text="(666)666-6666"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/donationListEmail" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="110dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="30dp"
             android:text="Date: "
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/donationDeleteButton"
+            app:layout_constraintTop_toBottomOf="@+id/donationDescTextView" />
 
         <TextView
             android:id="@+id/donationDate"
-            android:layout_width="224dp"
+            android:layout_width="150dp"
             android:layout_height="18dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="30dp"
             android:text="Date Here"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView10" />
+            app:layout_constraintStart_toEndOf="@+id/textView10"
+            app:layout_constraintTop_toBottomOf="@+id/donationDescTextView" />
 
         <Button
             android:id="@+id/donationDeleteButton"
             android:layout_width="80dp"
             android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
             android:backgroundTint="#ff0000"
             android:text="Delete"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/donationImageView" />
+            app:layout_constraintTop_toBottomOf="@+id/donationDescTextView" />
+
+        <TextView
+            android:id="@+id/postIDTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/donationDescTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
