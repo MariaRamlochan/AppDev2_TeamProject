@@ -71,7 +71,6 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         String type = bundle.getString("userType");
 
 
-
         View headerView = navigationView.getHeaderView(0);
         TextView navEmail = headerView.findViewById(R.id.navEmail);
         TextView navBusinessName = headerView.findViewById(R.id.navName);
@@ -170,6 +169,8 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
                 args.putString("email", email);
                 args.putString("userType", type);
+                args.putString("userBusinessName", businessName);
+                args.putString("userPic", pic);
                 donationsFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         donationsFragment).commit();

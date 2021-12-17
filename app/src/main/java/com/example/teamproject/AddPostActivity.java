@@ -39,6 +39,8 @@ public class AddPostActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     Uri image_uri;
 
+    String email, businessName, userPic, type;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,12 @@ public class AddPostActivity extends AppCompatActivity {
         back = findViewById(R.id.backImageButton);
         databaseHelper = new DatabaseHelper(this);
 
+        Bundle bundle = getIntent().getExtras();
+        email = bundle.getString("email");
+        businessName = bundle.getString("userBusinessName");
+        userPic = bundle.getString("userPic");
+        type = bundle.getString("userType");
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("My Notification", "My Notification Channel",
                     NotificationManager.IMPORTANCE_DEFAULT);
@@ -62,7 +70,7 @@ public class AddPostActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddPostActivity.this, DonationsFragment.class);
+                Intent intent = new Intent(AddPostActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });
@@ -96,6 +104,10 @@ public class AddPostActivity extends AppCompatActivity {
                     Intent intent = new Intent(AddPostActivity.this, ProfileActivity.class);
                     intent.putExtra("postPic", image_uri.toString());
                     intent.putExtra("postUserID", postUserId);
+                    intent.putExtra("email", email);
+                    intent.putExtra("userBusinessName", businessName);
+                    intent.putExtra("userPic", userPic);
+                    intent.putExtra("userType", type);
                     startActivity(intent);
                 }
             }

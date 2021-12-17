@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,7 +30,7 @@ public class DonationsFragment extends Fragment {
     CardView presentView, pastView, postView;
     Boolean isFabVisible;
     Button delete;
-    String type;
+    String type, email, businessName, userPic;
 
     private ArrayList<String> images;
     private ArrayList<String> descs;
@@ -54,6 +55,9 @@ public class DonationsFragment extends Fragment {
             emails = getArguments().getStringArrayList("emails");
             phones = getArguments().getStringArrayList("phones");
             type = getArguments().getString("userType");
+            email = getArguments().getString("email");
+            businessName = getArguments().getString("userBusinessName");
+            userPic = getArguments().getString("userPic");
         }
 
             open = view.findViewById(R.id.openFab);
@@ -122,6 +126,9 @@ public class DonationsFragment extends Fragment {
                 title.setText("Add A Food Donation");
                 Intent intent = new Intent(getContext(), AddPostActivity.class);
                 intent.putExtra("email", email);
+                intent.putExtra("userPic", userPic);
+                intent.putExtra("userBusinessName", businessName);
+                intent.putExtra("userType", type);
                 startActivity(intent);
             }
         });
@@ -160,6 +167,15 @@ public class DonationsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }
+
+//        delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getContext(), "Attempt to delete", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+
         return view;
     }
 }
