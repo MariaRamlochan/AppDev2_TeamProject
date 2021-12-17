@@ -32,6 +32,7 @@ public class DonationsFragment extends Fragment {
     Button delete;
     String type, email, businessName, userPic, userPhone;
 
+    private ArrayList<String> ids;
     private ArrayList<String> images;
     private ArrayList<String> descs;
     private ArrayList<String> dates;
@@ -150,14 +151,14 @@ public class DonationsFragment extends Fragment {
                 title.setText("Current Donations");
                 recyclerView.setVisibility(View.VISIBLE);
 
-                DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones,
+                DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones,
                         dates, "Delete", "#ff0000");
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             }
         });
 
-        DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates,
+        DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones, dates,
                 "Delete", "#ff0000");
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -167,7 +168,7 @@ public class DonationsFragment extends Fragment {
             open.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
 
-            DonationAdapter adapter = new DonationAdapter(context, images, descs, emails, phones, dates,
+            DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones, dates,
                     "Accept", "#4CAF50");
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));

@@ -21,14 +21,15 @@ import java.util.ArrayList;
 public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.DonationViewHolder> {
 
     Context context;
-    ArrayList<String> images, desc, email, phone, date;
+    ArrayList<String> images, desc, email, phone, date, ids;
     String status, color;
     DatabaseHelper databaseHelper;
 
-    public DonationAdapter(Context context, ArrayList<String> images, ArrayList<String> desc,
-                           ArrayList<String> email, ArrayList<String> phone, ArrayList<String> date,
-                           String status, String color) {
+    public DonationAdapter(Context context, ArrayList<String> ids, ArrayList<String> images,
+                           ArrayList<String> desc, ArrayList<String> email, ArrayList<String> phone,
+                           ArrayList<String> date, String status, String color) {
         this.context = context;
+        this.ids = ids;
         this.images = images;
         this.desc = desc;
         this.email = email;
@@ -48,6 +49,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         holder.donationDate.setText(date.get(position));
         holder.donationDeleteButton.setText(status);
         holder.donationDeleteButton.setBackgroundColor(Color.parseColor(color));
+        holder.donationId.setText(ids.get(position));
 //        holder.donationDeleteButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -91,6 +93,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         public TextView donationListEmail;
         public TextView donationListPhone;
         public TextView donationDate;
+        public TextView donationId;
         public Button donationDeleteButton;
 
         public DonationViewHolder(@NonNull View itemView) {
