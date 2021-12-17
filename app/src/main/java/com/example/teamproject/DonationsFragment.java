@@ -50,6 +50,7 @@ public class DonationsFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.donationRecyclerView);
 
         if (getArguments() != null) {
+            ids = getArguments().getStringArrayList("ids");
             images = getArguments().getStringArrayList("images");
             descs = getArguments().getStringArrayList("descs");
             dates = getArguments().getStringArrayList("dates");

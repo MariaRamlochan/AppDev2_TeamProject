@@ -56,11 +56,11 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         }
 
         databaseHelper = new DatabaseHelper(this);
-        postIds = new ArrayList<>();
         image = new ArrayList<>();
         businessNames = new ArrayList<>();
         emails = new ArrayList<>();
         phones = new ArrayList<>();
+        postIds = new ArrayList<>();
         postImage = new ArrayList<>();
         postDesc = new ArrayList<>();
         postDate = new ArrayList<>();
