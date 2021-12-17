@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -49,7 +50,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         holder.donationDate.setText(date.get(position));
         holder.donationDeleteButton.setText(status);
         holder.donationDeleteButton.setBackgroundColor(Color.parseColor(color));
-        holder.donationId.setText(ids.get(position));
+       // holder.donationId.setText(ids.get(position));
 //        holder.donationDeleteButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -104,6 +105,16 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
             donationListPhone = itemView.findViewById(R.id.donationListPhone);
             donationDate = itemView.findViewById(R.id.donationDate);
             donationDeleteButton = itemView.findViewById(R.id.donationDeleteButton);
+            donationId = itemView.findViewById(R.id.postIDTextView);
+
+            donationListPhone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + donationListPhone));
+                    view.getContext().startActivity(intent);
+                }
+            });
 
         }
     }
