@@ -30,7 +30,7 @@ public class DonationsFragment extends Fragment {
     CardView presentView, pastView, postView;
     Boolean isFabVisible;
     Button delete;
-    String type, email, businessName, userPic;
+    String type, email, businessName, userPic, userPhone;
 
     private ArrayList<String> images;
     private ArrayList<String> descs;
@@ -58,6 +58,7 @@ public class DonationsFragment extends Fragment {
             email = getArguments().getString("email");
             businessName = getArguments().getString("userBusinessName");
             userPic = getArguments().getString("userPic");
+            userPhone = getArguments().getString("userPhone");
         }
 
             open = view.findViewById(R.id.openFab);
@@ -128,6 +129,7 @@ public class DonationsFragment extends Fragment {
                 intent.putExtra("email", email);
                 intent.putExtra("userPic", userPic);
                 intent.putExtra("userBusinessName", businessName);
+                intent.putExtra("userPhone", userPhone);
                 intent.putExtra("userType", type);
                 startActivity(intent);
             }

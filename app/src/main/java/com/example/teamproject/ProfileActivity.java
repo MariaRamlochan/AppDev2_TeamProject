@@ -170,6 +170,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 args.putString("email", email);
                 args.putString("userType", type);
                 args.putString("userBusinessName", businessName);
+                args.putString("userPhone", phone);
                 args.putString("userPic", pic);
                 donationsFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

@@ -39,7 +39,7 @@ public class AddPostActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     Uri image_uri;
 
-    String email, businessName, userPic, type;
+    String email, businessName, userPic, userPhone ,type;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +57,7 @@ public class AddPostActivity extends AppCompatActivity {
         email = bundle.getString("email");
         businessName = bundle.getString("userBusinessName");
         userPic = bundle.getString("userPic");
+        userPhone = bundle.getString("userPhone");
         type = bundle.getString("userType");
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -107,6 +108,7 @@ public class AddPostActivity extends AppCompatActivity {
                     intent.putExtra("email", email);
                     intent.putExtra("userBusinessName", businessName);
                     intent.putExtra("userPic", userPic);
+                    intent.putExtra("userPhone", userPhone);
                     intent.putExtra("userType", type);
                     startActivity(intent);
                 }
