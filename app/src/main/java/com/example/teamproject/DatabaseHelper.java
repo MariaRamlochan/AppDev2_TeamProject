@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "test8.db";
+    private static final String DATABASE_NAME = "test9.db";
 
     private static final String TABLE_USER = "User";
     private static final String TABLE_POST = "Post";
@@ -35,6 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_POST_DESC = "post_desc";
     private static final String COL_POST_PIC = "post_pic";
     private static final String COL_POST_DATE = "post_date";
+    private static final String COL_POST_STATUS = "post_status";
     private static final String COL_USER_ID = "user_id";
     Context context;
 
@@ -62,6 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL_POST_DESC + " text not null, "
                 + COL_POST_PIC + " text not null, "
                 + COL_POST_DATE + " datetime default current_timestamp, "
+                + COL_POST_STATUS + " text not null, "
                 + COL_USER_ID + " integer,"
                 + " FOREIGN KEY ("+COL_USER_ID+") REFERENCES "+TABLE_USER+"("+COL_ID+"));";
 
@@ -219,6 +221,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_POST_DESC, postDesc);
         contentValues.put(COL_POST_DATE, strDate);
         contentValues.put(COL_POST_PIC, postPic);
+        contentValues.put(COL_POST_STATUS, "available");
         contentValues.put(COL_USER_ID, user_id);
         long result = sqLiteDatabase.insert(TABLE_POST, null, contentValues);
         if (result == -1) {
@@ -234,21 +237,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
         Cursor res = sqLiteDatabase.rawQuery("Select Post.post_pic, Post.post_desc, " +
                 "Post.post_date, User.email, User.phone_num " +
-                "from User inner join Post on User.user_id = Post.user_id", null);
+                "from User inner join Post on User.user_id = Post.user_id " +
+                "where Post.status = 'available' ", null);
         return res;
     }
-
-
 
 
     public Cursor getAllDataUserPost(String user_id) {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
-        Cursor res = sqLiteDatabase.rawQuery("Select * from  Post  Where user_id  = ?",  new String[]
+        Cursor res = sqLiteDatabase.rawQuery("Select * from  Post  Where user_id  = ? " +
+                "and status = 'available' ",  new String[]
                 {user_id});
         return res;
     }
 
-    public boolean updateDataPost (String id, String desc, String pic, String userId) {
+    public boolean updateDataPost (String id, String desc, String pic, String userId, String status) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -259,6 +262,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_POST_DESC, desc);
         contentValues.put(COL_POST_PIC, pic);
         contentValues.put(COL_POST_DATE, strDate);
+        contentValues.put(COL_POST_STATUS, status);
         contentValues.put(COL_USER_ID, userId);
         db.update(TABLE_POST, contentValues, "post_id = ? ", new String[] {id});
         return  true;

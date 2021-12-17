@@ -2,6 +2,7 @@ package com.example.teamproject;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,6 +48,21 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         holder.donationDate.setText(date.get(position));
         holder.donationDeleteButton.setText(status);
         holder.donationDeleteButton.setBackgroundColor(Color.parseColor(color));
+//        holder.donationDeleteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String userId = "";
+//                Cursor cursor = databaseHelper.getUserId(holder.donationListEmail.getText().toString());
+//                if (cursor.moveToNext()) {
+//                    int userTypeColumn = cursor.getColumnIndex("user_id");
+//                    userId = cursor.getString(userTypeColumn);
+//                }
+//                boolean isUpdated = databaseHelper.updateDataPost(userId, businessName.getText().toString(), userPic);
+//                if(isUpdated) {
+//                    Toast.makeText(getContext(), "Update successful", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 
     @NonNull
@@ -78,12 +95,6 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
             donationDate = itemView.findViewById(R.id.donationDate);
             donationDeleteButton = itemView.findViewById(R.id.donationDeleteButton);
 
-//            donationDeleteButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
         }
     }
 }
