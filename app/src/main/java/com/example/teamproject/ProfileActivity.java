@@ -125,6 +125,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 postDate.clear();
                 emails.clear();
                 phones.clear();
+                businessNames.clear();
                 DonationsFragment donationsFragment = new DonationsFragment();
 
                 if (type.equals("Food Bank")) {
@@ -141,6 +142,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                         postDate.add(cursor2.getString(3));
                         emails.add(cursor2.getString(4));
                         phones.add(cursor2.getString(5));
+                        businessNames.add(cursor2.getString(6));
                     }
 
                     args.putStringArrayList("ids", postIds);
@@ -149,6 +151,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                     args.putStringArrayList("dates", postDate);
                     args.putStringArrayList("emails", emails);
                     args.putStringArrayList("phones", phones);
+                    args.putStringArrayList("businessNames", businessNames);
                 } else {
 
                     Cursor cursor1 = databaseHelper.getAllDataUserPost(userId_user);
@@ -164,6 +167,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                         postDate.add(cursor1.getString(3));
                         emails.add(email);
                         phones.add(phone);
+                        businessNames.add(businessName);
                     }
 
                     args.putStringArrayList("ids", postIds);
@@ -172,6 +176,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                     args.putStringArrayList("dates", postDate);
                     args.putStringArrayList("emails", emails);
                     args.putStringArrayList("phones", phones);
+                    args.putStringArrayList("businessNames", businessNames);
                 }
 
                 args.putString("email", email);

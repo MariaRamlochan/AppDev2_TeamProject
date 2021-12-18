@@ -41,6 +41,7 @@ public class DonationsFragment extends Fragment {
     private ArrayList<String> dates;
     private ArrayList<String> emails;
     private ArrayList<String> phones;
+    private ArrayList<String> businessNames;
 
 
     @Nullable
@@ -60,6 +61,7 @@ public class DonationsFragment extends Fragment {
             dates = getArguments().getStringArrayList("dates");
             emails = getArguments().getStringArrayList("emails");
             phones = getArguments().getStringArrayList("phones");
+            businessNames = getArguments().getStringArrayList("businessNames");
             type = getArguments().getString("userType");
             email = getArguments().getString("email");
             businessName = getArguments().getString("userBusinessName");
@@ -150,6 +152,7 @@ public class DonationsFragment extends Fragment {
                 dates.clear();
                 emails.clear();
                 phones.clear();
+                businessNames.clear();
                 title.setText("Past Donations");
                 recyclerView.setVisibility(View.VISIBLE);
                 String userId_user = "";
@@ -173,10 +176,11 @@ public class DonationsFragment extends Fragment {
                     dates.add(cursor1.getString(3));
                     emails.add(email);
                     phones.add(userPhone);
+                    businessNames.add(businessName);
                 }
 
                 DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones,
-                        dates, "Delete", "#ff0000");
+                        dates, businessNames,"Delete", "#ff0000");
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
@@ -192,6 +196,7 @@ public class DonationsFragment extends Fragment {
                 dates.clear();
                 emails.clear();
                 phones.clear();
+                businessNames.clear();
                 title.setText("Current Donations");
                 recyclerView.setVisibility(View.VISIBLE);
                 String userId_user = "";
@@ -215,17 +220,18 @@ public class DonationsFragment extends Fragment {
                     dates.add(cursor1.getString(3));
                     emails.add(email);
                     phones.add(userPhone);
+                    businessNames.add(businessName);
                 }
 
                 DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails,
-                        phones, dates, "Delete", "#ff0000");
+                        phones, dates, businessNames, "Delete", "#ff0000");
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             }
         });
 
         DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones,
-                dates,"Delete", "#ff0000");
+                dates, businessNames, "Delete", "#ff0000");
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
@@ -234,8 +240,8 @@ public class DonationsFragment extends Fragment {
             open.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
 
-            DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones, dates,
-                    "Accept", "#4CAF50");
+            DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails,
+                    phones, dates, businessNames, "Accept", "#4CAF50");
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }

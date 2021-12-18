@@ -23,13 +23,13 @@ import java.util.ArrayList;
 public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.DonationViewHolder> {
 
     Context context;
-    ArrayList<String> images, desc, email, phone, date, ids;
+    ArrayList<String> images, desc, email, phone, date, ids, businessName;
     String status, color;
     DatabaseHelper databaseHelper;
 
     public DonationAdapter(Context context, ArrayList<String> ids, ArrayList<String> images,
                            ArrayList<String> desc, ArrayList<String> email, ArrayList<String> phone,
-                           ArrayList<String> date, String status, String color) {
+                           ArrayList<String> date, ArrayList<String> businessName,String status, String color) {
         this.context = context;
         this.ids = ids;
         this.images = images;
@@ -37,6 +37,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         this.email = email;
         this.phone = phone;
         this.date = date;
+        this.businessName = businessName;
         this.status = status;
         this.color = color;
         databaseHelper = new DatabaseHelper(context);
@@ -48,6 +49,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         holder.donationDescTextView.setText(desc.get(position));
         holder.donationListEmail.setText(email.get(position));
         holder.donationListPhone.setText(phone.get(position));
+        holder.donationBusinessName.setText(businessName.get(position));
         holder.donationDate.setText(date.get(position));
         holder.donationDeleteButton.setText(status);
         holder.donationDeleteButton.setBackgroundColor(Color.parseColor(color));
@@ -108,7 +110,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
             donationDate = itemView.findViewById(R.id.donationDate);
             donationDeleteButton = itemView.findViewById(R.id.donationDeleteButton);
             donationId = itemView.findViewById(R.id.postIDTextView);
-            donationBusinessName = itemView.findViewById(R.id.textView14);
+            donationBusinessName = itemView.findViewById(R.id.postDonationBusinessName);
 
         }
     }
