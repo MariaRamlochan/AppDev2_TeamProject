@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "test9.db";
+    private static final String DATABASE_NAME = "project.db";
 
     private static final String TABLE_USER = "User";
     private static final String TABLE_POST = "Post";

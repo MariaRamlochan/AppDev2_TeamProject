@@ -54,6 +54,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         holder.donationDeleteButton.setText(status);
         holder.donationDeleteButton.setBackgroundColor(Color.parseColor(color));
         holder.donationId.setText(ids.get(position));
+        holder.donationId.setVisibility(View.GONE);
         holder.donationDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
