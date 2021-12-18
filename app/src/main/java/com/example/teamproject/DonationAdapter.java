@@ -62,7 +62,6 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
                     HomeFragment homeFragment = new HomeFragment();
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             homeFragment).commit();
-                    Toast.makeText(v.getContext(), "Delete Successful", Toast.LENGTH_SHORT).show();
                 }
             }
         });

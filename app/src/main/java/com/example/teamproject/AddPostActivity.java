@@ -77,7 +77,6 @@ public class AddPostActivity extends AppCompatActivity {
             }
         });
 
-
         addPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
