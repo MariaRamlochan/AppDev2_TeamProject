@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -51,29 +52,20 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
         holder.donationDeleteButton.setText(status);
         holder.donationDeleteButton.setBackgroundColor(Color.parseColor(color));
         holder.donationId.setText(ids.get(position));
-//        holder.donationDeleteButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String userId = "";
-//                Cursor cursor = databaseHelper.getUserId(holder.donationListEmail.getText().toString());
-//                if (cursor.moveToNext()) {
-//                    int userTypeColumn = cursor.getColumnIndex("user_id");
-//                    userId = cursor.getString(userTypeColumn);
-//                }
-//                boolean isUpdated = databaseHelper.updateDataPost(userId, businessName.getText().toString(), userPic);
-//                if(isUpdated) {
-//                    Toast.makeText(getContext(), "Update successful", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-
-//        holder.donationListPhone.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-
+        holder.donationDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+                boolean isUpdated = databaseHelper.updateStatusPost(holder.donationId.getText().toString());
+                if(isUpdated) {
+                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                    HomeFragment homeFragment = new HomeFragment();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            homeFragment).commit();
+                    Toast.makeText(v.getContext(), "Delete Successful", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         holder.donationListPhone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +109,7 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.Donati
             donationDate = itemView.findViewById(R.id.donationDate);
             donationDeleteButton = itemView.findViewById(R.id.donationDeleteButton);
             donationId = itemView.findViewById(R.id.postIDTextView);
-            donationBusinessName = itemView.findViewById(R.id.textViewDonationBName);
+            donationBusinessName = itemView.findViewById(R.id.textView14);
 
         }
     }

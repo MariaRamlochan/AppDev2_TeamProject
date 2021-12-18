@@ -251,6 +251,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getAllDeleteDataUserPost(String user_id) {
+        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
+        Cursor res = sqLiteDatabase.rawQuery("Select * from  Post  Where user_id  = ? " +
+                "and post_status = 'unavailable' ",  new String[] {user_id});
+        return res;
+    }
+
+    public boolean updateStatusPost (String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_POST_STATUS, "unavailable");
+        db.update(TABLE_POST, contentValues, "post_id = ? ", new String[] {id});
+        return  true;
+    }
+
     public boolean updateDataPost (String id, String desc, String pic, String userId, String status) {
         SQLiteDatabase db = this.getWritableDatabase();
 

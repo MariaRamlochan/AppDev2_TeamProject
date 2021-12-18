@@ -2,6 +2,7 @@ package com.example.teamproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,8 @@ public class DonationsFragment extends Fragment {
     Button delete;
     String type, email, businessName, userPic, userPhone;
 
+    DatabaseHelper databaseHelper;
+
     private ArrayList<String> ids;
     private ArrayList<String> images;
     private ArrayList<String> descs;
@@ -46,6 +49,7 @@ public class DonationsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_donations, container, false);
 
         Context context = this.getActivity();
+        databaseHelper = new DatabaseHelper(context);
 
         RecyclerView recyclerView = view.findViewById(R.id.donationRecyclerView);
 
@@ -140,8 +144,41 @@ public class DonationsFragment extends Fragment {
         past.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ids.clear();
+                images.clear();
+                descs.clear();
+                dates.clear();
+                emails.clear();
+                phones.clear();
                 title.setText("Past Donations");
                 recyclerView.setVisibility(View.VISIBLE);
+                String userId_user = "";
+
+                Cursor cursor3 = databaseHelper.getUserId(email);
+                if (cursor3.moveToNext()) {
+                    int userTypeColumn = cursor3.getColumnIndex("user_id");
+                    userId_user = cursor3.getString(userTypeColumn);
+                }
+
+                Cursor cursor1 = databaseHelper.getAllDeleteDataUserPost(userId_user);
+
+                if (cursor1.getCount() == 0) {
+                    Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
+                }
+
+                while (cursor1.moveToNext()) {
+                    ids.add(cursor1.getString(0));
+                    images.add(cursor1.getString(2));
+                    descs.add(cursor1.getString(1));
+                    dates.add(cursor1.getString(3));
+                    emails.add(email);
+                    phones.add(userPhone);
+                }
+
+                DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones,
+                        dates, "Delete", "#ff0000");
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
             }
         });
@@ -149,18 +186,46 @@ public class DonationsFragment extends Fragment {
         present.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ids.clear();
+                images.clear();
+                descs.clear();
+                dates.clear();
+                emails.clear();
+                phones.clear();
                 title.setText("Current Donations");
                 recyclerView.setVisibility(View.VISIBLE);
+                String userId_user = "";
 
-                DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones,
-                        dates, "Delete", "#ff0000");
+                Cursor cursor3 = databaseHelper.getUserId(email);
+                if (cursor3.moveToNext()) {
+                    int userTypeColumn = cursor3.getColumnIndex("user_id");
+                    userId_user = cursor3.getString(userTypeColumn);
+                }
+
+                Cursor cursor1 = databaseHelper.getAllDataUserPost(userId_user);
+
+                if (cursor1.getCount() == 0) {
+                    Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
+                }
+
+                while (cursor1.moveToNext()) {
+                    ids.add(cursor1.getString(0));
+                    images.add(cursor1.getString(2));
+                    descs.add(cursor1.getString(1));
+                    dates.add(cursor1.getString(3));
+                    emails.add(email);
+                    phones.add(userPhone);
+                }
+
+                DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails,
+                        phones, dates, "Delete", "#ff0000");
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             }
         });
 
-        DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones, dates,
-                "Delete", "#ff0000");
+        DonationAdapter adapter = new DonationAdapter(context, ids, images, descs, emails, phones,
+                dates,"Delete", "#ff0000");
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 

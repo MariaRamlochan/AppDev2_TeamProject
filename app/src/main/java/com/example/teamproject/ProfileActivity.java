@@ -127,29 +127,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 phones.clear();
                 DonationsFragment donationsFragment = new DonationsFragment();
 
-                if (type.equals("Donor")) {
-                    Cursor cursor1 = databaseHelper.getAllDataUserPost(userId_user);
-
-                    if (cursor1.getCount() == 0) {
-                        Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
-                    }
-
-                    while (cursor1.moveToNext()) {
-                        postIds.add(cursor1.getString(0));
-                        postImage.add(cursor1.getString(2));
-                        postDesc.add(cursor1.getString(1));
-                        postDate.add(cursor1.getString(3));
-                        emails.add(email);
-                        phones.add(phone);
-                    }
-
-                    args.putStringArrayList("ids", postIds);
-                    args.putStringArrayList("images", postImage);
-                    args.putStringArrayList("descs", postDesc);
-                    args.putStringArrayList("dates", postDate);
-                    args.putStringArrayList("emails", emails);
-                    args.putStringArrayList("phones", phones);
-                } else {
+                if (type.equals("Food Bank")) {
                     Cursor cursor2 = databaseHelper.getAllDataPost();
 
                     if (cursor2.getCount() == 0) {
@@ -163,6 +141,29 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                         postDate.add(cursor2.getString(3));
                         emails.add(cursor2.getString(4));
                         phones.add(cursor2.getString(5));
+                    }
+
+                    args.putStringArrayList("ids", postIds);
+                    args.putStringArrayList("images", postImage);
+                    args.putStringArrayList("descs", postDesc);
+                    args.putStringArrayList("dates", postDate);
+                    args.putStringArrayList("emails", emails);
+                    args.putStringArrayList("phones", phones);
+                } else {
+
+                    Cursor cursor1 = databaseHelper.getAllDataUserPost(userId_user);
+
+                    if (cursor1.getCount() == 0) {
+                        Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+                    }
+
+                    while (cursor1.moveToNext()) {
+                        postIds.add(cursor1.getString(0));
+                        postImage.add(cursor1.getString(2));
+                        postDesc.add(cursor1.getString(1));
+                        postDate.add(cursor1.getString(3));
+                        emails.add(email);
+                        phones.add(phone);
                     }
 
                     args.putStringArrayList("ids", postIds);
