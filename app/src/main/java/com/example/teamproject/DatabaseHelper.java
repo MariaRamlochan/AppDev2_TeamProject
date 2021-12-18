@@ -115,6 +115,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
+    public Boolean updatePassword(String oldPassword, String newPassword){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_PASSWORD, newPassword);
+        db.update(TABLE_USER, contentValues, "password = ? ", new String[] {oldPassword});
+        return true;
+    }
+
+
     public Boolean checkEmailPassword(String email, String password){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM User WHERE email = ? AND password = ?",
@@ -137,13 +146,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getUserPic(String email) {
         SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
         Cursor res = sqLiteDatabase.rawQuery("Select user_pic from User Where email = ? ", new String[] {email});
-        return res;
-    }
-
-    public Cursor getSpecificUser(String user_id) {
-        SQLiteDatabase  sqLiteDatabase = this.getWritableDatabase();
-        Cursor res = sqLiteDatabase.rawQuery("Select * from User Where user_id = ? ",
-                new String[] {user_id});
         return res;
     }
 
@@ -282,11 +284,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_USER_ID, userId);
         db.update(TABLE_POST, contentValues, "post_id = ? ", new String[] {id});
         return  true;
-    }
-
-    public Integer deleteDataPost(String id){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        return sqLiteDatabase.delete(TABLE_POST, COL_POST_ID + " = ? ", new String[] {id});
     }
 
 }

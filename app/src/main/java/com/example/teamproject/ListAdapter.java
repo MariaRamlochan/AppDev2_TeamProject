@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         holder.businessName.setText(businessNames.get(position));
         holder.email.setText(email.get(position));
         holder.phoneNum.setText(phones.get(position));
+
+        holder.phoneNum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + holder.phoneNum.getText()));
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

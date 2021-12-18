@@ -27,9 +27,6 @@
             android:name=".ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".DatabaseViewActivity"
-            android:exported="true" />
-        <activity
             android:name=".SetUpPictureActivity"
             android:exported="true" />
         <activity

@@ -15,8 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +29,7 @@ public class DonationsFragment extends Fragment {
     CardView presentView, pastView, postView;
     Boolean isFabVisible;
     Button delete;
-    String type, email, businessName, userPic, userPhone;
+    String type, email, businessName, userPic, userPhone, userAddress, userCity, userCountry;
 
     DatabaseHelper databaseHelper;
 
@@ -67,6 +65,9 @@ public class DonationsFragment extends Fragment {
             businessName = getArguments().getString("userBusinessName");
             userPic = getArguments().getString("userPic");
             userPhone = getArguments().getString("userPhone");
+            userAddress = getArguments().getString("userAddress");
+            userCity = getArguments().getString("userCity");
+            userCountry = getArguments().getString("userCountry");
         }
 
             open = view.findViewById(R.id.openFab);
@@ -139,6 +140,9 @@ public class DonationsFragment extends Fragment {
                 intent.putExtra("userBusinessName", businessName);
                 intent.putExtra("userPhone", userPhone);
                 intent.putExtra("userType", type);
+                intent.putExtra("userAddress", userAddress);
+                intent.putExtra("userCity", userCity);
+                intent.putExtra("userCountry", userCountry);
                 startActivity(intent);
             }
         });

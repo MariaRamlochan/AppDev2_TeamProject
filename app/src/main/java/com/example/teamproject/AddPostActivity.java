@@ -39,7 +39,7 @@ public class AddPostActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     Uri image_uri;
 
-    String email, businessName, userPic, userPhone ,type;
+    String email, businessName, userPic, userPhone ,type, address, city, country;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,6 +60,9 @@ public class AddPostActivity extends AppCompatActivity {
         userPic = bundle.getString("userPic");
         userPhone = bundle.getString("userPhone");
         type = bundle.getString("userType");
+        address = bundle.getString("userAddress");
+        city = bundle.getString("userCity");
+        country = bundle.getString("userCountry");
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("My Notification", "My Notification Channel",
@@ -110,6 +113,9 @@ public class AddPostActivity extends AppCompatActivity {
                     intent.putExtra("userPic", userPic);
                     intent.putExtra("userPhone", userPhone);
                     intent.putExtra("userType", type);
+                    intent.putExtra("userAddress", address);
+                    intent.putExtra("userCity", city);
+                    intent.putExtra("userCountry", country);
                     startActivity(intent);
                 }
             }

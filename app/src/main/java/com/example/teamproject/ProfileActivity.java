@@ -8,7 +8,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
-import android.content.ClipData;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -16,7 +15,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -103,6 +101,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         String city = bundle.getString("userCity");
         String country = bundle.getString("userCountry");
         String pic = bundle.getString("userPic");
+        String pass = bundle.getString("pass");
 
         Cursor cursor3 = databaseHelper.getUserId(email);
         if (cursor3.moveToNext()) {
@@ -184,6 +183,9 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 args.putString("userBusinessName", businessName);
                 args.putString("userPhone", phone);
                 args.putString("userPic", pic);
+                args.putString("userAddress", address);
+                args.putString("userCity", city);
+                args.putString("userCountry", country);
                 donationsFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         donationsFragment).commit();
@@ -235,6 +237,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
                 args.putString("userCity", city);
                 args.putString("userCountry", country);
                 args.putString("userPic", pic);
+                args.putString("pass", pass);
                 settingsFragment.setArguments(args);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         settingsFragment).detach(settingsFragment).attach(settingsFragment).commit();

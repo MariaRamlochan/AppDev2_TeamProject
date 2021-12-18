@@ -20,11 +20,11 @@ import androidx.fragment.app.Fragment;
 public class SettingsFragment extends Fragment {
 
     EditText businessName, phoneNumber, address, city, country;
-    Button saveChange, changePass, terminate;
+    Button saveChange, changePass;
     ImageButton addGallery, addCamera;
     ImageView settingProfile;
-    String userBusinessName, userPhone, userAddress, userCity, userCountry, userPic, userEmail;
-    DatabaseHelper databaseHelper;
+    String userBusinessName, userPhone, userAddress, userCity, userCountry, userPic, userEmail, userPass;
+    DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
 
     @Nullable
     @Override
@@ -38,11 +38,9 @@ public class SettingsFragment extends Fragment {
         country = view.findViewById(R.id.settingCountry);
         saveChange = view.findViewById(R.id.settingSave);
         changePass = view.findViewById(R.id.settingChangePass);
-        terminate = view.findViewById(R.id.settingTerminate);
         addGallery = view.findViewById(R.id.settingGallery);
         addCamera = view.findViewById(R.id.settingCamera);
         settingProfile = view.findViewById(R.id.settingsPic);
-        databaseHelper = new DatabaseHelper(getContext());
 
         if (getArguments() != null) {
             userBusinessName = getArguments().getString("userBusinessName");
@@ -52,6 +50,7 @@ public class SettingsFragment extends Fragment {
             userCountry = getArguments().getString("userCountry");
             userPic = getArguments().getString("userPic");
             userEmail = getArguments().getString("email");
+            userPass = getArguments().getString("pass");
         }
 
         businessName.setText(userBusinessName);
@@ -65,6 +64,8 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ChangePassword.class);
+                intent.putExtra("pass", userPass);
+                intent.putExtra("email", userEmail);
                 startActivity(intent);
             }
         });

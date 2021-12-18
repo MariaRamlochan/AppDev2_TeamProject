@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button loginBtn, signUpBtn, viewBtn;
+    Button loginBtn, signUpBtn;
     EditText email, password;
     DatabaseHelper databaseHelper;
 
@@ -24,20 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
         loginBtn = findViewById(R.id.loginButton);
         signUpBtn = findViewById(R.id.signUpButton);
-        viewBtn = findViewById(R.id.viewButton);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         databaseHelper = new DatabaseHelper(this);
-
-        viewBtn.setVisibility(viewBtn.GONE);
-
-//        viewBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, DatabaseViewActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                         intent.putExtra("email", user);
+                        intent.putExtra("pass", pass);
                         intent.putExtra("userType", userType);
                         intent.putExtra("userPic", userPic);
                         intent.putExtra("userBusinessName", userBusinessName);

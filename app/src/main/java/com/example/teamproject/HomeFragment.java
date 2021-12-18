@@ -1,6 +1,5 @@
 package com.example.teamproject;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import androidx.fragment.app.Fragment;
 public class HomeFragment extends Fragment {
 
     ImageView donationOne, donationTwo;
-    TextView donorOne, donorTwo, addressOne, addressTwo, phoneOne, phoneTwo;
+    TextView donorOne, donorTwo;
     EditText descOne, descTwo;
 
     @Nullable
