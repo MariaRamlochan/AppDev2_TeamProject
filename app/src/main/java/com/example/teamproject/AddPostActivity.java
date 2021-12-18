@@ -34,7 +34,7 @@ public class AddPostActivity extends AppCompatActivity {
     public static final int GALLERY_PICK_CODE = 1003;
     EditText addPostDesc;
     ImageView addPostImage;
-    ImageButton addPostImageButton, back;
+    ImageButton addPostImageButton, addPostImageButton2, back;
     Button addPostButton;
     DatabaseHelper databaseHelper;
     Uri image_uri;
@@ -49,6 +49,7 @@ public class AddPostActivity extends AppCompatActivity {
         addPostImage = findViewById(R.id.addPostImageView);
         addPostDesc = findViewById(R.id.addPostEditText);
         addPostImageButton = findViewById(R.id.addPostImageButton);
+        addPostImageButton2 = findViewById(R.id.addPostImageButton2);
         addPostButton = findViewById(R.id.addPostButton);
         back = findViewById(R.id.backImageButton);
         databaseHelper = new DatabaseHelper(this);
@@ -128,6 +129,22 @@ public class AddPostActivity extends AppCompatActivity {
                     }
                 } else {
                     openCamera();
+                }
+            }
+        });
+
+        addPostImageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                        String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        requestPermissions(permission, PERMISSION_CODE_GALLERY);
+                    } else {
+                        openGallery();
+                    }
+                } else {
+                    openGallery();
                 }
             }
         });
