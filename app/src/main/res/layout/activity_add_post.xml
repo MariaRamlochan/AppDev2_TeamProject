@@ -25,7 +25,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="20dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/add_photo"
+        android:background="@drawable/cam_24"
         android:backgroundTint="@color/black"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/cardView4"
@@ -95,4 +95,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back" />
+
+    <ImageButton
+        android:id="@+id/addPostImageButton2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="20dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/add_photo"
+        android:backgroundTint="@color/black"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/cardView4"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
