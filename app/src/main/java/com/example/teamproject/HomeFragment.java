@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 public class HomeFragment extends Fragment {
 
     ImageView donationOne, donationTwo;
-    TextView donorOne, donorTwo, addressOne, addressTwo, phoneOne, phoneTwo, stopWasting;
+    TextView donorOne, donorTwo, addressOne, addressTwo, phoneOne, phoneTwo;
     EditText descOne, descTwo;
 
     @Nullable
@@ -30,15 +30,6 @@ public class HomeFragment extends Fragment {
         donorTwo = view.findViewById(R.id.textViewBName2);
         descOne = view.findViewById(R.id.multiLineDesc1);
         descTwo = view.findViewById(R.id.multiLineDesc2);
-        stopWasting = view.findViewById(R.id.textViewStopWasting);
-
-        stopWasting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), VideoActivity.class);
-                startActivity(intent);
-            }
-        });
 
         return view;
     }

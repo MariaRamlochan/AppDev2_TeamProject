@@ -18,9 +18,6 @@
             android:name=".NotificationView"
             android:exported="true" />
         <activity
-            android:name=".VideoActivity"
-            android:exported="true" />
-        <activity
             android:name=".ChangePassword"
             android:exported="true" />
         <activity
